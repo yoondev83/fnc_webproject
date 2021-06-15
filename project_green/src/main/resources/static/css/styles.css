@@ -634,6 +634,12 @@ progress {
     max-width: 1320px;
   }
 }
+
+@media (max-width: 500px){
+  .features-icons-icon d-flex{
+    width: 10%;
+  }
+}
 .row {
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
@@ -1359,6 +1365,7 @@ progress {
   .col-lg-6 {
     flex: 0 0 auto;
     width: 50%;
+    
   }
 
   .col-lg-7 {
@@ -10913,10 +10920,12 @@ header.masthead h1, header.masthead .h1 {
 .call-to-action {
   position: relative;
   background-color: #343a40;
-  background: url("/assets/img/bg-masthead.jpg") no-repeat center center;
-  background-size: cover;
+  background: url("/assets/img/our_team.jpg") no-repeat center center;
   padding-top: 7rem;
   padding-bottom: 7rem;
+  width: 100%;
+  background-position: left;
+  background-size: 690px 290px;
 }
 .call-to-action:before {
   content: "";
