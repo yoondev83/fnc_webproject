@@ -1,0 +1,9 @@
+package com.webprj.project_green.dao;
+
+import java.util.List;
+
+import com.webprj.project_green.dto.BoardDto;
+
+public interface BoardDao {
+	public List<BoardDto> getBoardData();
+}

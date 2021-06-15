@@ -1,0 +1,12 @@
+package com.webprj.project_green.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.webprj.project_green.dto.BoardDto;
+
+@Service
+public interface BoardService {
+	public List<BoardDto> getBoardsData();
+}

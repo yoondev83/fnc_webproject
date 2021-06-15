@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+	var boards = []
+	axios
+	.post("/board/list")
+	.then(function (response) {
+	  console.log(response)
+	  boards = response.data
+	})
+	.catch(function () {
+	  console.log("실패");
+	});
+	
+	window.onload = function(){
+		boardsHtml = "";
+		for (var i = 0; i < boards.length; i++){
+			boardsHtml +=
+				"번호 : " + boards[i].postNum +
+				"제목 : " + boards[i].title + 
+				"내용 : " + boards[i].content +
+				"게시일 : " + boards[i].uploadDate + 
+				"좋아요 수 : " + boards[i].recommend +
+				"이미지 : " + boards[i].imageUrl +
+				"카테고리 : " + boards[i].category + 
+				"사용자 : " + boards[i].userId;
+		}
+		
+		
+		document.querySelector("#board-list").innerHTML = boardsHtml
+	}
+</script>
+</head>
+<body>
+	<h1>Hello Workd</h1>
+	<div id="board-list"></div>
+	<a href="/board/new">글쓰기</a>
+</body>
+</html>
