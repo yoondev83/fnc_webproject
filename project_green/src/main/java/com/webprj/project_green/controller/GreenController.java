@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.webprj.project_green.dto.BoardDto;
 import com.webprj.project_green.service.BoardService;
@@ -19,6 +20,32 @@ public class GreenController {
     public String welcomeMain(){
 
         return "index";
+    }
+    @GetMapping("/intro")
+    public String goIntroduction(){
+
+        return "index";
+    }
+    @GetMapping("/rank")
+    public String goToRank(){
+
+        return "rank/rank";
+    }
+    
+    @GetMapping("/b_freetalk")
+    public String goCommunity(){
+
+        return "board/b_freetalk";
+    }
+    @GetMapping("/login")
+    public String goLogin(){
+
+        return "login/login";
+    }
+    @GetMapping("/join")
+    public String goJoin(){
+
+        return "login/join";
     }
     
     @GetMapping("/board/list")
