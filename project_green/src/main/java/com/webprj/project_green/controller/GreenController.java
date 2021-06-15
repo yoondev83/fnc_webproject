@@ -24,11 +24,12 @@ public class GreenController {
     @GetMapping("/intro")
     public String goIntroduction(){
 
-        return "index";
+        return "redirect:/index#introduction";
     }
+    
     @GetMapping("/rank")
     public String goToRank(){
-
+        
         return "rank/rank";
     }
     
