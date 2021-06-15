@@ -8,5 +8,8 @@
         SELECT postnum as postNum, title, content, uploaddate as uploadDate, recommend, imageurl as imageUrl, category, userid as userId FROM BOARD
         <!-- aLIAS 를 사용하여, DTO 와 이름을 꼭 맞출 수 있도록 하자. -->
     </select>
-    
+    <insert id="createBoard" parameterType="com.webprj.project_green.dto.BoardDto" >
+    	INSERT INTO BOARD (POSTNUM, TITLE, CONTENT, UPLOADDATE, IMAGEURL, CATEGORY, USERID)
+		VALUES(POSTNUM_SEQ.NEXTVAL, #{title}, #{content}, sysdate, #{imageUrl}, #{category}, 123)
+    </insert>
 </mapper>

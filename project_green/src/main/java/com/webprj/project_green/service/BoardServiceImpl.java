@@ -18,5 +18,10 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		return boardDao.getBoardData();
 	}
-
+	@Override
+	public void createBoard(BoardDto boardDto) {
+		// TODO Auto-generated method stub
+		boardDao.createBoard(boardDto);
+	}
+	
 }

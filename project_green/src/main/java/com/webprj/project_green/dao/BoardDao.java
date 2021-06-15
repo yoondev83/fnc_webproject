@@ -11,4 +11,5 @@ import com.webprj.project_green.dto.BoardDto;
 @Repository
 public interface BoardDao {
 	public List<BoardDto> getBoardData();
+	public void createBoard(BoardDto boardDto);
 }
