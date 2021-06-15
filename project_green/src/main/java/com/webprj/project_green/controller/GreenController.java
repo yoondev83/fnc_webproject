@@ -1,11 +1,13 @@
 package com.webprj.project_green.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.webprj.project_green.dto.BoardDto;
 import com.webprj.project_green.service.BoardService;
@@ -38,4 +40,9 @@ public class GreenController {
 		boardService.createBoard(boardDto);
 		return "redirect:/board/list";
 	}
+    @GetMapping("/login")
+    public void login(Model model, HttpSession session) {
+    	System.out.println("login");
+    	session.setAttribute("id", "mosang1230");
+    }
 }
