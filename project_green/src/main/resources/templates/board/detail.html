@@ -61,7 +61,7 @@
 
 	<tr>
 		<th>좋아요</th>
-		<td><a href="./dolike?id=${article.id}"
+		<td><a th:href="${'/board/list/like/' + board.postNum}"
 			onclick="if ( confirm('추천하시겠습니까?') == false) { return false;}">좋아요</a>
 		</td>)
 
