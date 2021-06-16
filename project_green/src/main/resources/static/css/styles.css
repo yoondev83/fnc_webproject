@@ -639,7 +639,10 @@ progress {
   .features-icons-icon d-flex{
     width: 10%;
   }
+  
 }
+
+
 .row {
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;

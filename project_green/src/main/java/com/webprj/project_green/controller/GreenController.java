@@ -44,6 +44,33 @@ public class GreenController {
 		boardService.login(customDto);
 		return "redirect:/custom/sign";
 	}
+    @GetMapping("/intro")
+    public String goIntroduction(){
+
+        return "redirect:/index#introduction";
+    }
+    
+    @GetMapping("/rank")
+    public String goToRank(){
+        
+        return "rank/rank";
+    }
+    
+    @GetMapping("/b_freetalk")
+    public String goCommunity(){
+
+        return "board/b_freetalk";
+    }
+    @GetMapping("/login")
+    public String goLogin(){
+
+        return "login/login";
+    }
+    @GetMapping("/join")
+    public String goJoin(){
+
+        return "login/join";
+    }
     
     @GetMapping("/board/list")
     public void board() {
@@ -62,7 +89,7 @@ public class GreenController {
 		return "redirect:/board/list";
 	}
     
-    // ===========================  х╦©Ь ╟║ют =========================
+    // ===========================  х╦О©╫О©╫ О©╫О©╫О©╫О©╫ =========================
     
     
     
