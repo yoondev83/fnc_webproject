@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function goLoginForm() {
+        location.href="/login/sign"
+    }
+    </script>
+</head>
+<body>
+<center>
+	<h1>메인  소개  친환경 제품랭킹  커뮤니티 </h1>
+	</center>
+		<center>
+	<form action="//login.chain" method="post" >
+		<label for="id"> 아이디 : <input type="text" name="id" id="id"></label><br/>
+		<label for="pass"> 비밀번호 : <input type="text" name="pass" id="pass"></label>
+		<center>
+		<input type="submit" value="로그인">
+		<input type="button" value="회원가입" onclick="goLoginForm()" >
+		</center>
+		<!-- <label for="id"> I D : <input type="text" name="id" id="id"></label><br/>
+		<label for="pass"> PASS : <input type="text" name="pass" id="pass"></label> -->
+	 	<!-- <input type="submit" value="로그인"> -->
+		<!-- <input type="reset" value="취소"> -->
+		<!-- <input type="submit" value="회원가입"> -->
+	</form>
+</body>
+</html>

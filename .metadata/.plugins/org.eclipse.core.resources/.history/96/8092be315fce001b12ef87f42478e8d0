@@ -55,8 +55,14 @@
         </nav>
 		
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<<<<<<< HEAD
 <script th:inline="javascript">
 	window.onload = function(){
+=======
+<script>
+
+	    window.onload = function(){
+>>>>>>> 17a23e217ee4c16ada71fe1bf72aef7d20725f16
 		var boards = []
 		axios
 		.post("/board/list")
@@ -66,31 +72,45 @@
 			var boardsHtml = "";
             var tableNum_row = 0;
 			for (var i = 0; i < boards.length; i++){
+<<<<<<< HEAD
 				if ([[${sess_id}]] == boards[i].userId){
-					boardsHtml += "<tr>";
-					boardsHtml +=  "<td>" + boards[i].postNum + "</td>";
-					boardsHtml +=  "<td>" + boards[i].title + "</td>";
-					boardsHtml +=  "<td>" + boards[i].content + "</td>";
-					boardsHtml +=  "<td>" + boards[i].uploadDate + "</td>";
-					boardsHtml +=  "<td>" + boards[i].recommend + "</td>";
-					boardsHtml +=  "<td>" + boards[i].imageUrl + "</td>";
-					boardsHtml +=  "<td>" + boards[i].category + "</td>";
-					boardsHtml +=  "<td>" + boards[i].userId+ "</td>";
-					boardsHtml +=  "</tr>";
-					boardsHtml += '<div class="edit-or-remove">' 
-					boardsHtml += '<button class="edit">수정</button> <button class="remove">삭제</button> </div>';		
+					boardsHtml +=
+					"번호 : " + boards[i].postNum +
+					"제목 : " + boards[i].title + 
+					"내용 : " + boards[i].content +
+					"게시일 : " + boards[i].uploadDate + 
+					"좋아요 수 : " + boards[i].recommend +
+					"이미지 : " + boards[i].imageUrl +
+					"카테고리 : " + boards[i].category + 
+					"사용자 : " + boards[i].userId + "<br/>" +
+					'<div class="edit-or-remove">' +
+					'<button class="edit">수정</button> <button class="remove">삭제</button> </div>';		
 				}else{
-					boardsHtml += "<tr>";
-					boardsHtml +=  "<td>" + boards[i].postNum + "</td>";
-					boardsHtml +=  "<td>" + boards[i].title + "</td>";
-					boardsHtml +=  "<td>" + boards[i].content + "</td>";
-					boardsHtml +=  "<td>" + boards[i].uploadDate + "</td>";
-					boardsHtml +=  "<td>" + boards[i].recommend + "</td>";
-					boardsHtml +=  "<td>" + boards[i].imageUrl + "</td>";
-					boardsHtml +=  "<td>" + boards[i].category + "</td>";
-					boardsHtml +=  "<td>" + boards[i].userId+ "</td>";
-					boardsHtml +=  "</tr>";
+					boardsHtml +=
+					"번호 : " + boards[i].postNum +
+					"제목 : " + boards[i].title + 
+					"내용 : " + boards[i].content +
+					"게시일 : " + boards[i].uploadDate + 
+					"좋아요 수 : " + boards[i].recommend +
+					"이미지 : " + boards[i].imageUrl +
+					"카테고리 : " + boards[i].category + 
+					"사용자 : " + boards[i].userId + "<br/>"
 				}
+=======
+				boardsHtml += "<tr>";
+				boardsHtml +=  "<td>" + boards[i].postNum + "</td>";
+				boardsHtml +=  "<td>" + boards[i].title + "</td>";
+				boardsHtml +=  "<td>" + boards[i].content + "</td>";
+				boardsHtml +=  "<td>" + boards[i].uploadDate + "</td>";
+				boardsHtml +=  "<td>" + boards[i].recommend + "</td>";
+				boardsHtml +=  "<td>" + boards[i].imageUrl + "</td>";
+				boardsHtml +=  "<td>" + boards[i].category + "</td>";
+				boardsHtml +=  "<td>" + boards[i].userId+ "</td>";
+				boardsHtml +=  "</tr>";
+                
+                console.log(boards);
+                    
+>>>>>>> 17a23e217ee4c16ada71fe1bf72aef7d20725f16
 			}
 			// for (var i = 0; i < boards.length; i++){
 			// 	boardsHtml += 
@@ -106,27 +126,47 @@
                     
 			// }
 			
-            document.getElementById('tablebodylol').innerHTML = boardsHtml;
+			
+<<<<<<< HEAD
+			document.querySelector("#board-list").innerHTML = boardsHtml
 
+			
 			document.querySelector(".edit").onclick = function(){
 				alert("수정을 클릭");
 			}
 			document.querySelector(".remove").onclick = function(){
 				alert("삭제을 클릭");
 			}
+=======
+			// document.querySelector("#board-list").innerHTML = boardsHtml;
+            document.getElementById('tablebodylol').innerHTML = boardsHtml;
   
 
+>>>>>>> 17a23e217ee4c16ada71fe1bf72aef7d20725f16
 		})
 		.catch(function () {
 		  console.log("실패");
 		});
+<<<<<<< HEAD
+		
+=======
+        
+>>>>>>> 17a23e217ee4c16ada71fe1bf72aef7d20725f16
 	
 	}
+	console.log([[${sess_id}]])
 </script>
 </head>
 <body>
+<<<<<<< HEAD
 	<h1>Hello Workd</h1>
+	<div id="board-list"></div>
 	<a href="/board/new">글쓰기</a>
+	<div class="edit-or-remove" th:if="${sess_id == 'mosang1230'}">
+		<button>수정</button> 
+		<button>삭제</button>
+	</div>
+=======
     
     <section>
         <div style="margin-top: 100px;">
@@ -156,5 +196,6 @@
         
     </section>
 
+>>>>>>> 17a23e217ee4c16ada71fe1bf72aef7d20725f16
 </body>
 </html>

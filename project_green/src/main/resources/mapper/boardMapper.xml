@@ -12,4 +12,5 @@
     	INSERT INTO BOARD (POSTNUM, TITLE, CONTENT, UPLOADDATE, IMAGEURL, CATEGORY, USERID)
 		VALUES(POSTNUM_SEQ.NEXTVAL, #{title}, #{content}, sysdate, #{imageUrl}, #{category}, #{userId})
     </insert>
+
 </mapper>

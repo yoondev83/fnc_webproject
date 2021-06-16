@@ -1314,3 +1314,9 @@ build file 'C:\Users\admin\sangil\fnc_webproject\project_green\build.gradle': 32
 
 	at org.gradle.groovy.scripts.internal.DefaultScriptCompilationHandler.compileScript(DefaultScriptCompilationHandler.java:139)
 	... 171 more
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2021-06-16 14:06:17.523
+!MESSAGE Server returned lastModified <= 0 for https://raw.githubusercontent.com/thymeleaf/thymeleaf-extras-eclipse-plugin/update-site/2.1.2/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2021-06-16 14:06:18.408
+!MESSAGE Server returned lastModified <= 0 for https://raw.githubusercontent.com/thymeleaf/thymeleaf-extras-eclipse-plugin/update-site/3.0.0/content.jar

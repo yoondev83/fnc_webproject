@@ -91,10 +91,31 @@ public class GreenController {
 		boardService.createBoard(boardDto);
 		return "redirect:/board/list";
 	}
+<<<<<<< HEAD
     @GetMapping("/login")
     public void login(Model model, HttpSession session) {
     	System.out.println("login");
     	session.setAttribute("id", "mosang");
     }
-
+=======
+    
+    // ===========================  ȸ�� ���� =========================
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+>>>>>>> 17a23e217ee4c16ada71fe1bf72aef7d20725f16
 }

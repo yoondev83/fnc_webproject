@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.webprj.project_green.dao.BoardDao" >
+
+	<insert id="login" parameterType="com.webprj.project_green.dto.CustomDto" >
+    	INSERT INTO CUSTOMER (ID, PASSWORD, EMAIL, PHONE)
+		VALUES(#{id}, #{password}, #{email}, #{phone})
+    </insert>
+    
+</mapper>
