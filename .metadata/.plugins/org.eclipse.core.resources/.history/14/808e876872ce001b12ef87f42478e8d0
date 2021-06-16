@@ -64,7 +64,7 @@ public class GreenController {
     
 
     @GetMapping("/board/b_freetalk")
-    public void board() {
+    public void board(Model model, HttpSession session) {
     	System.out.println("board page");
     	
     }

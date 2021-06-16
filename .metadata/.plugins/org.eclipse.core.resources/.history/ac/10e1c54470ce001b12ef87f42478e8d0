@@ -94,6 +94,10 @@
 			// }
 			
             document.getElementById('tablebodylol').innerHTML = boardsHtml;
+
+			
+  
+
 		})
 		.catch(function () {
 		  console.log("실패");

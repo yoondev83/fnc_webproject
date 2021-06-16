@@ -64,7 +64,7 @@ public class GreenController {
     
 
     @GetMapping("/board/b_freetalk")
-    public void board() {
+    public void board(Model model, HttpSession session) {
     	System.out.println("board page");
     	
     }
@@ -88,7 +88,7 @@ public class GreenController {
 //    }
     
     @GetMapping("/board/detail/{boardnum}")
-	public ModelAndView detail(@PathVariable int boardnum, Model model, HttpSession session) {
+	public ModelAndView detail(Model model, @PathVariable int boardnum) {
 		System.out.println(boardnum);
 		ModelAndView mv = new ModelAndView("/board/detail");
 		BoardDto board = boardService.getBoardData(boardnum);

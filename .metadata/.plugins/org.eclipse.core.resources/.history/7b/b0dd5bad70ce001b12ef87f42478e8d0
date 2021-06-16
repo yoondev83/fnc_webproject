@@ -6,36 +6,33 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
 	window.onload = function (){
-		try{
-			document.querySelector("#edit").onclick = function(){
-			alert("수정을 클릭");
-			}
-			document.querySelector("#remove").onclick = function(){
-			alert("삭제을 클릭");
-			}
-		}catch{
-			console.log("버튼 없음");
+		document.querySelector(".edit").onclick = function(){
+		alert("수정을 클릭");
+		}
+		document.querySelector(".remove").onclick = function(){
+		alert("삭제을 클릭");
 		}
 	}
 </script>
 </head>
 <body>
 	<h1>Detail Page</h1>
-	<div>
-		<span  th:text="${board.postNum + '번호'}"></span> 
-        <span  th:text="${board.title + '제목'}"></span>
-        <span  th:text="${board.content + '내용'}"></span>
-        <span  th:text="${board.uploadDate + '게시일'}"></span>
-        <span  th:text="${board.recommend + '좋아요 수'}"></span>
-        <span  th:text="${board.imageUrl + '이미지'}"></span>
-        <span  th:text="${board.category + '카테고리'}"></span>
-        <span  th:text="${board.userId + '사용자'}"></span>
-        <button id="recommend">좋아요</button>
-        <div th:if="${#strings.equals(board.userId, sess_id)}">
+	
+	<li th:each="dto: ${board}">
+		<span  th:text="${dto.postNum + '번호'}"></span> 
+        <span  th:text="${dto.title + '제목'}"></span>
+        <span  th:text="${dto.content + '내용'}"></span>
+        <span  th:text="${dto.uploadDate + '게시일'}"></span>
+        <span  th:text="${dto.recommend + '좋아요 수'}"></span>
+        <span  th:text="${dto.imageUrl + '이미지'}"></span>
+        <span  th:text="${dto.category + '카테고리'}"></span>
+        <span  th:text="${dto.userId + '사용자'}"></span>
+        <button id="recommend">좋아요[[${dto.title}]]</button>
+        <div th:if="${#strings.equals(dto.userId, sess_id)}">
         	<button id="edit">수정하기</button>
         	<button id="remove">삭제하기</button>
         </div>
-    </div>
+    </li>
     <script type="text/javascript">
     	document.querySelector("#recommend").onclick = function(){
     		alert("it is button");

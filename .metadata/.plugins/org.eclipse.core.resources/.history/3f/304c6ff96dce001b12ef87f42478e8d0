@@ -94,6 +94,15 @@
 			// }
 			
             document.getElementById('tablebodylol').innerHTML = boardsHtml;
+
+			/* document.querySelector(".edit").onclick = function(){
+				alert("수정을 클릭");
+			}
+			document.querySelector(".remove").onclick = function(){
+				alert("삭제을 클릭");
+			}*/
+  
+
 		})
 		.catch(function () {
 		  console.log("실패");
