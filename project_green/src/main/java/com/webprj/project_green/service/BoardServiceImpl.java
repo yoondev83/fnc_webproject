@@ -19,7 +19,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardDto> getBoardsData() {
 		// TODO Auto-generated method stub
-		return boardDao.getBoardData();
+		return boardDao.getBoardsData();
 	}
 	@Override
 	public void createBoard(BoardDto boardDto) {
@@ -37,5 +37,8 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		
 	}
-		
+	public BoardDto getBoardData(int boardnum) {
+		// TODO Auto-generated method stub
+		return boardDao.getBoardData(boardnum);
+	}
 }

@@ -7,7 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import oracle.jdbc.proxy.annotation.Post;
 
@@ -23,8 +26,8 @@ public class GreenController {
 	
     //메인화면
     @GetMapping("/index")
-    public String welcomeMain(){
-
+    public String welcomeMain(HttpSession session){
+    	session.setAttribute("id", "mosang");
         return "index";
     }
 
@@ -43,13 +46,8 @@ public class GreenController {
         
         return "rank/rank";
     }
-    
-    //커뮤니티-자유게시판
-    @GetMapping("/b_freetalk")
-    public String goCommunity(){
-
-        return "board/b_freetalk";
-    }
+    @GetMapping("/login")
+    public String goLogin(){
 
       //로그인 화면
 	@PostMapping("/login/login")
@@ -79,9 +77,9 @@ public class GreenController {
 
 
     @GetMapping("/board/b_freetalk")
-    public void board(Model model, HttpSession session) {
+    public void board() {
     	System.out.println("board page");
-    	model.addAttribute("sess_id", session.getAttribute("id"));
+    	
     }
     
     @GetMapping("/board/new")
@@ -101,5 +99,15 @@ public class GreenController {
 //    	System.out.println("login");
 //    	session.setAttribute("id", "mosang");
 //    }
-
+    
+    @GetMapping("/board/detail/{boardnum}")
+	public ModelAndView detail(@PathVariable int boardnum, Model model, HttpSession session) {
+		System.out.println(boardnum);
+		ModelAndView mv = new ModelAndView("/board/detail");
+		BoardDto board = boardService.getBoardData(boardnum);
+		mv.addObject("board", board);
+		System.out.println(board);
+		model.addAttribute("sess_id", (String)session.getAttribute("id"));
+		return mv;
+	}
 }
