@@ -10,6 +10,6 @@
     </select>
     <insert id="createBoard" parameterType="com.webprj.project_green.dto.BoardDto" >
     	INSERT INTO BOARD (POSTNUM, TITLE, CONTENT, UPLOADDATE, IMAGEURL, CATEGORY, USERID)
-		VALUES(POSTNUM_SEQ.NEXTVAL, #{title}, #{content}, sysdate, #{imageUrl}, #{category}, 123)
+		VALUES(POSTNUM_SEQ.NEXTVAL, #{title}, #{content}, sysdate, #{imageUrl}, #{category}, #{userId})
     </insert>
 </mapper>
