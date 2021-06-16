@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="" method="post">
+		<label for="title" > 제목: </label>
+		<input type="text" id="title" name="title" required>
+		<label for="content" > 내용 : </label>
+		<textarea id="content" rows="200" cols="2000" required></textarea>
+		<label for="image">이미지 첨부</label>
+		<input type="file" id="image">
+		<label for="category">카테고리:</label>
+		<select id="category" name="category">
+		    <option value="volvo">Volvo</option>
+		    <option value="saab">Saab</option>
+		    <option value="fiat">Fiat</option>
+		    <option value="audi">Audi</option>
+	    </select>
+	</form>
+</body>
+</html>

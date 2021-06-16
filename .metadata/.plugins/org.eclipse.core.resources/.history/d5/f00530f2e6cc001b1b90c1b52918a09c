@@ -1,0 +1,5 @@
+package com.webprj.project_green.service;
+
+public interface BoardService {
+
+}

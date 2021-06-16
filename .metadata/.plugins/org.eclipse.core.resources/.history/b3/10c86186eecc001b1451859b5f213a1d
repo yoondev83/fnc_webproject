@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+	axios
+	.get("/boards/list")
+	.then(function (response) {
+	  console.log(response)
+	})
+	.catch(function () {
+	  console.log("실패");
+	});
+</script>
+</head>
+<body>
+	<h1>Hello Workd</h1>
+</body>
+</html>
