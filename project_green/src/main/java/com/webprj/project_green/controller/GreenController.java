@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import oracle.jdbc.proxy.annotation.Post;
+
 import com.webprj.project_green.dto.BoardDto;
 import com.webprj.project_green.dto.CustomDto;
 import com.webprj.project_green.service.BoardService;
@@ -22,52 +24,60 @@ public class GreenController {
 	@Autowired
 	private BoardService boardService;
 	
+    //메인화면
     @GetMapping("/index")
     public String welcomeMain(HttpSession session){
     	session.setAttribute("id", "mosang");
         return "index";
     }
 
-    @GetMapping("/login/login")
-    public String sign() {
-    	return "login/login";
-    }
 
-
-	@PostMapping("/login/login")
-	public String login(@ModelAttribute CustomDto customDto) {
-		System.out.println(customDto);
-		boardService.login(customDto);
-		return "redirect:/index";
-	}
+    //소개화면
     @GetMapping("/intro")
     public String goIntroduction(){
 
         return "redirect:/index#introduction";
     }
     
+    //랭킹게시판
     @GetMapping("/rank")
     public String goToRank(){
         
         return "rank/rank";
     }
-    @GetMapping("/login")
-    public String goLogin(){
 
-        return "login/login";
+    //로그인 화면
+	@PostMapping("/login/login")
+	public String login(@ModelAttribute CustomDto customDto) {
+		System.out.println(customDto);
+		boardService.login(customDto);
+		return "redirect:/index";
+	}
+    @GetMapping("/login")
+    public String sign() {
+    	return "login/login";
     }
+
+    //회원가입
     @GetMapping("/join")
     public String goJoin(){
 
         return "login/join";
     }
-    
+    //회원가입 성공
+    @GetMapping("/joinOk")
+    public String gojoinOk(){
 
-    @GetMapping("/board/b_freetalk")
-    public void board() {
-    	System.out.println("board page");
-    	
+        return "redirect:/joinOk";
     }
+
+
+    //자유게시판 이동
+	@GetMapping("/b_freetalk")
+	public String letsGoFreeTalk(){
+		
+		return "/board/b_freetalk";
+	}
     
     @GetMapping("/board/new")
     public void new_board() {

@@ -18,7 +18,7 @@
     </head>
     <body>
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="border-bottom-style: solid; border-bottom-width: thin; border-color: bisque;">
             <div class="container px-4 px-lg-5">
                 <table width = "800">
                     <tr id=>
@@ -104,16 +104,13 @@
 </script>
 </head>
 <body>
-	<h1>Hello Workd</h1>
-	<a href="/board/new">글쓰기</a>
     
     <section>
         <div style="margin-top: 100px;">
             
-            <h1>Hello Workd</h1>
             
-            <table class="table">
-                <thread>
+            <table class="table" style="text-align: center; font-family: sans-serif;">
+                <thead>
                     <td>번호</td>
                     <td>제목</td>
                     <td>내용</td>
@@ -122,14 +119,16 @@
                     <td>이미지</td>
                     <td>카테고리</td>
                     <td>사용자</td>
-                </thread>
+                </thead>
                 <tbody id="tablebodylol">
 
                 </tbody>
            
             </table>
 
-            <a href="/board/new" style="float: right; margin-right: 60px;">글쓰기</a>
+            <a href="/board/new" style="float: right; margin-right: 200px;">
+                <img src="/assets/write.png" style="width: 60px;">
+            </a>
             
         </div>
         
