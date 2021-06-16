@@ -7,7 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.webprj.project_green.dto.BoardDto;
 import com.webprj.project_green.dto.CustomDto;
@@ -89,5 +92,14 @@ public class GreenController {
 //    	System.out.println("login");
 //    	session.setAttribute("id", "mosang");
 //    }
-
+    
+    @GetMapping("/board/detail/{boardnum}")
+	public ModelAndView detail(@PathVariable int boardnum) {
+		System.out.println(boardnum);
+		ModelAndView mv = new ModelAndView("/board/detail");
+		BoardDto board = boardService.getBoardData(boardnum);
+		mv.addObject("board", board);
+		System.out.println(board);
+		return mv;
+	}
 }
