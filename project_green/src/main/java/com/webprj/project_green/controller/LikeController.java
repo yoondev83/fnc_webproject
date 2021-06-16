@@ -24,17 +24,6 @@ public class LikeController {
 	@Autowired
 	private LikeService likeService;
 	
-	@PostMapping("/list/like/{boardnum}")
-	public int good(@PathVariable int boardnum, HttpSession session) {
-		System.out.println(boardnum);
-		// boardnum 받았음!
-		// 로그인한 아이디도 있다.
-		// -> 누른적이 있는가? 판단
-		// 서비스에서 하기로 하자!
-		likeService.hasLikeChecked();
-		return 7; 
-	}
-	
 	
 	@PostMapping("/list/like/{boardnum}")
 	public String dolike(Model model, int boardnum, String redirectUrl, HttpSession session) {

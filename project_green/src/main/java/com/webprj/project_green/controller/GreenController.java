@@ -52,11 +52,11 @@ public class GreenController {
         return "rank/rank";
     }
     
-    @GetMapping("/b_freetalk")
-    public String goCommunity(){
-
-        return "board/b_freetalk";
-    }
+//    @GetMapping("/b_freetalk")
+//    public String goCommunity(){
+//
+//        return "board/b_freetalk";
+//    }
     @GetMapping("/login")
     public String goLogin(){
 

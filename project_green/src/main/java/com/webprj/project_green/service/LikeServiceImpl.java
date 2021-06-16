@@ -1,5 +1,8 @@
 package com.webprj.project_green.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,21 +14,21 @@ public class LikeServiceImpl implements LikeService {
 	@Autowired
 	private BoardDao boardDao;
 	
-	@Override
-	public List<Board> getBoards(){
-		return boardDao.getBoards();
-	}
+//	@Override
+//	public List<Board> getBoards(){
+//		return boardDao.getBoards();
+//	}
+//	
+//	@Override
+//	public Board getBoards(int id){
+//		return boardDao.getBoard(id);
+//	}
 	
 	@Override
-	public Board getBoards(int id){
-		return boardDao.getBoard(id);
-	}
-	
-	@Override
-	public Map<String,Object> getgetArticleLikeAvailable(int id, int loginEdMemberID){
-		Board board = getBoard(id);
-		
-		Map<String, Object> rs = new HashMap<>();
+	public Map<String,Object> getArticleLikeAvailable(int id, int loginEdMemberID){
+//		Board board = getBoard(id);
+//		
+//		Map<String, Object> rs = new HashMap<>();
 		return null;
 	}
 	
@@ -63,6 +66,16 @@ public class LikeServiceImpl implements LikeService {
 		
 		
 		
+	}
+
+
+
+
+
+	@Override
+	public Map<String, Object> likeArticle(int boardnum) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
