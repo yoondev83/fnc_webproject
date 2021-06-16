@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
-    <meta charset="utf-8" />
+	<meta charset="utf-8" />
     <title>Insert title here</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -27,7 +27,7 @@
                             <a class="navbar-brand"  onclick="location.href='../index'">메인메뉴</a>
                         </td>
                         <td width = "120">
-                            <a class="navbar-brand"  onclick="location.href='../intro'">소개</a>
+                            <a class="navbar-brand" onclick="location.href='../intro'">소개</a>
                       </td>  
                       <td width = "150">
                           <a class="navbar-brand" onclick="location.href='../rank'">친환경 제품 소개</a>
@@ -53,8 +53,91 @@
                 </div>
             </div>
         </nav>
+		
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+
+	    window.onload = function(){
+		var boards = []
+		axios
+		.post("/board/b_freetalk")
+		.then(function (response) {
+			boards = response.data
+			console.log(boards)
+			var boardsHtml = "";
+            var tableNum_row = 0;
+			for (var i = 0; i < boards.length; i++){
+				boardsHtml += "<tr>";
+				boardsHtml +=  "<td>" + boards[i].postNum + "</td>";
+				boardsHtml +=  "<td>" + boards[i].title + "</td>";
+				boardsHtml +=  "<td>" + boards[i].content + "</td>";
+				boardsHtml +=  "<td>" + boards[i].uploadDate + "</td>";
+				boardsHtml +=  "<td>" + boards[i].recommend + "</td>";
+				boardsHtml +=  "<td>" + boards[i].imageUrl + "</td>";
+				boardsHtml +=  "<td>" + boards[i].category + "</td>";
+				boardsHtml +=  "<td>" + boards[i].userId+ "</td>";
+				boardsHtml +=  "</tr>";
+                
+                console.log(boards);
+                    
+			}
+			// for (var i = 0; i < boards.length; i++){
+			// 	boardsHtml += 
+                    
+			// 		"번호 : " + boards[i].postNum +
+			// 		"제목 : " + boards[i].title + 
+			// 		"내용 : " + boards[i].content +
+			// 		"게시일 : " + boards[i].uploadDate + 
+			// 		"좋아요 수 : " + boards[i].recommend +
+			// 		"이미지 : " + boards[i].imageUrl +
+			// 		"카테고리 : " + boards[i].category + 
+			// 		"사용자 : " + boards[i].userId + "<br/>";
+                    
+			// }
+			
+			
+			// document.querySelector("#board-list").innerHTML = boardsHtml;
+            document.getElementById('tablebodylol').innerHTML = boardsHtml;
+  
+
+		})
+		.catch(function () {
+		  console.log("실패");
+		});
+        
+	
+	}
+</script>
 </head>
 <body>
-    커뮤니티-자유게시판 입니다.
+    
+    <section>
+        <div style="margin-top: 100px;">
+            
+            <h1>Hello Workd</h1>
+            
+            <table class="table">
+                <thread>
+                    <td>번호</td>
+                    <td>제목</td>
+                    <td>내용</td>
+                    <td>게시일</td>
+                    <td>좋아요</td>
+                    <td>이미지</td>
+                    <td>카테고리</td>
+                    <td>사용자</td>
+                </thread>
+                <tbody id="tablebodylol">
+
+                </tbody>
+           
+            </table>
+
+            <a href="/board/new" style="float: right; margin-right: 60px;">글쓰기</a>
+            
+        </div>
+        
+    </section>
+
 </body>
 </html>
