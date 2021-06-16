@@ -24,7 +24,7 @@ public class GreenController {
 	@Autowired
 	private BoardService boardService;
 	
-    //硫붿씤�솕硫�
+    //메인화면
     @GetMapping("/index")
     public String welcomeMain(HttpSession session){
     	session.setAttribute("id", "mosang");
@@ -32,21 +32,21 @@ public class GreenController {
     }
 
 
-    //�냼媛쒗솕硫�
+    //소개화면
     @GetMapping("/intro")
     public String goIntroduction(){
 
         return "redirect:/index#introduction";
     }
     
-    //�옲�궧寃뚯떆�뙋
+    //랭킹게시판
     @GetMapping("/rank")
     public String goToRank(){
         
         return "rank/rank";
     }
 
-    //濡쒓렇�씤 �솕硫�
+    //로그인 화면
 	@PostMapping("/login/login")
 	public String login(@ModelAttribute CustomDto customDto) {
 		System.out.println(customDto);
@@ -58,23 +58,21 @@ public class GreenController {
     	return "login/login";
     }
 
-    //�쉶�썝媛��엯
+    //회원가입
     @GetMapping("/join")
     public String goJoin(){
 
         return "login/join";
     }
-    //�쉶�썝媛��엯 �꽦怨�
-    @GetMapping("/join"
-    		+ ""
-    		+ "Ok")
+    //회원가입 성공
+    @GetMapping("/joinOk")
     public String gojoinOk(){
 
         return "redirect:/joinOk";
     }
 
 
-    //�옄�쑀寃뚯떆�뙋 �씠�룞
+    //자유게시판 이동
 	@GetMapping("/b_freetalk")
 	public String letsGoFreeTalk(){
 		
