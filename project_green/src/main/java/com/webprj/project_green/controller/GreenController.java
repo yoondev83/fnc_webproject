@@ -42,7 +42,7 @@ public class GreenController {
 	public String login(@ModelAttribute CustomDto customDto) {
 		System.out.println(customDto);
 		boardService.login(customDto);
-		return "redirect:/custom/sign";
+		return "redirect:/index";
 	}
     @GetMapping("/intro")
     public String goIntroduction(){

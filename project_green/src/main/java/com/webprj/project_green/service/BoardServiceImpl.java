@@ -33,6 +33,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 	@Override
 	public void login(CustomDto customDto) {
+		boardDao.login(customDto);
 		// TODO Auto-generated method stub
 		
 	}
