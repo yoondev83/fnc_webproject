@@ -59,7 +59,7 @@
 	window.onload = function(){
 		var boards = []
 		axios
-		.post("/board/list")
+		.post("/board/b_freetalk")
 		.then(function (response) {
 			boards = response.data
 			console.log(boards)
@@ -125,8 +125,6 @@
 </script>
 </head>
 <body>
-	<h1>Hello Workd</h1>
-	<a href="/board/new">글쓰기</a>
     
     <section>
         <div style="margin-top: 100px;">
