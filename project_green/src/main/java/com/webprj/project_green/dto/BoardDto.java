@@ -14,4 +14,5 @@ public class BoardDto {
 	private String imageUrl;
 	private String Category;
 	private int userId;
+	
 }
