@@ -39,7 +39,6 @@
 				}
 			}
 			
-			
 			document.querySelector("#board-list").innerHTML = boardsHtml
 
 			
