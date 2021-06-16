@@ -5,6 +5,8 @@ function joinInfoCheck(){
     var nameKorRegExpress  = /^[가-힣]{2-4}$/;
     var phoneRegExpress = /[0-9]{11}$/;
 
+    document.write("hi");
+    console.log;
     if(!idRegExpres.test(document.join_form.id.value)){
         alert("아이디는 영문과 숫자 조합으로 4-12자리로 입력해야 합니다.");
         join_form.id.focus();
@@ -12,7 +14,7 @@ function joinInfoCheck(){
     }
 
 
-    if(!pwRegExpres.test(document.join_form.pw.value)){
+    if(!pwRegExpres.test(document.join_form.password.value)){
         alert("비밀번호는 최소 6자 이상 최대 18자 입니다.");
         join_form.pw.focus();
         return;

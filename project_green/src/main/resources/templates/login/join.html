@@ -15,8 +15,8 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/css/styles.css" rel="stylesheet" />
-    </head>
-    <body>
+</head>
+<body> 
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container px-4 px-lg-5">
@@ -48,13 +48,56 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" onclick="location.href='login'">로그인</a></li>
                         <li class="nav-item"><a class="nav-link" onclick="location.href='join'">회원가입</a></li>
-
+                        
                     </ul>
                 </div>
             </div>
         </nav>
-</head>
-<body>
-    회원가입 페이지 입니다.
-</body>
-</html>
+        
+        <script src="/js/scripts.js"></script> 
+            
+            <table id="table1" style="margin-top: 15%; margin-left: 37%;">
+                <form action="/login/login" name = "join_form" id="join" method="post">
+                <tr>
+                    <td>아이디</td>
+                    <td> <input type="text" name="id" id="id"></td>
+                </tr>
+                <tr>
+                    <td>비밀번호</td>
+                    <td> <input type="password" name="password" id="password1"></td>
+                </tr>
+                <tr>
+                    <td>비밀번호 확인</td>
+                    <td> <input type="password" name="pw_check" id="password2"></td>
+                </tr>
+                <tr>
+                    <td>이름</td>
+                    <td> <input type="text" name="name" id="email"></td>
+                </tr>
+                <tr>
+                    <td>이메일</td>
+                    <td> <input type="text" name="email" id="email"></td>
+                </tr>
+                <tr>
+                    <td>전화번호</td>
+                    <td><input type="text" name="phone" id="phone"></td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        <input type="button" value="취소" onclick="cancel()">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        <button type="submit" onclick="joinInfoCheck()">회원가입</button>
+                        
+                    </td>
+                    
+                </tr>
+            </form>    
+                
+        </table>
+          
+        </body>
+        </html>

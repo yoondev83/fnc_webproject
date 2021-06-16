@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.webprj.project_green.dto.BoardDto;
 import com.webprj.project_green.dto.CustomDto;
@@ -25,21 +24,14 @@ public class GreenController {
 
         return "index";
     }
-    @GetMapping("/login/jons")
-    public String login() {
-    	return "login/jons";
-  
-    }
-    @GetMapping("/login/sign")
-    public String sign() {
-    	return "login/sign";
-    }
-//    @GetMapping("/login/sign")
-//	public void sign_board() {
-//    	System.out.println("login board Page");
-//	}
 
-	@PostMapping("/login/sign")
+    @GetMapping("/login/login")
+    public String sign() {
+    	return "login/login";
+    }
+
+
+	@PostMapping("/login/login")
 	public String login(@ModelAttribute CustomDto customDto) {
 		System.out.println(customDto);
 		boardService.login(customDto);
@@ -73,7 +65,8 @@ public class GreenController {
         return "login/join";
     }
     
-    @GetMapping("/board/list")
+
+    @GetMapping("/board/b_freetalk")
     public void board(Model model, HttpSession session) {
     	System.out.println("board page");
     	model.addAttribute("sess_id", session.getAttribute("id"));
@@ -89,7 +82,7 @@ public class GreenController {
 		System.out.println(boardDto);
 		boardDto.setUserId((String) session.getAttribute("id"));
 		boardService.createBoard(boardDto);
-		return "redirect:/board/list";
+		return "redirect:/board/b_freetalk";
 	}
 //    @GetMapping("/login")
 //    public void login(Model model, HttpSession session) {

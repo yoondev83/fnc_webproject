@@ -21,7 +21,7 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
-	@PostMapping("/list")
+	@PostMapping("/b_freetalk")
 	public List<BoardDto> getBoardsData() {
 		
 		return boardService.getBoardsData();
