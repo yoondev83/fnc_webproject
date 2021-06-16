@@ -33,7 +33,6 @@ dependencies {
 	// https://mvnrepository.com/artifact/com.oracle/ojdbc6
 	// implementation group: 'com.oracle', name: 'ojdbc6', version: '12.1.0.1-atlassian-hosted'
 
-	
 }
 
 test {

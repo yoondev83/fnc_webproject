@@ -1,0 +1,22 @@
+package com.webprj.project_green.dto;
+
+import java.sql.Date;
+
+import lombok.Data;
+
+@Data
+public class BoardDto {
+	private int postNum;
+	private String title;
+	private String content;
+	private Date uploadDate;
+	private int recommend;
+	private String imageUrl;
+	private String Category;
+<<<<<<< HEAD
+	private String userId;
+=======
+	private int userId;
+	
+>>>>>>> 17a23e217ee4c16ada71fe1bf72aef7d20725f16
+}
