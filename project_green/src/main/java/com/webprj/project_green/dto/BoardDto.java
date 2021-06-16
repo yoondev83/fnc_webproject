@@ -13,5 +13,5 @@ public class BoardDto {
 	private int recommend;
 	private String imageUrl;
 	private String Category;
-	private int userId;
+	private String userId;
 }
