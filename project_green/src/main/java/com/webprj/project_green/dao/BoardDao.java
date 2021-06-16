@@ -10,6 +10,7 @@ import com.webprj.project_green.dto.BoardDto;
 @Mapper
 @Repository
 public interface BoardDao {
-	public List<BoardDto> getBoardData();
+	public List<BoardDto> getBoardsData();
+	public BoardDto getBoardData(int boardnum);
 	public void createBoard(BoardDto boardDto);
 }

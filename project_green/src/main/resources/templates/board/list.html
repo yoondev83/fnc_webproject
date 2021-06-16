@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -21,8 +21,8 @@
 					"게시일 : " + boards[i].uploadDate + 
 					"좋아요 수 : " + boards[i].recommend +
 					"이미지 : " + boards[i].imageUrl +
-					"카테고리 : " + boards[i].category + 
-					"사용자 : " + boards[i].userId + "<br/>";
+					"카테고리 : " + boards[i].category +  
+					"사용자 : " + boards[i].userId + "<a href=/board/detail/" + boards[i].postNum + ">상세보기</a> <br/>";
 			}
 			
 			
@@ -31,14 +31,14 @@
 		.catch(function () {
 		  console.log("실패");
 		});
-	
-	
 	}
 </script>
+
 </head>
 <body>
-	<h1>Hello Workd</h1>
+	<h1>자유게시판입니다</h1>
 	<div id="board-list"></div>
 	<a href="/board/new">글쓰기</a>
+
 </body>
 </html>
