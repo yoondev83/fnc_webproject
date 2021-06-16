@@ -59,7 +59,7 @@
 	window.onload = function(){
 		var boards = []
 		axios
-		.post("/board/b_freetalk")
+		.post("/board/list")
 		.then(function (response) {
 			boards = response.data
 			console.log(boards)

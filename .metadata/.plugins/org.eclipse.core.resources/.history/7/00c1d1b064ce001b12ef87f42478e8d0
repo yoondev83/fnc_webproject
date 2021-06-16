@@ -20,8 +20,8 @@ public class GreenController {
 	private BoardService boardService;
 	
     @GetMapping("/index")
-    public String welcomeMain(HttpSession session){
-    	session.setAttribute("id", "mosang");
+    public String welcomeMain(){
+
         return "index";
     }
 
@@ -49,6 +49,11 @@ public class GreenController {
         return "rank/rank";
     }
     
+    @GetMapping("/b_freetalk")
+    public String goCommunity(){
+
+        return "board/b_freetalk";
+    }
     @GetMapping("/login")
     public String goLogin(){
 
