@@ -8,4 +8,8 @@
 		VALUES(#{id}, #{password}, #{email}, #{phone})
     </insert>
     
+    <select parameterType="String" id="logins" resultType="String">
+    SELECT PASSWORD FROM CUSTOMER WHERE ID=#{id} 
+    </select>
+
 </mapper>

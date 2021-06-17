@@ -3,10 +3,13 @@ package com.webprj.project_green.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.webprj.project_green.dao.BoardDao;
+import com.webprj.project_green.dto.CustomDto;
 
 @Service
 public class LikeServiceImpl implements LikeService {
@@ -60,22 +63,11 @@ public class LikeServiceImpl implements LikeService {
 		
 
 		// 만들 테이블 = (내 아이디, 게시판 번호, 좋아요 했는지?)
-		return false;
-		
-		
-		
-		
-		
+		return false;		
 	}
-
-
-
-
-
 	@Override
 	public Map<String, Object> likeArticle(int boardnum) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

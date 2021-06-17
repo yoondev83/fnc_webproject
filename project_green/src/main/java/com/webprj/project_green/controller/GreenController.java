@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import oracle.jdbc.proxy.annotation.Post;
@@ -24,7 +25,7 @@ public class GreenController {
 	@Autowired
 	private BoardService boardService;
 	
-    //메인화면
+    //硫붿씤�솕硫�
     @GetMapping("/index")
     public String welcomeMain(HttpSession session){
     	session.setAttribute("id", "mosang");
@@ -33,24 +34,22 @@ public class GreenController {
 
     
 
-    //소개화면
+    //�냼媛쒗솕硫�
     @GetMapping("/intro")
     public String goIntroduction(){
 
         return "redirect:/index#introduction";
     }
     
-    //랭킹게시판
+    //�옲�궧寃뚯떆�뙋
     @GetMapping("/rank")
     public String goToRank(){
         
         return "rank/rank";
     }
-    @GetMapping("/login")
-    public String goLogin(){
 
-      //로그인 화면
-	@PostMapping("/login/login")
+      //濡쒓렇�씤 �솕硫�
+	@PostMapping("/login/join")
 	public String login(@ModelAttribute CustomDto customDto) {
 		System.out.println(customDto);
 		boardService.login(customDto);
@@ -60,15 +59,19 @@ public class GreenController {
     public String sign() {
     	return "login/login";
     }
+    @PostMapping("/login/login")
+	public String login(@RequestParam("id") String id, @RequestParam("password") String password, HttpSession session) {
+		return boardService.logins(id, password, session);
+	}
 
-    //회원가입
+    //�쉶�썝媛��엯
     @GetMapping("/join")
     public String goJoin(){
 
         return "login/join";
     }
-    //회원가입 성공
-    @PostMapping("/joinOk")
+    //�쉶�썝媛��엯 �꽦怨�
+    @GetMapping("/joinOk")
     public String gojoinOk(){
 
         return "redirect:/joinOk";
