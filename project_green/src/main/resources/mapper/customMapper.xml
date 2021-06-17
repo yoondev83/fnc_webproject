@@ -12,11 +12,11 @@
     SELECT PASSWORD FROM CUSTOMER WHERE ID=#{id} 
     </select>
     
-    <select id="idcheck" parameterType="String" resultType="String">
-      SELECT COUNT(*) FROM tbl_member
-      WHERE
-          id = #{id}
-</select>
+    <select id="idCheck" parameterType="String" resultType="Integer">
+      SELECT COUNT(*) FROM CUSTOMER
+      WHERE id = #{id}
+	</select>
+	
     
     
 </mapper>

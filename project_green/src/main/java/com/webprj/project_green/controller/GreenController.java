@@ -89,20 +89,18 @@ public class GreenController {
     }
     
 //    //중복확인1********************************************************************************
-//    @RequestMapping("/idcheck/boardDao")
-//    @ResponseBody
-//    public Map<Object, Object> idcheck(@RequestBody String userid) {
-//        
-//    	int	count = 0;
-//        Map<Object, Object> map = new HashMap<Object, Object>();
-// 
-//        count = boardService.idCheck(CustomDto);
-//        map.put("cnt", count);
-// 
-//        return map;
-//        
-//        
-//    }
+    @RequestMapping("/idcheck/boardDao")
+    @ResponseBody
+    public Map<Object, Object> idcheck(@RequestBody String userid) {
+        
+    	int	count = 0;
+        Map<Object, Object> map = new HashMap<Object, Object>();
+ 
+        //count = boardService.idCheck(CustomDto);
+        map.put("cnt", count);
+ 
+        return map;
+    }
     
     //회원가입 성공
     // @GetMapping("/joinOk")

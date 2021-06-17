@@ -18,8 +18,8 @@ public interface BoardDao {
 	public void createBoard(BoardDto boardDto);
 	public void join(CustomDto customDto);
 	public String logins(String id);
-
-//	public int idCheck(int idcheck);
+	
+	public int idCheck(String id);
 	public int getLikePointByMemberId(@Param("id") int boardnum, @Param("loginedMemberId") String loginedMemberId);
 	public void likeArticle(@Param("id") int boardnum, @Param("loginedMemberId") String loginedMemberId);
 	public void unlikeArticle(@Param("id") int boardnum, @Param("loginedMemberId") String loginedMemberId);
