@@ -15,51 +15,116 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/css/styles.css" rel="stylesheet" />
+        <link href="/css/menu.css" rel="stylesheet" />
+        <script src="https://kit.fontawesome.com/628c8d2499.js" crossorigin="anonymous"></script>
+    
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     </head>
     <body>
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="border-bottom-style: solid; border-bottom-width: thin; border-color: bisque;">
-            <div class="container px-4 px-lg-5">
-                <table width = "800">
-                    <tr id=>
-                        <td width = "150">
-                            <!-- <a class="link-1" href="#page-top" onclick="location.href='index'">메인메뉴</a> -->
-                            <a class="navbar-brand"  onclick="location.href='../index'">메인메뉴</a>
-                        </td>
-                        <td width = "120">
-                            <a class="navbar-brand" onclick="location.href='../intro'">소개</a>
-                      </td>  
-                      <td width = "150">
-                          <a class="navbar-brand" onclick="location.href='../rank'">친환경 제품 소개</a>
-                      </td>  
-                      <td width = "150">
-                        <div class="dropdown">
-                            <a class="dropbtn" onclick="location.href='/b_freetalk'">커뮤니티</a>
-                            <div class="dropdown-content">  
-                                <a id="testtt2" class="navbar-brand" onclick="location.href='/b_prove'">인증게시판</a>
-                                <a class="navbar-brand" onclick="location.href='/b_mission'">미션게시판</a>
-                            </div>
+
+        <nav id="menu">
+            <div class="menu-item">
+                <div class="menu-text">
+                    <a href="#">메인</a>
+                </div>
+                <div class="sub-menu double">
+                    <div class="icon-box gb a" style="margin-left: 130px;">
+                        <div class="icon"><i class="far fa-question-circle"></i></div>
+                        <div class="text" >
+                            <div class="title">메인메뉴 <i class="far fa-arrow-right"></i></div>
+                            <div class="sub-text">저희는 환경보호를 위한 친환경 제품 사용을 장려하기 위해 만들었습니다!</div>
                         </div>
-                        </li>
-                    </td>    
-                    </tr>
-                  </table>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item highlight">
+                <div class="menu-text">
+                    <a href="#">소개</a>
+                </div>
+                <div class="sub-menu double">
+                  
+                    <div class="icon-box gb c">
+                        <div class="icon"><i class="far fa-school"></i></div>
+                        <div class="text">
+                            <div class="title">소개 <i class="far fa-arrow-right"></i></div>
+                            <div class="sub-text">왜 만들었을까요?</div>
+                        </div>
+                    </div>
+                    <div class="sub-menu-holder"></div>
+                </div>
+            </div>
+            <div class="menu-item highlight">
+                <div class="menu-text">
+                    <a href="#">랭킹 게시판</a>
+                </div>
+                <div class="sub-menu triple">
+                    <div class="top-container gb c icon-box">
+                        <div class="icon big"><i class="far fa-book"></i></div>
+                        <div class="text">
+                            <div class="title">친환경 제품 랭킹 게시판</div>
+                            <div class="sub-text">투표를 통해 가장 많이 사랑받은 제품을 소개해드리겠습니다!</div>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <a href="#">좋아요!</a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-text">
+                    <a href="#">커뮤니티</a>
+                </div>
+                <div class="sub-menu">
+                    <div class="icon-box">
+                        <div class="icon"><i class="far fa-satellite"></i></div>
+                        <div class="text">
+                            <div class="title">자유게시판 <i class="far fa-arrow-right"></i></div>
+                            <div class="sub-text">아무 주제나 환영합니다!</div>
+                        </div>
+                    </div>
+                    <div class="icon-box">
+                        <div class="icon"><i class="fab fa-twitter-square"></i></div>
+                        <div class="text">
+                            <div class="title">인증게시판 <i class="far fa-arrow-right"></i></div>
+                            <div class="sub-text">여러분이 사용하시는 친환경 제품을 보여주세요.</div>
+                        </div>
+                    </div>
+                    <div class="icon-box">
+                        <div class="icon"><i class="fab fa-twitch"></i></div>
+                        <div class="text">
+                            <div class="title">미션게시판 <i class="far fa-arrow-right"></i></div>
+                            <div class="sub-text">여러분께 미션을 드리죠.</div>
+                        </div>
+                    </div>
+                    <div class="sub-menu-holder"></div>
+                </div>
+            </div>
+            <div id="sub-menu-container">
+                <div id="sub-menu-holder">
+                    <div id="sub-menu-bottom">
 
-                <button class="navbar-toggler navbar-toggler-right" id="buttoncar" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars"></i>
-                </button>
-               
-               
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" onclick="location.href='login'">로그인</a></li>
-                        <li class="nav-item"><a class="nav-link" onclick="location.href='join'">회원가입</a></li>
-
-                    </ul>
+                    </div>
                 </div>
             </div>
         </nav>
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
 </head>
 <body>
     
