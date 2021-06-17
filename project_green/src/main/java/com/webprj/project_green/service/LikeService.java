@@ -7,10 +7,7 @@ import javax.servlet.http.HttpSession;
 import com.webprj.project_green.dto.CustomDto;
 
 public interface LikeService {
-	public boolean hasLikeChecked();
-
-	public Map<String, Object> getArticleLikeAvailable(int boardnum, int loginedMemberId);
-
-	public Map<String, Object> likeArticle(int boardnum);
-	
+	public Map<String, Object> getArticleLikeAvailable(int boardnum, String loginedMemberId);
+	public Map<String, Object> likeArticle(int boardnum, String loginedMemberId);
+	public void unlikeArticle(int boardnum, String loginedMemberId);
 }
