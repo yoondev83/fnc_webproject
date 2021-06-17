@@ -131,5 +131,5 @@ public class GreenController {
 		System.out.println(board);
 		model.addAttribute("sess_id", (String)session.getAttribute("id"));
 		return mv;
-	}
+	}    
 }

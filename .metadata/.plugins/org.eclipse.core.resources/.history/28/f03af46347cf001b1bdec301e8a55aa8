@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+	window.onload = function (){
+		try{
+			document.querySelector("#edit").onclick = function(){
+			alert("수정을 클릭");
+			}
+			document.querySelector("#remove").onclick = function(){
+			alert("삭제을 클릭");
+			}
+		}catch{
+			console.log("버튼 없음");
+		}
+	}
+</script>
+</head>
+<body>
+	<h1>Detail Page</h1>
+	<div>
+		<span  th:text="${board.postNum + '번호'}"></span> 
+        <span  th:text="${board.title + '제목'}"></span>
+        <span  th:text="${board.content + '내용'}"></span>
+        <span  th:text="${board.uploadDate + '게시일'}"></span>
+        <span  th:text="${board.recommend + '좋아요 수'}" id="recommend-btn"></span>
+        <input type="image" id="recommend-btn" alt="recommend-img" src="/img/like/like.png" width="10px">
+        <span  th:text="${board.imageUrl + '이미지'}"></span>
+        <span  th:text="${board.category + '카테고리'}"></span>
+        <span  th:text="${board.userId + '사용자'}"></span>
+        <div th:if="${#strings.equals(board.userId, sess_id)}">
+        	<button id="edit">수정하기</button>
+        	<button id="remove">삭제하기</button>
+        </div>
+    </div>
+
+
+	<tr>
+		<td><a id="recommend">좋아요</a>
+		</td>
+
+	</tr>
+    <script th:inline="javascript">
+    	var check_did_recommend = function(update){
+    		axios
+			.get('/board/list/like?boardnum=' + [[${board.postNum}]] + '&update=' + update)
+			.then(function (response) {
+				// 통신결과 : 누른 적이 있다.
+				// 좋아요 수 - 1
+				var res = response.data
+				var goodBtn = document.querySelector("recommend-btn");
+	    		console.log(response);
+				console.log(res.state)
+				if(res.state === "doLike"){
+					console.log("좋아요 함");
+					// 좋아요 이미지로 변경
+				}else if(res.state === "doUnlike"){
+					console.log("좋아요 취소 함");
+					// 좋아요 안함 이미지로 변경
+				}else if(res.state === "justCheck"){
+					console.log("값만 가져옴");
+					// 좋아요 했는지 판단해서 값 변경
+					if (res.didLike==0){
+						goodBtn
+					}else{
+						
+					}
+				}
+			})
+			.catch(function () {
+				alert("실패");
+			}); 
+    	}
+    	window.onload = function(){
+    		check_did_recommend(false);
+    	}
+    	document.querySelector("#recommend").onclick = function(){
+    	// 통신 : 현재 boardNum, 현재 로그인한 아이디(세션 아이디) -> 좋아요를 눌렀는지를 판단한다.
+    	// 통신 url 요청 지정
+    		check_did_recommend(true);
+    	}	
+    </script>
+
+</body>
+</html>

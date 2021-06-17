@@ -18,56 +18,51 @@ public class LikeServiceImpl implements LikeService {
 	@Autowired
 	private BoardDao boardDao;
 	@Override
-	public Map<String, Object> getArticleLikeAvailable(int boardnum, String loginedMemberId) {
+	public Map<String, Object> getArticleLikeAvailable(int boardnum, String loginedMemberId, boolean update) {
 		BoardDto board = boardDao.getBoardData(boardnum);
 		
 		Map<String, Object> rs = new HashMap<>();
 		
-		if(board.getUserId().equals(loginedMemberId)) {
-			System.out.println("====================¾ÆÀÌµð Áßº¹ =====================");
-			rs.put("resultCode", "F-1");
-			rs.put("msg", "ÀÚ½ÅÀÇ ºí·Î±×´Â ÁÁ¾Æ¿ä¸¦ ´©¸¦ ¼ö ¾ø´Ù.");
+		int userDidLike = boardDao.getLikePointByMemberId(boardnum, loginedMemberId);
+		
+		// ÁÁ¾Æ¿ä °ª Àü´Þ
+		if (!update) {
+			rs.put("didLike", userDidLike);
+			rs.put("resultCode", "S-2");
 			return rs;
 		}
 		
-		int likePoint = boardDao.getLikePointByMemberId(boardnum, loginedMemberId);
-		System.out.println("likePoint: " + likePoint);
-		if(likePoint > 0) {
+		if(userDidLike > 0) {
 			System.out.println("==================== ÁÁ¾Æ¿ä Ãë¼Ò =====================");
-			rs.put("resultCode", "F-2");
-			rs.put("msg", "ÀÌ¹Ì ÁÁ¾Æ¿ä¸¦ ´­·¶´Ù.");
-			return rs;
+			rs.put("resultCode", "F-1");
+			rs.put("didLike", 0);
+		}else {
+			System.out.println("==================== ÁÁ¾Æ¿ä  =====================");
+			// ï¿½ï¿½ï¿½Æ¿ä¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!
+			rs.put("resultCode", "S-1");
+			rs.put("didLike", 1);
 		}
-		System.out.println("==================== ÁÁ¾Æ¿ä  =====================");
-		// ï¿½ï¿½ï¿½Æ¿ä¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!
-		rs.put("resultCode", "S-1");
-		rs.put("msg", "ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.");
 		return rs;
 	}
 
 
 	@Override
-	public Map<String, Object> likeArticle(int boardnum, String loginedMemberId) {
+	public void likeArticle(int boardnum, String loginedMemberId) {
 		boardDao.likeArticle(boardnum, loginedMemberId);
-		
-		Map<String, Object> rs = new HashMap<>();
-		
-		rs.put("resultCode", "S-1");
-		rs.put("msg", String.format("%dï¿½ï¿½ ï¿½Ô½Ã¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ãµï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.", boardnum));
-		
-		return rs;
-		
+		boardDao.updateRecommend(boardnum, 1);
 	}
 
 
 	@Override
 	public void unlikeArticle(int boardnum, String loginedMemberId) {
 		boardDao.unlikeArticle(boardnum, loginedMemberId);
-		
-		Map<String, Object> rs = new HashMap<>();
-		
-		rs.put("resultCode", "S-1");
-		rs.put("msg", String.format("%dï¿½ï¿½ ï¿½Ô½Ã¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ãµï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.", boardnum));
+		boardDao.updateRecommend(boardnum, -1);
+	}
+	@Override
+	public int getRecommendPoint(int boardnum) {
+		// TODO Auto-generated method stub
+		int recommendPoint = boardDao.getBoardData(boardnum).getRecommend();
+		return recommendPoint;
 	}
 }
 	
