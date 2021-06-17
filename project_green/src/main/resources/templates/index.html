@@ -19,7 +19,6 @@
         <link href="/css/menu.css" rel="stylesheet" />
     </head>
     <body>
-
         <nav id="menu" style="position: ;">
             <div class="menu-item">
                 <div class="menu-text">
@@ -102,6 +101,50 @@
                     <div id="sub-menu-bottom">
 
                     </div>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <table width = "800">
+                  <tr>
+                      <td width = "150">
+                          <a class="navbar-brand"  href="/index">메인메뉴</a>
+                      </td>
+                      <td width = "150">
+                        <a class="navbar-brand" href="#introduction">소개</a>
+                    </td>  
+                    <td width = "150">
+                        <a class="navbar-brand" href="/rank">친환경 제품 소개</a>
+                    </td>  
+                    <td width = "150">
+                        <div class="dropdown">
+	                    	<div class="navbar-band">
+	                            <a class="dropbtn" onclick="location.href='/b_freetalk'">커뮤니티</a>
+	                        </div>
+                            <div class="dropdown-content">  
+                                <a id="testtt2" onclick="location.href='/b_prove'">인증게시판</a>
+                                <a onclick="location.href='/b_mission'">미션게시판</a>
+	                        </div>
+	                    </div>
+                    </td>  
+                  </tr>
+                </table>
+
+                <button class="navbar-toggler navbar-toggler-right" id="buttoncar" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+               
+               
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto" th:if="${sess_id == null}">
+                        <li class="nav-item"><a class="nav-link" href="/login">로그인</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/join">회원가입</a></li>
+
+                    </ul>
+                    <ul class="navbar-nav ms-auto" th:if="${sess_id != null}">
+                        <li class="nav-item"><span class="nav-link"> [[${sess_id}]]님</span></li>
+                        <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
+                    </ul>
                 </div>
             </div>
         </nav>
