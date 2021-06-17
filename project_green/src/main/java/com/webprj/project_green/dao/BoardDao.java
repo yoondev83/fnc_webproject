@@ -21,4 +21,5 @@ public interface BoardDao {
 	public int getLikePointByMemberId(@Param("id") int boardnum, @Param("loginedMemberId") String loginedMemberId);
 	public void likeArticle(@Param("id") int boardnum, @Param("loginedMemberId") String loginedMemberId);
 	public void unlikeArticle(@Param("id") int boardnum, @Param("loginedMemberId") String loginedMemberId);
+	public void updateRecommend(@Param("id")int boardnum, @Param("num")int i);
 }

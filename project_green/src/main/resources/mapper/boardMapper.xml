@@ -38,5 +38,10 @@
 	WHERE BOARDNUM = #{id} AND USERID = #{loginedMemberId}
     </delete>
     
+    <update id="updateRecommend">
+    UPDATE BOARD
+    SET RECOMMEND = RECOMMEND + #{num}
+    WHERE POSTNUM = #{id}
+    </update>
    
 </mapper>

@@ -1,0 +1,34 @@
+package com.webprj.project_green.interceptor;
+
+import java.util.Arrays;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+public class LoginInterceptor extends HandlerInterceptorAdapter {
+	public List loginEssential = Arrays.asList("/board/new");
+
+	public List loginInessential = Arrays.asList();
+	@Override
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception {
+		String loginId = (String)request.getSession().getAttribute("id");
+
+        if(loginId != null){return true;}
+        
+        else{
+            String destUri = request.getRequestURI();
+            String destQuery = request.getQueryString();
+            String dest = (destQuery == null) ? destUri : destUri+"?"+destQuery;
+//            request.getSession().setAttribute("dest", dest);
+            System.out.println(destUri + destQuery + dest);
+        
+            response.sendRedirect("/login");
+            return false;
+        }
+	}
+	
+}

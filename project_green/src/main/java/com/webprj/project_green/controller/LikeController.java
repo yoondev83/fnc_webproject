@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.webprj.project_green.service.BoardService;
 import com.webprj.project_green.service.LikeService;
 
@@ -26,40 +29,46 @@ public class LikeController {
 	private LikeService likeService;
 	
 	
-	@GetMapping("/list/like/{boardnum}")
-	public int dolike(Model model, @PathVariable int boardnum, String redirectUrl, HttpSession session) {
-		
+	@GetMapping("/list/like")
+	public String dolike(Model model, @RequestParam int boardnum, @RequestParam boolean update, String redirectUrl, HttpSession session) {
+		System.out.println(update);
 		String loginedMemberId = (String) session.getAttribute("id");
-//		String loginedMemberId = "mosang";
 		
 		// 사용자가 좋아요를 눌렀는가?!
-		Map<String,Object> articleLikeAvailableRs = likeService.getArticleLikeAvailable(boardnum, loginedMemberId);
+		Map<String,Object> articleLikeAvailableRs = likeService.getArticleLikeAvailable(boardnum, loginedMemberId, update);
 		System.out.println(articleLikeAvailableRs.get("resultCode"));
+		
 		// 사용자가 좋아요를 눌렀다!
-		if (((String) articleLikeAvailableRs.get("resultCode")).equals("F-1")){
-			// 좋아요를 취소한다는 로직을 추가한다!
-			// DB 에 접근해서 포인트를 -1 update
-			System.out.println("---------------- 아이디 중복 --------------------------");
-			model.addAttribute("alrtMsg", articleLikeAvailableRs.get("msg"));
-			model.addAttribute("historyBack", true);
-			
-			return 0;
-		}else if(((String) articleLikeAvailableRs.get("resultCode")).equals("F-2")) {
+		
+		if(((String) articleLikeAvailableRs.get("resultCode")).equals("F-1")) {
 			System.out.println("---------------- unlike Article --------------------------");
 			likeService.unlikeArticle(boardnum, loginedMemberId);
-			return 0;
+			articleLikeAvailableRs.put("state", "doUnlike");
 		}
-		System.out.println("---------------- like Article --------------------------");
-		// 사용자가 좋아요를 안 눌렀음
-		Map<String,Object> rs = likeService.likeArticle(boardnum, loginedMemberId);
-		
-		String msg = (String) rs.get("msg");
-	
-		
-		model.addAttribute("alrtMsg", msg);
-		model.addAttribute("locationReplace", redirectUrl);
-		
-		return 1;
+		else if(((String) articleLikeAvailableRs.get("resultCode")).equals("S-1")) {
+			System.out.println("---------------- like Article --------------------------");
+			// 사용자가 좋아요를 안 눌렀음
+			likeService.likeArticle(boardnum, loginedMemberId);
+			articleLikeAvailableRs.put("state", "doLike");
+		}
+		 else if(((String) articleLikeAvailableRs.get("resultCode")).equals("S-2")) {
+			 System.out.println("---------------- Check Like --------------------------");
+			 // 그냥 체크 
+			 articleLikeAvailableRs.put("state", "justCheck"); 
+		 }
+		articleLikeAvailableRs.put("recommendPoint", likeService.getRecommendPoint(boardnum));
+		// resultCode
+		// state
+		// recommendPoint
+		String json;
+		try {
+			json = new ObjectMapper().writeValueAsString(articleLikeAvailableRs);
+			return json;
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "";
 		
 	}
 

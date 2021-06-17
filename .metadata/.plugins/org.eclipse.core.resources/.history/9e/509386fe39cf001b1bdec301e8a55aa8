@@ -1,0 +1,78 @@
+package com.webprj.project_green.service;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.webprj.project_green.dao.BoardDao;
+import com.webprj.project_green.dto.BoardDto;
+import com.webprj.project_green.dto.CustomDto;
+
+@Service
+public class LikeServiceImpl implements LikeService {
+	@Autowired
+	private BoardDao boardDao;
+	@Override
+	public Map<String, Object> getArticleLikeAvailable(int boardnum, String loginedMemberId) {
+		BoardDto board = boardDao.getBoardData(boardnum);
+		
+		Map<String, Object> rs = new HashMap<>();
+		
+		if(board.getUserId().equals(loginedMemberId)) {
+			System.out.println("====================¾ÆÀÌµð Áßº¹ =====================");
+			rs.put("resultCode", "F-1");
+			rs.put("msg", "ÀÚ½ÅÀÇ ºí·Î±×´Â ÁÁ¾Æ¿ä¸¦ ´©¸¦ ¼ö ¾ø´Ù.");
+			return rs;
+		}
+		
+		int likePoint = boardDao.getLikePointByMemberId(boardnum, loginedMemberId);
+		System.out.println("likePoint: " + likePoint);
+		if(likePoint > 0) {
+			System.out.println("==================== ÁÁ¾Æ¿ä Ãë¼Ò =====================");
+			rs.put("resultCode", "F-2");
+			rs.put("msg", "ÀÌ¹Ì ÁÁ¾Æ¿ä¸¦ ´­·¶´Ù.");
+			return rs;
+		}
+		System.out.println("==================== ÁÁ¾Æ¿ä  =====================");
+		// ï¿½ï¿½ï¿½Æ¿ä¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!
+		rs.put("resultCode", "S-1");
+		rs.put("msg", "ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.");
+		return rs;
+	}
+
+
+	@Override
+	public Map<String, Object> likeArticle(int boardnum, String loginedMemberId, boolean update) {
+		boardDao.likeArticle(boardnum, loginedMemberId);
+		if (update) {boardDao.updateRecommend(boardnum, 1);}
+		Map<String, Object> rs = new HashMap<>();
+		
+		rs.put("resultCode", "S-1");
+		rs.put("msg", String.format("%dï¿½ï¿½ ï¿½Ô½Ã¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ãµï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.", boardnum));
+		
+		return rs;
+		
+	}
+
+
+	@Override
+	public void unlikeArticle(int boardnum, String loginedMemberId, boolean update) {
+		boardDao.unlikeArticle(boardnum, loginedMemberId);
+		boardDao.updateRecommend(boardnum, -1);
+		Map<String, Object> rs = new HashMap<>();
+		
+		rs.put("resultCode", "S-1");
+		rs.put("msg", String.format("%dï¿½ï¿½ ï¿½Ô½Ã¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ãµï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.", boardnum));
+	}
+}
+	
+	
+	
+	
+
+	
