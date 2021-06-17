@@ -1,4 +1,5 @@
-function joinInfoCheck(){
+console.log(document.querySelector("#join-button"));
+document.querySelector("#join-button").onclick = function (){
     var idRegExpres = /^[a-zA-Z0-9]{4,12}$/;
     var pwRegExpres = /^[a-zA-Z0-9]{6,18}$/;
     // var emailRegExpress = /%^[a-zA-Z0-9*[@]{1}][a-zA-Z0-9][.]{1}[a-zA-Z0-9]{1,4}$/;
@@ -6,14 +7,14 @@ function joinInfoCheck(){
     var nameKorRegExpress  = /^[가-힣]{2,4}$/;  
     var phoneRegExpress = /[0-9]{11}$/;
 
-
+	console.log(document.join_form);
     if(!idRegExpres.test(document.join_form.id.value)){
         alert("아이디는 영문과 숫자 조합으로 4-12자리로 입력해야 합니다.");
         join_form.id.focus();
         return false;
     }
 
-
+	
     if(!pwRegExpres.test(document.join_form.password.value)){
         alert("비밀번호는 최소 6자 이상 최대 18자 입니다.");
         join_form.pw.focus();

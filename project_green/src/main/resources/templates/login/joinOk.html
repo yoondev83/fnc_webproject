@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -8,12 +8,33 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
     <script>
-        alert("회원가입을 축하드립니다.");
-        
-        window.location = '/login/';
+        // alert("회원가입을 축하드립니다.");
+        window.onload = function(){
+	        /* Swal.fire({ icon: 'success', // Alert 타입 
+			        	title: 'Alert가 실행되었습니다.', // Alert 제목 
+			        	text: '이곳은 내용이 나타나는 곳입니다.', // Alert 내용 
+	        	}); */
+	        Swal.fire({
+                title: '로그인',
+                text: "",
+                icon: 'success',
+                //showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '승인',
+                //cancelButtonText: '취소'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                	window.location = '/login';
+                }
+            })
+
+        }
+ 	    
     </script>
 
 </body>
