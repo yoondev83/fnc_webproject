@@ -1,0 +1,51 @@
+diff a/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi b/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi	(rejected hunks)
+@@ -109,21 +109,49 @@
+                   <tags>categoryTag:General</tags>
+                 </children>
+                 <children xsi:type="advanced:Placeholder" xmi:id="_lQCye897EeuPccEWk9sdnQ" elementId="org.eclipse.ui.navigator.ProjectExplorer" toBeRendered="false" ref="_lQC0Zs97EeuPccEWk9sdnQ" closeable="true">
++=======
++          <children xsi:type="basic:PartSashContainer" xmi:id="_4iskVc96EeuPccEWk9sdnQ" selectedElement="_4iskX896EeuPccEWk9sdnQ" horizontal="true">
++            <children xsi:type="basic:PartSashContainer" xmi:id="_4iskVs96EeuPccEWk9sdnQ" containerData="2242" selectedElement="_4iskV896EeuPccEWk9sdnQ">
++              <children xsi:type="basic:PartStack" xmi:id="_4iskV896EeuPccEWk9sdnQ" elementId="left" containerData="8000" selectedElement="_4iskWM96EeuPccEWk9sdnQ">
++                <children xsi:type="advanced:Placeholder" xmi:id="_4iskWM96EeuPccEWk9sdnQ" elementId="org.eclipse.jdt.ui.PackageExplorer" ref="_4itMxM96EeuPccEWk9sdnQ" closeable="true">
++                  <tags>View</tags>
++                  <tags>categoryTag:Java</tags>
++                </children>
++                <children xsi:type="advanced:Placeholder" xmi:id="_4iskWc96EeuPccEWk9sdnQ" elementId="org.eclipse.jdt.ui.TypeHierarchy" toBeRendered="false" ref="_4itNJs96EeuPccEWk9sdnQ" closeable="true">
++                  <tags>View</tags>
++                  <tags>categoryTag:Java</tags>
++                </children>
++                <children xsi:type="advanced:Placeholder" xmi:id="_4iskWs96EeuPccEWk9sdnQ" elementId="org.eclipse.ui.views.ResourceNavigator" toBeRendered="false" ref="_4itNJ896EeuPccEWk9sdnQ" closeable="true">
++                  <tags>View</tags>
++                  <tags>categoryTag:General</tags>
++                </children>
++                <children xsi:type="advanced:Placeholder" xmi:id="_4iskW896EeuPccEWk9sdnQ" elementId="org.eclipse.ui.navigator.ProjectExplorer" toBeRendered="false" ref="_4itNKM96EeuPccEWk9sdnQ" closeable="true">
++>>>>>>> develop
+                   <tags>View</tags>
+                   <tags>categoryTag:General</tags>
+                 </children>
+               </children>
++<<<<<<< HEAD
+               <children xsi:type="basic:PartStack" xmi:id="_lQCyfM97EeuPccEWk9sdnQ" elementId="server" containerData="2000" selectedElement="_lQCyfc97EeuPccEWk9sdnQ">
+                 <children xsi:type="advanced:Placeholder" xmi:id="_lQCyfc97EeuPccEWk9sdnQ" elementId="org.eclipse.wst.server.ui.ServersView" ref="_lQDZgM97EeuPccEWk9sdnQ" closeable="true">
+                   <tags>View</tags>
+                   <tags>categoryTag:Server</tags>
+                 </children>
+                 <children xsi:type="advanced:Placeholder" xmi:id="_lQCyfs97EeuPccEWk9sdnQ" elementId="org.springframework.ide.eclipse.boot.dash.views.BootDashView" ref="_lQDZ6s97EeuPccEWk9sdnQ" closeable="true">
++=======
++              <children xsi:type="basic:PartStack" xmi:id="_4iskXM96EeuPccEWk9sdnQ" elementId="server" containerData="2000" selectedElement="_4iskXc96EeuPccEWk9sdnQ">
++                <children xsi:type="advanced:Placeholder" xmi:id="_4iskXc96EeuPccEWk9sdnQ" elementId="org.eclipse.wst.server.ui.ServersView" ref="_4itNKc96EeuPccEWk9sdnQ" closeable="true">
++                  <tags>View</tags>
++                  <tags>categoryTag:Server</tags>
++                </children>
++                <children xsi:type="advanced:Placeholder" xmi:id="_4iskXs96EeuPccEWk9sdnQ" elementId="org.springframework.ide.eclipse.boot.dash.views.BootDashView" ref="_4itysM96EeuPccEWk9sdnQ" closeable="true">
++>>>>>>> develop
+                   <tags>View</tags>
+                   <tags>categoryTag:Spring</tags>
+                 </children>
+               </children>
+             </children>
++<<<<<<< HEAD
+             <children xsi:type="basic:PartSashContainer" xmi:id="_lQCyf897EeuPccEWk9sdnQ" containerData="7758" selectedElement="_lQCygM97EeuPccEWk9sdnQ" horizontal="true">
+               <children xsi:type="basic:PartSashContainer" xmi:id="_lQCygM97EeuPccEWk9sdnQ" containerData="7500" selectedElement="_lQCygc97EeuPccEWk9sdnQ">
+                 <children xsi:type="advanced:Placeholder" xmi:id="_lQCygc97EeuPccEWk9sdnQ" elementId="org.eclipse.ui.editorss" containerData="8840" ref="_lQCz4s97EeuPccEWk9sdnQ"/>
