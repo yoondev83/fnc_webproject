@@ -1,0 +1,63 @@
+diff a/project_green/src/main/java/com/webprj/project_green/controller/GreenController.java b/project_green/src/main/java/com/webprj/project_green/controller/GreenController.java	(rejected hunks)
+@@ -24,7 +24,7 @@
+ 	@Autowired
+ 	private BoardService boardService;
+ 	
+-    //메인화면
++    //硫붿씤�솕硫�
+     @GetMapping("/index")
+     public String welcomeMain(HttpSession session){
+     	session.setAttribute("id", "mosang");
+@@ -32,21 +32,21 @@
+     }
+ 
+ 
+-    //소개화면
++    //�냼媛쒗솕硫�
+     @GetMapping("/intro")
+     public String goIntroduction(){
+ 
+         return "redirect:/index#introduction";
+     }
+     
+-    //랭킹게시판
++    //�옲�궧寃뚯떆�뙋
+     @GetMapping("/rank")
+     public String goToRank(){
+         
+         return "rank/rank";
+     }
+ 
+-    //로그인 화면
++    //濡쒓렇�씤 �솕硫�
+ 	@PostMapping("/login/login")
+ 	public String login(@ModelAttribute CustomDto customDto) {
+ 		System.out.println(customDto);
+@@ -58,21 +58,23 @@
+     	return "login/login";
+     }
+ 
+-    //회원가입
++    //�쉶�썝媛��엯
+     @GetMapping("/join")
+     public String goJoin(){
+ 
+         return "login/join";
+     }
+-    //회원가입 성공
+-    @GetMapping("/joinOk")
++    //�쉶�썝媛��엯 �꽦怨�
++    @GetMapping("/join"
++    		+ ""
++    		+ "Ok")
+     public String gojoinOk(){
+ 
+         return "redirect:/joinOk";
+     }
+ 
+ 
+-    //자유게시판 이동
++    //�옄�쑀寃뚯떆�뙋 �씠�룞
+ 	@GetMapping("/b_freetalk")
+ 	public String letsGoFreeTalk(){
+ 		
