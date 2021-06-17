@@ -37,6 +37,9 @@ public class LikeController {
 		
 		// 사용자가 좋아요를 눌렀다!
 		if (((String) articleLikeAvailableRs.get("resultCode")).startsWith("false")){
+			
+			
+		
 			// 좋아요를 취소한다는 로직을 추가한다!
 			// DB 에 접근해서 포인트를 -1 update
 			
