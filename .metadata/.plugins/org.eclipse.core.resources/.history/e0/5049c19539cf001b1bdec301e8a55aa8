@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+	window.onload = function (){
+		try{
+			document.querySelector("#edit").onclick = function(){
+			alert("수정을 클릭");
+			}
+			document.querySelector("#remove").onclick = function(){
+			alert("삭제을 클릭");
+			}
+		}catch{
+			console.log("버튼 없음");
+		}
+	}
+</script>
+</head>
+<body>
+	<h1>Detail Page</h1>
+	<div>
+		<span  th:text="${board.postNum + '번호'}"></span> 
+        <span  th:text="${board.title + '제목'}"></span>
+        <span  th:text="${board.content + '내용'}"></span>
+        <span  th:text="${board.uploadDate + '게시일'}"></span>
+        <span  th:text="${board.recommend + '좋아요 수'}" id="show-recommend"></span>
+        <span  th:text="${board.imageUrl + '이미지'}"></span>
+        <span  th:text="${board.category + '카테고리'}"></span>
+        <span  th:text="${board.userId + '사용자'}"></span>
+        <div th:if="${#strings.equals(board.userId, sess_id)}">
+        	<button id="edit">수정하기</button>
+        	<button id="remove">삭제하기</button>
+        </div>
+    </div>
+
+
+	<tr>
+		<td><a id="recommend">좋아요</a>
+		</td>
+
+	</tr>
+    <script th:inline="javascript">
+    	var check_did_recommend = function(){
+    		axios
+			.get('/board/list/like?boardnum=' + [[${board.postNum}]] + '')
+			.then(function (response) {
+				// 통신결과 : 누른 적이 있다.
+				// 좋아요 수 - 1
+	    		console.log(response);
+				var res = response.data
+				if (res == -1){
+					alert("본인 게시물은 좋아요를 할 수 없습니다.")
+				}
+				else if(res == 1){
+					alert("좋아요 성공")
+				}else if(res == 0){
+					alert("좋아요 해제 성공")
+				}
+	    		// 통신결과 : 누른 적이 없다.
+	    		// 좋아요 수 + 1
+			})
+			.catch(function () {
+				alert("실패");
+			}); 
+    	}
+    	window.onload = function(){
+    		check_did_recommend();
+    	}
+    	document.querySelector("#recommend").onclick = function(){
+    	// 통신 : 현재 boardNum, 현재 로그인한 아이디(세션 아이디) -> 좋아요를 눌렀는지를 판단한다.
+    	// 통신 url 요청 지정
+    		check_did_recommend();
+    	}	
+    </script>
+
+</body>
+</html>
