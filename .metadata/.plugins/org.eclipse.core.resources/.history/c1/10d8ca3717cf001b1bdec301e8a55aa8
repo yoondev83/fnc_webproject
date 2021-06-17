@@ -96,7 +96,7 @@ public class GreenController {
 		System.out.println(boardDto);
 		boardDto.setUserId((String) session.getAttribute("id"));
 		boardService.createBoard(boardDto);
-		return "redirect:/b_freetalk";
+		return "redirect:/board/b_freetalk";
 	}
 //    @GetMapping("/login")
 //    public void login(Model model, HttpSession session) {

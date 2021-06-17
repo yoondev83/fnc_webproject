@@ -17,8 +17,8 @@
         <!-- aLIAS 를 사용하여, DTO 와 이름을 꼭 맞출 수 있도록 하자. -->
     </select>
     <insert id="createBoard" parameterType="com.webprj.project_green.dto.BoardDto" >
-    	INSERT INTO BOARD ( TITLE, CONTENT, UPLOADDATE, IMAGEURL, CATEGORY, USERID, RECOMMEND)
-		VALUES( #{title}, #{content}, sysdate, #{imageUrl}, #{category}, #{userId}, 0)
+    	INSERT INTO BOARD (POSTNUM, TITLE, CONTENT, UPLOADDATE, IMAGEURL, CATEGORY, USERID)
+		VALUES(POSTNUM_SEQ.NEXTVAL, #{title}, #{content}, sysdate, #{imageUrl}, #{category}, #{userId})
     </insert>
     
     
