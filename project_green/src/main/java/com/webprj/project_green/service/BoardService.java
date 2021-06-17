@@ -14,4 +14,6 @@ public interface BoardService {
 	public void createBoard(BoardDto boardDto);
 	public void join(CustomDto customDto);
 	String logins(String id, String passm, HttpSession session);
+//	public int idCheck(int idcheck);
+	
 }

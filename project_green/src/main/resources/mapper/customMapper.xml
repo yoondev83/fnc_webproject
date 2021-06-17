@@ -4,12 +4,19 @@
 <mapper namespace="com.webprj.project_green.dao.BoardDao" >
 
 	<insert id="join" parameterType="com.webprj.project_green.dto.CustomDto" >
-    	INSERT INTO CUSTOMER (ID, PASSWORD, EMAIL, PHONE)
-		VALUES(#{id}, #{password}, #{email}, #{phone})
+    	INSERT INTO CUSTOMER (ID, PASSWORD,NAME, EMAIL, PHONE)
+		VALUES(#{id}, #{password},#{name}, #{email}, #{phone})
     </insert>
     
     <select parameterType="String" id="logins" resultType="String">
     SELECT PASSWORD FROM CUSTOMER WHERE ID=#{id} 
     </select>
-
+    
+    <select id="idcheck" parameterType="String" resultType="String">
+      SELECT COUNT(*) FROM tbl_member
+      WHERE
+          id = #{id}
+</select>
+    
+    
 </mapper>

@@ -16,4 +16,5 @@ public interface BoardDao {
 	public void createBoard(BoardDto boardDto);
 	public void join(CustomDto customDto);
 	public String logins(String id);
+//	public int idCheck(int idcheck);
 }
