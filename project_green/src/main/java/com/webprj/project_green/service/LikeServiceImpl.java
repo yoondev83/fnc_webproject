@@ -23,19 +23,22 @@ public class LikeServiceImpl implements LikeService {
 		
 		Map<String, Object> rs = new HashMap<>();
 		
-		if(board.getUserId() == loginedMemberId) {
+		if(board.getUserId().equals(loginedMemberId)) {
+			System.out.println("====================¾ÆÀÌµð Áßº¹ =====================");
 			rs.put("resultCode", "F-1");
-			rs.put("msg", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ãµï¿½Ò°ï¿½.");
+			rs.put("msg", "ÀÚ½ÅÀÇ ºí·Î±×´Â ÁÁ¾Æ¿ä¸¦ ´©¸¦ ¼ö ¾ø´Ù.");
 			return rs;
 		}
 		
 		int likePoint = boardDao.getLikePointByMemberId(boardnum, loginedMemberId);
-		
+		System.out.println("likePoint: " + likePoint);
 		if(likePoint > 0) {
+			System.out.println("==================== ÁÁ¾Æ¿ä Ãë¼Ò =====================");
 			rs.put("resultCode", "F-2");
-			rs.put("msg", "ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½Æ¿ä¸¦ ï¿½Ï¼Ì½ï¿½ï¿½Ï´ï¿½.");
+			rs.put("msg", "ÀÌ¹Ì ÁÁ¾Æ¿ä¸¦ ´­·¶´Ù.");
+			return rs;
 		}
-			
+		System.out.println("==================== ÁÁ¾Æ¿ä  =====================");
 		// ï¿½ï¿½ï¿½Æ¿ä¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!
 		rs.put("resultCode", "S-1");
 		rs.put("msg", "ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.");
@@ -44,8 +47,8 @@ public class LikeServiceImpl implements LikeService {
 
 
 	@Override
-	public Map<String, Object> likeArticle(int boardnum, String actorMemberId) {
-		boardDao.likeArticle(boardnum, actorMemberId);
+	public Map<String, Object> likeArticle(int boardnum, String loginedMemberId) {
+		boardDao.likeArticle(boardnum, loginedMemberId);
 		
 		Map<String, Object> rs = new HashMap<>();
 		
@@ -54,6 +57,17 @@ public class LikeServiceImpl implements LikeService {
 		
 		return rs;
 		
+	}
+
+
+	@Override
+	public void unlikeArticle(int boardnum, String loginedMemberId) {
+		boardDao.unlikeArticle(boardnum, loginedMemberId);
+		
+		Map<String, Object> rs = new HashMap<>();
+		
+		rs.put("resultCode", "S-1");
+		rs.put("msg", String.format("%dï¿½ï¿½ ï¿½Ô½Ã¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ãµï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.", boardnum));
 	}
 }
 	

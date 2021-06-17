@@ -33,5 +33,10 @@
 	VALUES(#{loginedMemberId}, #{id}, SYSDATE, 1)
     </insert>
     
+    <delete id="unlikeArticle" >
+    DELETE FROM BOARDLIKE
+	WHERE BOARDNUM = #{id} AND USERID = #{loginedMemberId}
+    </delete>
+    
    
 </mapper>

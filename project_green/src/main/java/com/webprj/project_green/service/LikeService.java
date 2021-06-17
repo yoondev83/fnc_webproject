@@ -9,4 +9,5 @@ import com.webprj.project_green.dto.CustomDto;
 public interface LikeService {
 	public Map<String, Object> getArticleLikeAvailable(int boardnum, String loginedMemberId);
 	public Map<String, Object> likeArticle(int boardnum, String loginedMemberId);
+	public void unlikeArticle(int boardnum, String loginedMemberId);
 }
