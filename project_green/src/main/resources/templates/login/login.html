@@ -54,21 +54,15 @@
         </nav>
 </head>
 <body>
-    <center>
+    
     <table>
-        <form action="//login.chain" method="post" >
-                <label for="id"> 아이디 : <input type="text" name="id" id="id" style="margin-top: 180px; margin-left: 15px;"></label><br/>
-                <br>
-                <label for="pass"> 비밀번호 : <input type="text" name="pass" id="pass"></label>
-
-            </center>
-            <center>
-                <br/>
+        <form action="/login/login" method="post" >
+            <label for="id"> 아이디 : <input type="text" name="id" id="id" style="margin-top: 180px; margin-left: 15px;"></label><br/>
+            <br>
+            <label for="pass"> 비밀번호 : <input type="text" name="password" id="pass"></label> <br/>
             <input type="submit" value="로그인" style="margin-left: 60px;">
             <input type="button" value="회원가입" onclick="goLoginForm()" >
-            </center>
         </form>
-
     </table>
     
 </body>

@@ -4,19 +4,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.webprj.project_green.dao.BoardDao;
 import com.webprj.project_green.dto.BoardDto;
+import com.webprj.project_green.dto.CustomDto;
 
 @Service
 public class LikeServiceImpl implements LikeService {
-	
 	@Autowired
 	private BoardDao boardDao;
-	
-	// ÁÁ¾Æ¿ä Ã¼Å© ÇÔ¼ö
 	@Override
 	public Map<String, Object> getArticleLikeAvailable(int boardnum, String loginedMemberId) {
 		BoardDto board = boardDao.getBoardData(boardnum);
@@ -25,7 +25,7 @@ public class LikeServiceImpl implements LikeService {
 		
 		if(board.getUserId() == loginedMemberId) {
 			rs.put("resultCode", "F-1");
-			rs.put("msg", "º»ÀÎÀº ÃßÃµºÒ°¡.");
+			rs.put("msg", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ãµï¿½Ò°ï¿½.");
 			return rs;
 		}
 		
@@ -33,12 +33,12 @@ public class LikeServiceImpl implements LikeService {
 		
 		if(likePoint > 0) {
 			rs.put("resultCode", "F-2");
-			rs.put("msg", "ÀÌ¹Ì ÁÁ¾Æ¿ä¸¦ ÇÏ¼Ì½À´Ï´Ù.");
+			rs.put("msg", "ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½Æ¿ä¸¦ ï¿½Ï¼Ì½ï¿½ï¿½Ï´ï¿½.");
 		}
 			
-		// ÁÁ¾Æ¿ä¸¦ ¾ÆÁ÷ ¾ÈÇÔ!
+		// ï¿½ï¿½ï¿½Æ¿ä¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!
 		rs.put("resultCode", "S-1");
-		rs.put("msg", "°¡´ÉÇÕ´Ï´Ù.");
+		rs.put("msg", "ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.");
 		return rs;
 	}
 
@@ -50,13 +50,11 @@ public class LikeServiceImpl implements LikeService {
 		Map<String, Object> rs = new HashMap<>();
 		
 		rs.put("resultCode", "S-1");
-		rs.put("msg", String.format("%d¹ø °Ô½Ã¹°À» ÃßÃµÇÏ¿´½À´Ï´Ù.", boardnum));
+		rs.put("msg", String.format("%dï¿½ï¿½ ï¿½Ô½Ã¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ãµï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.", boardnum));
 		
 		return rs;
 		
 	}
-//	
-//	Ãë¼ÒÇÔ¼ö{ daol }
 }
 	
 	

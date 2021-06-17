@@ -109,7 +109,6 @@
 </head>
 <body>
 	<h1>Hello Workd</h1>
-<<<<<<< HEAD:.metadata/.plugins/org.eclipse.core.resources/.history/ac/10e1c54470ce001b12ef87f42478e8d0
 	<a href="/board/new">글쓰기</a>
     
     <section>
@@ -139,10 +138,5 @@
         </div>
         
     </section>
-
-=======
-	<div id="board-list"></div>
-	<a href="/board/new">글쓰기 </a>
->>>>>>> b7715f86128cf92b7ede3fa10cdde474c68731dc:project_green/src/main/resources/templates/board/list.html
 </body>
 </html>
