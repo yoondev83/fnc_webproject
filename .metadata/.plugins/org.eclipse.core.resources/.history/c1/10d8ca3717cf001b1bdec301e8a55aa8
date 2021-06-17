@@ -78,13 +78,6 @@ public class GreenController {
 
         return "login/join";
     }
-    //회원가입 성공
-    // @GetMapping("/joinOk")
-    // public String gojoinOk(){
-
-    //     return "redirect:/login/joinOk";
-    // }
-
 
     //자유게시판 이동
 	@GetMapping("/b_freetalk")
@@ -92,17 +85,6 @@ public class GreenController {
 		
 		return "/board/b_freetalk";
 	}
-	@GetMapping("/b_prove")
-	public String letsGoProve(){
-		
-		return "/board/b_prove";
-	}
-	@GetMapping("/b_mission")
-	public String letsGoMission(){
-		
-		return "/board/b_mission";
-	}
-
     
     @GetMapping("/board/new")
     public void new_board() {
@@ -114,7 +96,7 @@ public class GreenController {
 		System.out.println(boardDto);
 		boardDto.setUserId((String) session.getAttribute("id"));
 		boardService.createBoard(boardDto);
-		return "redirect:/b_freetalk";
+		return "redirect:/board/b_freetalk";
 	}
 //    @GetMapping("/login")
 //    public void login(Model model, HttpSession session) {
