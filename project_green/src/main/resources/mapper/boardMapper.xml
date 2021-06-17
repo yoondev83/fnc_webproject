@@ -43,5 +43,14 @@
     SET RECOMMEND = RECOMMEND + #{num}
     WHERE POSTNUM = #{id}
     </update>
+    <update id="updateBoard" parameterType="com.webprj.project_green.dto.BoardDto">
+    UPDATE BOARD
+    SET TITLE = #{title}, CONTENT=#{content}, CATEGORY=#{category}
+    WHERE POSTNUM = #{postNum}
+    </update>
+    <delete id="delete">
+    DELETE FROM BOARD
+    WHERE POSTNUM=#{postNum}
+    </delete>
    
 </mapper>

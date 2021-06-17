@@ -16,6 +16,10 @@ public interface BoardDao {
 	public List<BoardDto> getBoardsData();
 	public BoardDto getBoardData(int boardnum);
 	public void createBoard(BoardDto boardDto);
+	
+	public void updateBoard(BoardDto boardDto);
+	public void delete(int postNum);
+	
 	public void join(CustomDto customDto);
 	public String logins(String id);
 	public int getLikePointByMemberId(@Param("id") int boardnum, @Param("loginedMemberId") String loginedMemberId);

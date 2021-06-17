@@ -26,6 +26,25 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		boardDao.createBoard(boardDto);
 	}
+	
+	
+	
+	public void updateBoard(BoardDto boardDto) {
+		// TODO Auto-generated method stub
+		boardDao.updateBoard(boardDto);
+	}
+	public void delete(int postNum) {
+		// TODO Auto-generated method stub
+		boardDao.delete(postNum);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	public BoardDto getBoardData(int boardnum) {
 		// TODO Auto-generated method stub
 		return boardDao.getBoardData(boardnum);

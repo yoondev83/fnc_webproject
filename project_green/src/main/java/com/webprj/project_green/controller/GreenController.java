@@ -25,7 +25,7 @@ public class GreenController {
 	@Autowired
 	private BoardService boardService;
 	
-    //硫붿씤�솕硫�
+    //筌롫뗄�뵥占쎌넅筌롳옙
     @GetMapping("/index")
     public String welcomeMain(Model model, HttpSession session){
     	model.addAttribute("sess_id", (String) session.getAttribute("id"));
@@ -33,21 +33,21 @@ public class GreenController {
     }
 
 
-    //�냼媛쒗솕硫�
+    //占쎈꺖揶쏆뮉�넅筌롳옙
     @GetMapping("/intro")
     public String goIntroduction(){
 
         return "redirect:/index#introduction";
     }
     
-    //�옲�궧寃뚯떆�뙋
+    //占쎌삻占쎄때野껊슣�뻻占쎈솇
     @GetMapping("/rank")
     public String goToRank(){
         
         return "rank/rank";
     }
 
-    //로그인 화면
+    //濡쒓렇�씤 �솕硫�
 	@PostMapping("/login/join")
 	public String login(@ModelAttribute CustomDto customDto) {
 		System.out.println(customDto);
@@ -55,7 +55,7 @@ public class GreenController {
 		
 		return "login/joinOk";
 	}
-	//회원가입 성공
+	//�쉶�썝媛��엯 �꽦怨�
 	@GetMapping("/joinOk")
 	public String gojoinOk(){
 		return "/login/joinOk";
@@ -66,13 +66,13 @@ public class GreenController {
     	return "login/login";
     }
     
-    // 로그인 하기
+    // 濡쒓렇�씤 �븯湲�
     @PostMapping("/login/login")
 	public String login(@RequestParam("id") String id, @RequestParam("password") String password, HttpSession session) {
 		return boardService.logins(id, password, session);
 	}
 
-    //�쉶�썝媛��엯
+    //占쎌돳占쎌뜚揶쏉옙占쎌뿯
     @GetMapping("/join")
     public String goJoin(){
 
@@ -86,7 +86,7 @@ public class GreenController {
     // }
 
 
-    //자유게시판 이동
+    //�옄�쑀寃뚯떆�뙋 �씠�룞
 	@GetMapping("/b_freetalk")
 	public String letsGoFreeTalk(){
 		

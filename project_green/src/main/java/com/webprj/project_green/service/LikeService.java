@@ -12,3 +12,4 @@ public interface LikeService {
 	public void unlikeArticle(int boardnum, String loginedMemberId);
 	public int getRecommendPoint(int boardnum);
 }
+	
