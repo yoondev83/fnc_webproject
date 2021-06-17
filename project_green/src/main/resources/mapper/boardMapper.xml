@@ -37,6 +37,14 @@
     DELETE FROM BOARDLIKE
 	WHERE BOARDNUM = #{id} AND USERID = #{loginedMemberId}
     </delete>
-    
+    <update id="updateBoard" parameterType="com.webprj.project_green.dto.BoardDto">
+    UPDATE BOARD
+    SET TITLE = #{title}, CONTENT=#{content}, CATEGORY=#{category}
+    WHERE POSTNUM = #{postNum}
+    </update>
+    <delete id="delete">
+    DELETE FROM BOARD
+    WHERE POSTNUM=#{postNum}
+    </delete>
    
 </mapper>

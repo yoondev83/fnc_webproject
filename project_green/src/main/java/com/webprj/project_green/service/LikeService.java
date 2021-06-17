@@ -11,3 +11,4 @@ public interface LikeService {
 	public Map<String, Object> likeArticle(int boardnum, String loginedMemberId);
 	public void unlikeArticle(int boardnum, String loginedMemberId);
 }
+	

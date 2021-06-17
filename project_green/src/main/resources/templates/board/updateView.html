@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8" />
     <title>Insert title here</title>
@@ -57,19 +57,20 @@
 
 
 </head>
-    <body>
+       
         <span id="absdd">
-            <form action="/board/new" method="post" >
-                <input value="" type="text" id="title" name="title" required placeholder="제목" style="width: 1064px; margin-left: 53px; margin-top: 100px;"><br />
-                <select id="category" name="category" style="margin-left: 53px;">
+            <form action="/board/update" method="post" >
+            	<input type="hidden" name="postNum" th:value="${update.postNum}">
+                <input th:value="${update.title}" type="title" id="content" name="title" required placeholder="recommend" style="width: 1064px; margin-left: 53px; margin-top: 100px;"><br />
+                <select th:value="${update.category}" id="category" name="category" style="margin-left: 53px;">
                     <option value="volvo">Volvo</option>
                     <option value="saab">Saab</option>
                     <option value="fiat">Fiat</option>
                     <option value="audi">Audi</option>
                 </select>
                 <br>
-                <textarea id="content" rows="20" cols="100" name="content" required placeholder= "내용을 입력해주세요" style="margin-left: 53px;"></textarea> <br />
-                <input type="file" id="image" name="imageUrl" style="width: 1064px; margin-left: 53px;"> <br />
+                <textarea th:text="${update.content}" id="content" rows="20" cols="100" name="content" required placeholder= "내용을 입력해주세요" style="margin-left: 53px;"></textarea> <br />
+                <input th:value="${update.title}"  type="file" id="image" name="imageUrl" style="width: 1064px; margin-left: 53px;"> <br />
                 <label for="category">카테고리:</label>
                 <button>제출하기</button>
             </form>

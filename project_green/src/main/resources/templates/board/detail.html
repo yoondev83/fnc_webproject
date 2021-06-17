@@ -18,6 +18,8 @@
 		}
 	}
 </script>
+
+
 </head>
 <body>
 	<h1>Detail Page</h1>
@@ -30,35 +32,14 @@
         <span  th:text="${board.imageUrl + '이미지'}"></span>
         <span  th:text="${board.category + '카테고리'}"></span>
         <span  th:text="${board.userId + '사용자'}"></span>
-        <button id="recommend">좋아요</button>
         <div th:if="${#strings.equals(board.userId, sess_id)}">
-        	<button id="edit">수정하기</button>
-        	<button id="remove">삭제하기</button>
+	        <a th:href="@{/updateView(postNum=${board.postNum})}">수정</a>
+	        <a th:href="|/board/delete/${board.postNum}|"><button>삭제</button></a>
         </div>
+        <a href="/b_freetalk">목록으로가기</a>
+       
     </div>
-    <script type="text/javascript">
-    	document.querySelector("#recommend").onclick = function(){
-    		alert("it is button");
-    	
-    	// 통신 : 현재 boardNum, 현재 로그인한 아이디(세션 아이디) -> 좋아요를 눌렀는지를 판단한다.
-    	// 통신 url 요청 지정
-	    	axios
-			.post("/board/list/like/" + [[${board.postNum}]])
-			.then(function (response) {
-				// 통신결과 : 누른 적이 있다.
-				// 좋아요 수 - 1
-	    		
-	    		// 통신결과 : 누른 적이 없다.
-	    		// 좋아요 수 + 1
-	    		alert("성공");
-			})
-			.catch(function () {
-				alert("실패");
-			});
-    	}	
-    </script>
-
-
+  
 	<tr>
 		<th>좋아요</th>
 		<td><a th:href="${'/board/list/like/' + board.postNum}"
