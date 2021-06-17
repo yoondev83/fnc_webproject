@@ -1,81 +1,78 @@
 package com.webprj.project_green.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.webprj.project_green.dao.BoardDao;
+import com.webprj.project_green.dto.BoardDto;
+import com.webprj.project_green.dto.CustomDto;
 
 @Service
 public class LikeServiceImpl implements LikeService {
-	
 	@Autowired
 	private BoardDao boardDao;
-	
-//	@Override
-//	public List<Board> getBoards(){
-//		return boardDao.getBoards();
-//	}
-//	
-//	@Override
-//	public Board getBoards(int id){
-//		return boardDao.getBoard(id);
-//	}
-	
 	@Override
-	public Map<String,Object> getArticleLikeAvailable(int id, int loginEdMemberID){
-//		Board board = getBoard(id);
-//		
-//		Map<String, Object> rs = new HashMap<>();
-		return null;
+	public Map<String, Object> getArticleLikeAvailable(int boardnum, String loginedMemberId) {
+		BoardDto board = boardDao.getBoardData(boardnum);
+		
+		Map<String, Object> rs = new HashMap<>();
+		
+		if(board.getUserId().equals(loginedMemberId)) {
+			System.out.println("====================¾ÆÀÌµð Áßº¹ =====================");
+			rs.put("resultCode", "F-1");
+			rs.put("msg", "ÀÚ½ÅÀÇ ºí·Î±×´Â ÁÁ¾Æ¿ä¸¦ ´©¸¦ ¼ö ¾ø´Ù.");
+			return rs;
+		}
+		
+		int likePoint = boardDao.getLikePointByMemberId(boardnum, loginedMemberId);
+		System.out.println("likePoint: " + likePoint);
+		if(likePoint > 0) {
+			System.out.println("==================== ÁÁ¾Æ¿ä Ãë¼Ò =====================");
+			rs.put("resultCode", "F-2");
+			rs.put("msg", "ÀÌ¹Ì ÁÁ¾Æ¿ä¸¦ ´­·¶´Ù.");
+			return rs;
+		}
+		System.out.println("==================== ÁÁ¾Æ¿ä  =====================");
+		// ï¿½ï¿½ï¿½Æ¿ä¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!
+		rs.put("resultCode", "S-1");
+		rs.put("msg", "ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.");
+		return rs;
 	}
-	
-	
-	
-	
+
 
 	@Override
-	public boolean hasLikeChecked() {
-		// ¸ñÀû: º¸µå ³Ñ¹ö¶û ¼¼¼Ç ¾ÆÀÌµð¸¦ ÅëÇØ ÁÁ¾Æ¿ä¸¦ ´­·¶´ÂÁö Ã¼Å©
-		// db¿¡ ¾ÆÀÌµð, °Ô½ÃÆÇ³Ñ¹ö Å×ÀÌºí ¼¼ÆÃ
-		//  boardnum ¹Þ¾ÒÀ½!
-		// ·Î±×ÀÎÇÑ ¾ÆÀÌµðµµ ÀÖ´Ù.
+	public Map<String, Object> likeArticle(int boardnum, String loginedMemberId) {
+		boardDao.likeArticle(boardnum, loginedMemberId);
 		
-		//¾î¶² º¸µå³Ñ¹öÀÇ °Ô½ÃÆÇ ÁÁ¾Æ¿ä¸¦ ´­·¶¾ú´ÂÁö µ¥ÀÌÅÍ¸¦ ºÒ·¯¿È->
-		// point : db»ç¿ë 
-		// DB -> ³»°¡ ÀÌ °Ô½ÃÆÇÀ» ÁÁ¾Æ¿ä¸¦ Çß´ÂÁö ¿©ºÎ (³» ¾ÆÀÌµð, °Ô½ÃÆÇ ¹øÈ£, ÁÁ¾Æ¿ä Çß´ÂÁö?) (123, 1, true) / (123, 2, False)
-		// -> DAO ÇÑÅ× ºÎÅ¹ÇÑ´Ù. ¾ÆÀÌµð¶û, °Ô½ÃÆÇ ¹øÈ£¸¦ ÁÙÅ×´Ï True/False¸¦ ³»³ö¶ó
+		Map<String, Object> rs = new HashMap<>();
 		
-		//ÁÁ¾Æ¿ä Ä«¿îÆ®
-		//
-
-		// True
-		//true°ªÀ» ¹ÞÀ¸¸é -1
+		rs.put("resultCode", "S-1");
+		rs.put("msg", String.format("%dï¿½ï¿½ ï¿½Ô½Ã¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ãµï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.", boardnum));
 		
-		// False
-		//false°ªÀ» ¹ÞÀ¸¸é +1
-		//ÇØ´ç °Ô½ÃÆÇÀÇ ÁÁ¾Æ¿ä¸¦ ´©¸¥ÀûÀÌ ÀÖ´Ù¸é -1, ¾ø´Ù¸é +1 
-		
-
-		// ¸¸µé Å×ÀÌºí = (³» ¾ÆÀÌµð, °Ô½ÃÆÇ ¹øÈ£, ÁÁ¾Æ¿ä Çß´ÂÁö?)
-		return false;
-		
-		
-		
-		
+		return rs;
 		
 	}
 
 
-
-
-
 	@Override
-	public Map<String, Object> likeArticle(int boardnum) {
-		// TODO Auto-generated method stub
-		return null;
+	public void unlikeArticle(int boardnum, String loginedMemberId) {
+		boardDao.unlikeArticle(boardnum, loginedMemberId);
+		
+		Map<String, Object> rs = new HashMap<>();
+		
+		rs.put("resultCode", "S-1");
+		rs.put("msg", String.format("%dï¿½ï¿½ ï¿½Ô½Ã¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ãµï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.", boardnum));
 	}
-
 }
+	
+	
+	
+	
+
+	

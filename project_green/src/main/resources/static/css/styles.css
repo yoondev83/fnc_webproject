@@ -10953,3 +10953,35 @@ footer.footer {
 #absdd{
  padding-left: 500px;
 }
+
+
+#submenu{
+  font:bold 16px "malgun gothic";
+    padding: 0;
+		margin:0;
+    list-style-type: none;
+    position: absolute;
+    background: rgba(246, 212, 203, 0.4);
+    visibility: hidden;
+	
+}
+
+#submenu > li > a{
+  display: block;
+  padding: 12px 36px;
+  text-align: center;
+  float: left;
+  /* color: rgba(246, 212, 203, 0.85); */
+  font-size: 1.15rem;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  text-shadow: 0.3px 0.3px 0.3px rgba(0, 0, 0, 0.55);
+  
+}
+
+ #lisubment:hover #submenu>li {
+  /* display: block; */
+  /* opacity: 1; */
+  visibility: visible;
+  font-size: 10.15rem;
+}
