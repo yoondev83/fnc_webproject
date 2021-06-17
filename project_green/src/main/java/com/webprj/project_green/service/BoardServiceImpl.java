@@ -78,5 +78,24 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		
 	}
-
+//	@Override
+//	public int idCheck(int idVheck) {
+//		if(confirm("회원가입을 하시겠습니까?")){
+//	        if(idckeck==0){
+//	            alert("아이디 중복체크를 해주세요");
+//	            return false;
+//	        }else{
+//	        alert("회원가입을 축하합니다");
+//	        $("#frm").submit();
+//	        }
+//	    }
+//		
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
+//	private boolean confirm(String string) {
+//		return false;
+//	}
+//	
+//	
 }

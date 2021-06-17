@@ -1,5 +1,8 @@
 package com.webprj.project_green.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import oracle.jdbc.proxy.annotation.Post;
@@ -19,9 +25,12 @@ import com.webprj.project_green.dto.BoardDto;
 import com.webprj.project_green.dto.CustomDto;
 import com.webprj.project_green.service.BoardService;
 
+import ch.qos.logback.classic.Logger;
+
 @Controller
 public class GreenController {
     
+	private static final CustomDto CustomDto = null;
 	@Autowired
 	private BoardService boardService;
 	
@@ -72,12 +81,26 @@ public class GreenController {
 		return boardService.logins(id, password, session);
 	}
 
-    //占쎌돳占쎌뜚揶쏉옙占쎌뿯
     @GetMapping("/join")
     public String goJoin(){
 
         return "login/join";
     }
+    
+//    //중복확인1********************************************************************************
+    @RequestMapping("/idcheck/boardDao")
+    @ResponseBody
+    public Map<Object, Object> idcheck(@RequestBody String userid) {
+        
+    	int	count = 0;
+        Map<Object, Object> map = new HashMap<Object, Object>();
+ 
+        //count = boardService.idCheck(CustomDto);
+        map.put("cnt", count);
+ 
+        return map;
+    }
+    
     //회원가입 성공
     // @GetMapping("/joinOk")
     // public String gojoinOk(){
@@ -85,8 +108,7 @@ public class GreenController {
     //     return "redirect:/login/joinOk";
     // }
 
-
-    //�옄�쑀寃뚯떆�뙋 �씠�룞
+    //자유게시판 이동
 	@GetMapping("/b_freetalk")
 	public String letsGoFreeTalk(){
 		
