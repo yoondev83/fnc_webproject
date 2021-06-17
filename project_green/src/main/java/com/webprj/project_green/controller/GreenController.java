@@ -68,7 +68,7 @@ public class GreenController {
     @GetMapping("/joinOk")
     public String gojoinOk(){
 
-        return "redirect:/joinOk";
+        return "redirect:/login/joinOk";
     }
 
 
