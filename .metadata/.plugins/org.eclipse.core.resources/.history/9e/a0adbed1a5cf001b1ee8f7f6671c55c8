@@ -56,7 +56,7 @@ public class GreenController {
         return "rank/rank";
     }
     @GetMapping("/rank_map")
-    public String goToRankMap(){
+    public String goToRank(){
         
     	return "rank/rank_map";
     }
