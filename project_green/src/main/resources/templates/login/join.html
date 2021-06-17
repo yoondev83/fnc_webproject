@@ -16,6 +16,7 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/css/styles.css" rel="stylesheet" />
+        <link href="/css/join.css" rel="stylesheet" />
 </head>
 <body> 
         <!-- Navigation-->
@@ -34,8 +35,15 @@
                           <a class="navbar-brand" onclick="location.href='../rank'">친환경 제품 소개</a>
                       </td>  
                       <td width = "150">
-                          <a class="navbar-brand" onclick="location.href='../b_freetalk'">커뮤니티</a> &nbsp;&nbsp;&nbsp;
-                      </td>  
+                        <div class="dropdown">
+                            <a class="dropbtn" onclick="location.href='/b_freetalk'">커뮤니티</a>
+                            <div class="dropdown-content">  
+                                <a id="testtt2" class="navbar-brand" onclick="location.href='/b_prove'">인증게시판</a>
+                                <a class="navbar-brand" onclick="location.href='/b_mission'">미션게시판</a>
+                            </div>
+                        </div>
+                        </li>
+                    </td>    
                     </tr>
                   </table>
 
@@ -56,48 +64,40 @@
         </nav>
         
         <script src="/js/scripts.js"></script> 
-            
-            <table id="table1" style="margin-top: 15%; margin-left: 37%;">
-                <form action="/login/join" name = "join_form" id="join" method="post">
-                <tr>
-                    <td>아이디</td>
-                    <td> <input type="text" name="id" id="id" required=true></td>
-                </tr>
-                <tr>
-                    <td>비밀번호</td>
-                    <td> <input type="password" name="password" id="password1" required=true></td>
-                </tr>
-                <tr>
-                    <td>비밀번호 확인</td>
-                    <td> <input type="password" name="pw_check" id="password2" required=true></td>
-                </tr>
-                <tr>
-                    <td>이름</td>
-                    <td> <input type="text" name="name" id="name" required=true></td>
-                </tr>
-                <tr>
-                    <td>이메일</td>
-                    <td> <input type="text" name="email" id="email" required=true></td>
-                </tr>
-                <tr>
-                    <td>전화번호</td>
-                    <td><input type="text" name="phone" id="phone" required=true></td>
-                </tr>
-                <tr>
-                    <td>
-                        
-                    </td>
-                    <td>
-                        <input type="button" value="취소" onclick="history.back();">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;
-                        <input type="button" id="join-button" value="회원가입" >
-                        
-                    </td>
-                    
-                </tr>
-            </form>    
-                
+
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+
+<div class="testbox" >
+  <h1>회원 가입</h1>
+
+  <form action="/login/join" name = "join_form" id="join" method="post">
+      <hr>
+    <div class="accounttype">
+      <input type="radio" value="None" id="radioOne" name="account" checked/>
+      <label for="radioOne" class="radio" style="margin-bottom: 0px;">일반 이용자</label>
+    </div>
+  <hr>
+  <label id="icon" for="name"><i class="icon-user" style="margin-top: 1px;"></i></label>
+  <input type="text" name="id" id="id" placeholder="id" required/>
+  <label id="icon" for="name"><i class="icon-shield"></i></label>
+  <input type="password" name="password" id="password" placeholder="password" required style="margin-top: 1px; margin-bottom: 1px;"/>
+  <label id="icon" for="name"><i class="icon-shield"></i></label>
+  <input type="password" name="pw_check" id="pw_check" placeholder="Password check" required style="margin-top: 1px; margin-bottom: 1px;"/>
+  <label id="icon" for="name"><i class="icon-user"></i></label>
+  <input type="text" name="name" id="name" placeholder="name" required style="margin-top: 1px; margin-bottom: 1px;"/>
+  <label id="icon" for="name"><i class="icon-envelope"></i></label>
+  <input type="text" name="email" id="email" placeholder="email" required style="margin-top: 1px; margin-bottom: 1px;"/>
+  <label id="icon" for="name"><i class="icon-shield"></i></label>
+  <input type="text" name="phone" id="phone" placeholder="phone" required style="margin-top: 1px; margin-bottom: 1px;"/>
+
+  <a href="#" class="button" id="join-button" style="padding-right: 80px; margin-right: 50px;">Register</a>
+
+   <input type="button" value="취소" onclick="history.back();">
+   <!-- <input type="button" id="join-button" value="회원가입" > -->
+  </form>
+</div>
+
         </table>
          <script src="/js/scripts.js" type="text/javascript"></script>
         </body>

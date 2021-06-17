@@ -15,6 +15,7 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/css/styles.css" rel="stylesheet" />
+        <link href="/css/login.css" rel="stylesheet" />
     </head>
     <body>
         <!-- Navigation-->
@@ -32,8 +33,15 @@
                           <a class="navbar-brand" onclick="location.href='../rank'">친환경 제품 소개</a>
                       </td>  
                       <td width = "150">
-                          <a class="navbar-brand" onclick="location.href='../b_freetalk'">커뮤니티</a> &nbsp;&nbsp;&nbsp;
-                      </td>  
+                        <div class="dropdown">
+                            <a class="dropbtn" onclick="location.href='/b_freetalk'">커뮤니티</a>
+                            <div class="dropdown-content">  
+                                <a id="testtt2" class="navbar-brand" onclick="location.href='/b_prove'">인증게시판</a>
+                                <a class="navbar-brand" onclick="location.href='/b_mission'">미션게시판</a>
+                            </div>
+                        </div>
+                        </li>
+                    </td>  
                     </tr>
                   </table>
 
@@ -55,7 +63,35 @@
 </head>
 <body>
     
-    <table>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+          <!-- Tabs Titles -->
+          <h2 class="active"> Sign In </h2>
+          <h2 class="inactive underlineHover"><a href="join"> Sign Up</a> </h2>
+      
+          <!-- Icon -->
+          <div class="fadeIn first">
+            <img src="/assets/user_icon.png" id="icon" alt="User Icon" style="width: 8%;"/>
+          </div>
+      
+          <!-- Login Form -->
+          <form action="/login/login" method="post"> 
+            <input type="text" id="id" class="fadeIn second" name="id" placeholder="ID">
+            <input type="password" id="pass" class="fadeIn third" name="password" placeholder="PASSWORD">
+            <input type="submit" class="fadeIn fourth" value="Log In">
+          </form>
+      
+          <!-- Remind Passowrd -->
+          <div id="formFooter">
+            <a class="underlineHover" href="#">Forgot Password?</a>
+          </div>
+      
+        </div>
+      </div>
+
+
+
+    <!-- <table>
         <form action="/login/login" method="post" >
             <label for="id"> 아이디 : <input type="text" name="id" id="id" style="margin-top: 180px; margin-left: 15px;"></label><br/>
             <br>
@@ -63,7 +99,7 @@
             <input type="submit" value="로그인" style="margin-left: 60px;">
             <input type="button" value="회원가입" onclick="goLoginForm()" >
         </form>
-    </table>
+    </table> -->
     
 </body>
 </html>

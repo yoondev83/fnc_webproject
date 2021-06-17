@@ -79,11 +79,11 @@ public class GreenController {
         return "login/join";
     }
     //회원가입 성공
-    @GetMapping("/joinOk")
-    public String gojoinOk(){
+    // @GetMapping("/joinOk")
+    // public String gojoinOk(){
 
-        return "redirect:/login/joinOk";
-    }
+    //     return "redirect:/login/joinOk";
+    // }
 
 
     //자유게시판 이동
@@ -92,6 +92,17 @@ public class GreenController {
 		
 		return "/board/b_freetalk";
 	}
+	@GetMapping("/b_prove")
+	public String letsGoProve(){
+		
+		return "/board/b_prove";
+	}
+	@GetMapping("/b_mission")
+	public String letsGoMission(){
+		
+		return "/board/b_mission";
+	}
+
     
     @GetMapping("/board/new")
     public void new_board() {
