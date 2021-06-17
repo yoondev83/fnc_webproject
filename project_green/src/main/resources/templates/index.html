@@ -25,24 +25,24 @@
                 <table width = "800">
                   <tr>
                       <td width = "150">
-                          <!-- <a class="link-1" href="#page-top" onclick="location.href='index'">메인메뉴</a> -->
-                          <a class="navbar-brand"  onclick="location.href='index'">메인메뉴</a>
+                          <a class="navbar-brand"  href="/index">메인메뉴</a>
                       </td>
-                      <td width = "120">
+                      <td width = "150">
                         <a class="navbar-brand" href="#introduction">소개</a>
                     </td>  
                     <td width = "150">
-                        <a class="navbar-brand" onclick="location.href='rank'">친환경 제품 소개</a>
+                        <a class="navbar-brand" href="/rank">친환경 제품 소개</a>
                     </td>  
                     <td width = "150">
                         <div class="dropdown">
-                            <a class="dropbtn" onclick="location.href='/b_freetalk'">커뮤니티</a>
+	                    	<div class="navbar-band">
+	                            <a class="dropbtn" onclick="location.href='/b_freetalk'">커뮤니티</a>
+	                        </div>
                             <div class="dropdown-content">  
-                                <a id="testtt2" class="navbar-brand" onclick="location.href='/b_prove'">인증게시판</a>
-                                <a class="navbar-brand" onclick="location.href='/b_mission'">미션게시판</a>
-                            </div>
-                        </div>
-                        </li>
+                                <a id="testtt2" onclick="location.href='/b_prove'">인증게시판</a>
+                                <a onclick="location.href='/b_mission'">미션게시판</a>
+	                        </div>
+	                    </div>
                     </td>  
                   </tr>
                 </table>
@@ -55,12 +55,13 @@
                
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto" th:if="${sess_id == null}">
-                        <li class="nav-item"><a class="nav-link" onclick="location.href='login'">로그인</a></li>
-                        <li class="nav-item"><a class="nav-link" onclick="location.href='join'">회원가입</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/login">로그인</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/join">회원가입</a></li>
 
                     </ul>
                     <ul class="navbar-nav ms-auto" th:if="${sess_id != null}">
-                        <li class="nav-item">환영합니다. [[${sess_id}]]님</li>
+                        <li class="nav-item"><span class="nav-link"> [[${sess_id}]]님</span></li>
+                        <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
                     </ul>
                 </div>
             </div>

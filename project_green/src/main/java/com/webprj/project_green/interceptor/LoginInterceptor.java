@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class LoginInterceptor extends HandlerInterceptorAdapter {
-	public List loginEssential = Arrays.asList("/board/new", "/board/list/like/**");
+	public List loginEssential = Arrays.asList("/board/new");
 
 	public List loginInessential = Arrays.asList();
 	@Override

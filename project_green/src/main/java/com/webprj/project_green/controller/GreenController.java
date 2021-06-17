@@ -79,11 +79,11 @@ public class GreenController {
         return "login/join";
     }
     //회원가입 성공
-    // @GetMapping("/joinOk")
-    // public String gojoinOk(){
-
-    //     return "redirect:/login/joinOk";
-    // }
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+    	session.removeAttribute("id");
+    	return "redirect:/index";
+    }
 
 
     //자유게시판 이동

@@ -26,7 +26,9 @@
         <span  th:text="${board.title + '제목'}"></span>
         <span  th:text="${board.content + '내용'}"></span>
         <span  th:text="${board.uploadDate + '게시일'}"></span>
+        <th:block th:if="${sess_id != null}">
         <input type="image" id="recommend-btn" alt="recommend-img" width="30px">
+        </th:block>
         <span  th:text="${board.imageUrl + '이미지'}"></span>
         <span  th:text="${board.category + '카테고리'}"></span>
         <span  th:text="${board.userId + '사용자'}"></span>
@@ -44,6 +46,7 @@
 	</tr>
     <script th:inline="javascript">
     	var check_did_recommend = function(update){
+    		if ([[${sess_id}]] == null) return false;
     		axios
 			.get('/board/list/like?boardnum=' + [[${board.postNum}]] + '&update=' + update)
 			.then(function (response) {
