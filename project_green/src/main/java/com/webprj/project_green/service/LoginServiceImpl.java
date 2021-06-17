@@ -15,6 +15,7 @@ public class LoginServiceImpl implements LoginService {
 	public int idCheck(String userInputId) {
 		// 중복성 검사
 		// 쿼리를 통해서 0 / 1
+		// isDuplicate
 		int isDuplicate = boardDao.idCheck(userInputId);		
 		if (isDuplicate == 1) {
 			// 1 일때,
