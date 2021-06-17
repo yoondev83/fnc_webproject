@@ -3,11 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Insert title here</title>
-   <script type="text/javascript">
-   function goLoginForm() {
-       location.href="login"
-   }
-   </script>
+   
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
@@ -62,7 +58,7 @@
         <script src="/js/scripts.js"></script> 
             
             <table id="table1" style="margin-top: 15%; margin-left: 37%;">
-                <form action="/joinOk" name = "join_form" id="join" method="post">
+                <form action="/login/join" name = "join_form" id="join" method="post">
                 <tr>
                     <td>아이디</td>
                     <td> <input type="text" name="id" id="id" required=true></td>
@@ -95,7 +91,7 @@
                         <input type="button" value="취소" onclick="history.back();">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;
-                        <input type="button" value="회원가입" onclick="goLoginForm();" >
+                        <input type="button" id="join-button" value="회원가입" >
                         
                     </td>
                     
@@ -103,6 +99,6 @@
             </form>    
                 
         </table>
-          
+         <script src="/js/scripts.js" type="text/javascript"></script>
         </body>
         </html>

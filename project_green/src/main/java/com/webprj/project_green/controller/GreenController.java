@@ -27,8 +27,8 @@ public class GreenController {
 	
     //硫붿씤�솕硫�
     @GetMapping("/index")
-    public String welcomeMain(HttpSession session){
-    	session.setAttribute("id", "mosang");
+    public String welcomeMain(Model model, HttpSession session){
+    	model.addAttribute("sess_id", (String) session.getAttribute("id"));
         return "index";
     }
 
@@ -48,16 +48,25 @@ public class GreenController {
     }
 
     //로그인 화면
-	@PostMapping("/login/login")
+	@PostMapping("/login/join")
 	public String login(@ModelAttribute CustomDto customDto) {
 		System.out.println(customDto);
-		boardService.login(customDto);
-		return "redirect:/index";
+		boardService.join(customDto);
+		
+		return "login/joinOk";
 	}
+	//회원가입 성공
+	@GetMapping("/joinOk")
+	public String gojoinOk(){
+		return "/login/joinOk";
+	}
+	
     @GetMapping("/login")
     public String sign() {
     	return "login/login";
     }
+    
+    // 로그인 하기
     @PostMapping("/login/login")
 	public String login(@RequestParam("id") String id, @RequestParam("password") String password, HttpSession session) {
 		return boardService.logins(id, password, session);
@@ -70,12 +79,6 @@ public class GreenController {
         return "login/join";
     }
     
-    //회원가입 성공
-    @GetMapping("/joinOk")
-    public String gojoinOk(){
-
-        return "redirect:/joinOk";
-    }
 
 
     //자유게시판 이동

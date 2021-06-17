@@ -14,6 +14,6 @@ public interface BoardDao {
 	public List<BoardDto> getBoardsData();
 	public BoardDto getBoardData(int boardnum);
 	public void createBoard(BoardDto boardDto);
-	public void login(CustomDto customDto);
+	public void join(CustomDto customDto);
 	public String logins(String id);
 }

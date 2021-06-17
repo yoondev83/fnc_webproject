@@ -26,11 +26,6 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		boardDao.createBoard(boardDto);
 	}
-	@Override
-	public String login(String id, String passm, HttpSession session) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	public BoardDto getBoardData(int boardnum) {
 		// TODO Auto-generated method stub
 		return boardDao.getBoardData(boardnum);
@@ -59,8 +54,8 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 	
-	public void login(CustomDto customDto) {
-		boardDao.login(customDto);
+	public void join(CustomDto customDto) {
+		boardDao.join(customDto);
 		// TODO Auto-generated method stub
 		
 	}
