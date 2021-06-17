@@ -30,7 +30,6 @@
         <span  th:text="${board.imageUrl + '이미지'}"></span>
         <span  th:text="${board.category + '카테고리'}"></span>
         <span  th:text="${board.userId + '사용자'}"></span>
-        <button id="recommend">좋아요</button>
         <div th:if="${#strings.equals(board.userId, sess_id)}">
         	<button id="edit">수정하기</button>
         	<button id="remove">삭제하기</button>
@@ -60,10 +59,9 @@
 
 
 	<tr>
-		<th>좋아요</th>
 		<td><a th:href="${'/board/list/like/' + board.postNum}"
 			onclick="if ( confirm('추천하시겠습니까?') == false) { return false;}">좋아요</a>
-		</td>)
+		</td>
 
 	</tr>
 
