@@ -32,7 +32,6 @@ public class GreenController {
         return "index";
     }
 
-    
 
     //�냼媛쒗솕硫�
     @GetMapping("/intro")
@@ -48,8 +47,8 @@ public class GreenController {
         return "rank/rank";
     }
 
-      //濡쒓렇�씤 �솕硫�
-	@PostMapping("/login/join")
+    //로그인 화면
+	@PostMapping("/login/login")
 	public String login(@ModelAttribute CustomDto customDto) {
 		System.out.println(customDto);
 		boardService.login(customDto);
@@ -70,7 +69,8 @@ public class GreenController {
 
         return "login/join";
     }
-    //�쉶�썝媛��엯 �꽦怨�
+    
+    //회원가입 성공
     @GetMapping("/joinOk")
     public String gojoinOk(){
 
@@ -78,12 +78,12 @@ public class GreenController {
     }
 
 
-
-    @GetMapping("/board/b_freetalk")
-    public void board() {
-    	System.out.println("board page");
-    	
-    }
+    //자유게시판 이동
+	@GetMapping("/b_freetalk")
+	public String letsGoFreeTalk(){
+		
+		return "/board/b_freetalk";
+	}
     
     @GetMapping("/board/new")
     public void new_board() {

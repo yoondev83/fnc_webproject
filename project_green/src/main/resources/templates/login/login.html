@@ -18,7 +18,7 @@
     </head>
     <body>
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="border-bottom-style: solid; border-bottom-width: thin; border-color: bisque;">
             <div class="container px-4 px-lg-5">
                 <table width = "800">
                     <tr id=>
@@ -54,13 +54,16 @@
         </nav>
 </head>
 <body>
+    
+    <table>
         <form action="/login/login" method="post" >
-            <label for="id"> 아이디 : <input type="text" name="id" id="id"></label><br/>
-            <label for="password"> 비밀번호 : <input type="text" name="password" id="pass"></label>
-            <center>
-            <input type="submit" value="로그인">
+            <label for="id"> 아이디 : <input type="text" name="id" id="id" style="margin-top: 180px; margin-left: 15px;"></label><br/>
+            <br>
+            <label for="pass"> 비밀번호 : <input type="text" name="password" id="pass"></label> <br/>
+            <input type="submit" value="로그인" style="margin-left: 60px;">
             <input type="button" value="회원가입" onclick="goLoginForm()" >
-            </center>
         </form>
+    </table>
+    
 </body>
 </html>
