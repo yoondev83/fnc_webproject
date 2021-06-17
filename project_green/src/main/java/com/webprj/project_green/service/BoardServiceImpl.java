@@ -26,19 +26,38 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		boardDao.createBoard(boardDto);
 	}
-	@Override
-	public String login(String id, String passm, HttpSession session) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public void login(CustomDto customDto) {
-		boardDao.login(customDto);
-		// TODO Auto-generated method stub
-		
-	}
 	public BoardDto getBoardData(int boardnum) {
 		// TODO Auto-generated method stub
 		return boardDao.getBoardData(boardnum);
 	}
+	
+	@Override
+	public String logins(String id, String password, HttpSession session) {
+		System.out.println("here!!!!!");
+		String dbPass=boardDao.logins(id);
+		if(dbPass==null) {
+			System.out.println("password null");
+			return "redirect:/login/sign";
+		}
+		else {
+			if(dbPass.equals(password)) {
+				System.out.println("login success");
+				session.setAttribute("id", id);
+				return "redirect:/index";
+			}
+			else {
+				System.out.println("password Æ²¸²");
+				return "redirect:/login/jons";
+			}
+		}
+		
+		
+	}
+	
+	public void join(CustomDto customDto) {
+		boardDao.join(customDto);
+		// TODO Auto-generated method stub
+		
+	}
+
 }
