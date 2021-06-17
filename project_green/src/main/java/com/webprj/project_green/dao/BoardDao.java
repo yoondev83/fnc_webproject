@@ -9,11 +9,12 @@ import org.springframework.stereotype.Repository;
 
 import com.webprj.project_green.dto.BoardDto;
 import com.webprj.project_green.dto.CustomDto;
+import com.webprj.project_green.dto.UploadResultDto;
 
 @Mapper
 @Repository
 public interface BoardDao {
-	public List<BoardDto> getBoardsData();
+	public List<BoardDto> getBoardsData(String category);
 	public BoardDto getBoardData(int boardnum);
 	public void createBoard(BoardDto boardDto);
 	
@@ -28,4 +29,5 @@ public interface BoardDao {
 	public void likeArticle(@Param("id") int boardnum, @Param("loginedMemberId") String loginedMemberId);
 	public void unlikeArticle(@Param("id") int boardnum, @Param("loginedMemberId") String loginedMemberId);
 	public void updateRecommend(@Param("id")int boardnum, @Param("num")int i);
+	public void saveImageUrl(UploadResultDto uploadResultDto);
 }

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.webprj.project_green.dao.BoardDao" >
+
+
+    <select id="getBoardsData" resultType="com.webprj.project_green.dto.BoardDto" >
+        <!--SELECT * FROM PRODUCT-->
+        SELECT postnum as postNum, title, content, uploaddate as uploadDate, recommend, imageurl as imageUrl, category, userid as userId FROM BOARD
+        <!-- aLIAS 를 사용하여, DTO 와 이름을 꼭 맞출 수 있도록 하자. -->
+    </select>
+    <select id="getBoardData"  parameterType="Integer" resultType="com.webprj.project_green.dto.BoardDto" >
+        <!--SELECT * FROM PRODUCT-->
+        SELECT postnum as postNum, title, content, uploaddate as uploadDate, recommend, imageurl as imageUrl, category, userid as userId FROM BOARD
+        WHERE postnum = #{boardnum}
+        <!-- aLIAS 를 사용하여, DTO 와 이름을 꼭 맞출 수 있도록 하자. -->
+    </select>
+    <insert id="createBoard" parameterType="com.webprj.project_green.dto.BoardDto" >
+    	INSERT INTO BOARD ( TITLE, CONTENT, UPLOADDATE, IMAGEURL, CATEGORY, USERID, RECOMMEND)
+		VALUES( #{title}, #{content}, sysdate, #{imageUrl}, #{category}, #{userId}, 0)
+    </insert>
+    <insert id="saveImageUrl" parameterType="com.webprj.project_green.dto.UploadResultDto">
+    	INSERT INTO BOARD (boardnum, imageurl)
+		VALUES(#{imageURL})
+    </insert>
+    
+    <select id="getLikePointByMemberId" resultType="int">
+	    SELECT NVL(SUM(POINT), 0) AS POINT
+		FROM BOARDLIKE
+		WHERE BOARDNUM = #{id} AND USERID = #{loginedMemberId}
+    </select>
+    
+    <insert id ="likeArticle" >
+    INSERT INTO BOARDLIKE (USERID, BOARDNUM, REGDATE, POINT)
+	VALUES(#{loginedMemberId}, #{id}, SYSDATE, 1)
+    </insert>
+    
+    <delete id="unlikeArticle" >
+    DELETE FROM BOARDLIKE
+	WHERE BOARDNUM = #{id} AND USERID = #{loginedMemberId}
+    </delete>
+    
+    <update id="updateRecommend">
+    UPDATE BOARD
+    SET RECOMMEND = RECOMMEND + #{num}
+    WHERE POSTNUM = #{id}
+    </update>
+    <update id="updateBoard" parameterType="com.webprj.project_green.dto.BoardDto">
+    UPDATE BOARD
+    SET TITLE = #{title}, CONTENT=#{content}, CATEGORY=#{category}, IMAGEURL=#{imageUrl}
+    WHERE POSTNUM = #{postNum}
+    </update>
+    <delete id="delete">
+    DELETE FROM BOARD
+    WHERE POSTNUM=#{postNum}
+    </delete>
+   
+</mapper>

@@ -24,16 +24,16 @@
 <body>
 	<h1>Detail Page</h1>
 	<div>
-		<span  th:text="${board.postNum + '번호'}"></span> 
-        <span  th:text="${board.title + '제목'}"></span>
-        <span  th:text="${board.content + '내용'}"></span>
-        <span  th:text="${board.uploadDate + '게시일'}"></span>
+        <div  th:text="${'제목: ' + board.title}"></div>
+        <div  th:text="${'내용: ' + board.content}"></div>
+        <div  th:text="${'게시일: ' + board.uploadDate}"></div>
+        <div th:if="${board.imageUrl != null}">
+        	<img th:src="${'/board/display?fileName=' + board.imageUrl}" alt="이미지" >
+        </div>
+        <div th:text="${'유저: ' + board.userId }"></div>
         <th:block th:if="${sess_id != null}">
         <input type="image" id="recommend-btn" alt="recommend-img" width="30px">
         </th:block>
-        <span  th:text="${board.imageUrl + '이미지'}"></span>
-        <span  th:text="${board.category + '카테고리'}"></span>
-        <span  th:text="${board.userId + '사용자'}"></span>
         <div th:if="${#strings.equals(board.userId, sess_id)}">
 	        <a th:href="@{/updateView(postNum=${board.postNum})}">수정</a>
 	        <a th:href="|/board/delete/${board.postNum}|"><button>삭제</button></a>
@@ -42,12 +42,6 @@
        
     </div>
 
-
-	<tr>
-		<td><a id="recommend">좋아요</a>
-		</td>
-
-	</tr>
     <script th:inline="javascript">
     	var check_did_recommend = function(update){
     		if ([[${sess_id}]] == null) return false;
@@ -90,14 +84,6 @@
     		check_did_recommend(true);
     	}	
     </script>
-  
-	<tr>
-		<th>좋아요</th>
-		<td><a th:href="${'/board/list/like/' + board.postNum}"
-			onclick="if ( confirm('추천하시겠습니까?') == false) { return false;}">좋아요</a>
-		</td>)
-
-	</tr>
 
 </body>
 </html>

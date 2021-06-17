@@ -15,6 +15,8 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/css/styles.css" rel="stylesheet" />
+        <link href="/css/write.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     </head>
     <body>
         <!-- Navigation-->
@@ -53,29 +55,68 @@
                 </div>
             </div>
         </nav>
-
-
-
-</head>
+        
        
-        <span id="absdd">
-            <form action="/board/update" method="post" >
-            	<input type="hidden" name="postNum" th:value="${update.postNum}">
-                <input th:value="${update.title}" type="title" id="content" name="title" required placeholder="recommend" style="width: 1064px; margin-left: 53px; margin-top: 100px;"><br />
-                <select th:value="${update.category}" id="category" name="category" style="margin-left: 53px;">
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="fiat">Fiat</option>
-                    <option value="audi">Audi</option>
-                </select>
-                <br>
-                <textarea th:text="${update.content}" id="content" rows="20" cols="100" name="content" required placeholder= "내용을 입력해주세요" style="margin-left: 53px;"></textarea> <br />
-                <input th:value="${update.title}"  type="file" id="image" name="imageUrl" style="width: 1064px; margin-left: 53px;"> <br />
-                <label for="category">카테고리:</label>
-                <button>제출하기</button>
-            </form>
-
-
+       <div class="container">
+            <div class="row">
+                    <h1>게시글 작성</h1>
+            </div>
+            <form name="createBoard" action="/board/new" method="post" >
+                <div class="row input-container">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="styled-input">
+                            <select id="category" name="category">
+                            	
+                            </select>
+                        </div>
+                    <div class="col-xs-12">
+                        <div class="styled-input wide">
+                            <input th:value="${update.title}" type="text" id="title" name="title" required style="width: 800px;"/>
+                            <label>제목</label> 
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="styled-input wide">
+                            <textarea th:text="${update.content}" id="content" rows="20" cols="100" name="content" required style="width: 800px; height: 500px;"></textarea>
+                            <label>Message</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <input th:value="${update.imageUrl}" type="file" id="uploadFiles" name="uploadFiles" style="width: 800px;">
+                        <input type="hidden" id="imageUrl" name="imageUrl" value="asdf">
+                         <br /><br />
+                    
+                    </div>
+                    <div class="col-xs-12" style="margin-left: 183px;">
+                        <!-- <div class="btn-lrg submit-btn">Send Message</div> -->
+                        <button type="button" class="uploadBtn btn-lrg submit-btn">제출하기</button>
+                    </div>
+                   
+                </div>
+            </div>
+        </form>
+	</div>
+	<script src="/js/uploadImg.js"></script>
+	<script th:inline"javascript">
+		var options = ""
+		console.log(options)
+		if ([[${#strings.equals(update.category, "free-board")}]]){
+		    options = '<option value="free-board" selected>자유게시판</option>'
+	    	options += '<option value="show-board">인증게시판</option>'
+    		options += '<option value="mission-board">미션게시판</option>'
+		}else if([[${#strings.equals(update.category, "show-board")}]]){
+			options = '<option value="free-board" >자유게시판</option>'
+	    	options += '<option value="show-board" selected>인증게시판</option>'
+    		options += '<option value="mission-board">미션게시판</option>'
+		}else if([[${#strings.equals(update.category, "mission-board")}]]){
+			options = '<option value="free-board" >자유게시판</option>'
+	    	options += '<option value="show-board" >인증게시판</option>'
+    		options += '<option value="mission-board" selected>미션게시판</option>'
+		}
+		    
+		document.querySelector("#category").innerHTML = options;
+	</script>
 </div>
 </body>
 </html>

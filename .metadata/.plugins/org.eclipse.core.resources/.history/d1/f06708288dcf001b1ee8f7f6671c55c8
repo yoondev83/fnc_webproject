@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<input id="uploadFiles" name="uploadFiles" type="file" multiple>
+	<button class="uploadBtn">Upload</button>
+	<div class="uploadResult"></div>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script>
+		function showUploadedImages(arr){
+			console.log(arr);
+			
+			var divArea = document.querySelector(".uploadResult");
+			
+			for(var i = 0; i<arr.length; i++){
+				divArea.append("<img src='/board/display?fileName=" + arr[i].imageURL + "'/>")
+			}
+		}
+		document.querySelector(".uploadBtn").onclick = function(){
+			var formData = new FormData();
+			var files = document.querySelector("#uploadFiles").files;
+			console.log(files);
+			for(var i = 0; i<files.length; i++){
+				console.log(files[i]);
+				formData.append("uploadFiles", files[i]);
+			}
+			
+			//실제 업로드 부분
+			axios({
+		      method: "post",
+		      contentType: false,
+		      url: "/board/uploadAxios",
+		      data: formData,
+		    })
+			.then(function(response){
+				showUploadedImages(response.data);
+				//console.log(response)
+			})
+			.catch(function(){
+				alert("실패");
+			})
+		};
+	</script>
+</body>
+</html>

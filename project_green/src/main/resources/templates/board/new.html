@@ -16,6 +16,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/css/styles.css" rel="stylesheet" />
         <link href="/css/write.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     </head>
     <body>
 
@@ -66,15 +67,14 @@
             <div class="row">
                     <h1>게시글 작성</h1>
             </div>
-            <form action="/board/new" method="post" >
+            <form name="createBoard" action="/board/new" method="post" >
                 <div class="row input-container">
                     <div class="col-md-6 col-sm-12">
                         <div class="styled-input">
                             <select id="category" name="category">
-                                <option value="volvo">Volvo</option>
-                                <option value="saab">Saab</option>
-                                <option value="fiat">Fiat</option>
-                                <option value="audi">Audi</option>
+                                <option value="free-board">자유게시판</option>
+                                <option value="show-board">인증게시판</option>
+                                <option value="mission-board">미션게시판</option>
                             </select>
                         </div>
                     <div class="col-xs-12">
@@ -87,18 +87,24 @@
                     <div class="col-xs-12">
                         <div class="styled-input wide">
                             <textarea id="content" rows="20" cols="100" name="content" required style="width: 800px; height: 500px;"></textarea>
-                            <input type="file" id="image" name="imageUrl" style="width: 800px;"> <br />
                             <label>Message</label>
                         </div>
                     </div>
+                    <div class="col-xs-12">
+                        <input type="file" id="uploadFiles" name="uploadFiles" style="width: 800px;">
+                        <input type="hidden" id="imageUrl" name="imageUrl">
+                         <br /><br />
+                    
+                    </div>
                     <div class="col-xs-12" style="margin-left: 183px;">
                         <!-- <div class="btn-lrg submit-btn">Send Message</div> -->
-                        <button class="btn-lrg submit-btn">제출하기</button>
+                        <button type="button" class="uploadBtn btn-lrg submit-btn">제출하기</button>
                     </div>
                    
                 </div>
             </div>
         </form>
-</div>
+	</div>
+	<script src="/js/uploadImg.js"></script>
 </body>
 </html>

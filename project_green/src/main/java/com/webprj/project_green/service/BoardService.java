@@ -6,10 +6,11 @@ import javax.servlet.http.HttpSession;
 
 import com.webprj.project_green.dto.BoardDto;
 import com.webprj.project_green.dto.CustomDto;
+import com.webprj.project_green.dto.UploadResultDto;
 
 
 public interface BoardService {
-	public List<BoardDto> getBoardsData();
+	public List<BoardDto> getBoardsData(String string);
 	public BoardDto getBoardData(int boardnum);
 	public void createBoard(BoardDto boardDto);
 	
@@ -19,5 +20,6 @@ public interface BoardService {
 	public void join(CustomDto customDto);
 	String logins(String id, String passm, HttpSession session);
 //	public int idCheck(int idcheck);
+	public void saveImageUrl(UploadResultDto uploadResultDto);
 	
 }
