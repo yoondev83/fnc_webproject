@@ -1,0 +1,35 @@
+package com.webprj.project_green.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+public class RankController {
+	// rank page
+    @GetMapping("/rank")
+    public String goToRank(){
+        
+        return "rank/rank";
+    }
+    
+    // rank map page
+    @GetMapping("/rank_map")
+    public String goToRankMap(){
+        
+    	return "rank/rank_map";
+    }
+    
+    // like page
+    @GetMapping("/like.rank")
+    public String goToRankLike(){
+        
+    	return "rank/like";
+    }
+    
+    @GetMapping("/like.rank/like")
+    public String likeProduct(@RequestParam String productNum) {
+    	System.out.println(productNum);
+    	return "";
+    }
+}

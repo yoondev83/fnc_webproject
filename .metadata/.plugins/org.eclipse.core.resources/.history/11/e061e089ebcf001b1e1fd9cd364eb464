@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Insert title here</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Landing Page - Start Bootstrap Theme</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="border-bottom-style: solid; border-bottom-width: thin; border-color: bisque;">
+            <div class="container px-4 px-lg-5">
+                <table width = "800">
+                    <tr id=>
+                        <td width = "150">
+                            <!-- <a class="link-1" href="#page-top" onclick="location.href='index'">메인메뉴</a> -->
+                            <a class="navbar-brand"  onclick="location.href='../index'">메인메뉴</a>
+                        </td>
+                        <td width = "120">
+                            <a class="navbar-brand" onclick="location.href='../intro'">소개</a>  
+                      </td>  
+                      <td width = "150">
+                          <a class="navbar-brand" onclick="location.href='../rank'">친환경 제품 소개</a>
+                      </td>  
+                      <td width = "150">
+                        <div class="dropdown">
+                            <a class="dropbtn" onclick="location.href='/b_freetalk'">커뮤니티</a>
+                            <div class="dropdown-content">  
+                                <a class="navbar-brand" onclick="location.href='/b_freetalk'">자유게시판</a>
+                                <a id="testtt2" class="navbar-brand" onclick="location.href='/b_prove'">인증게시판</a>
+                                <a class="navbar-brand" onclick="location.href='/b_mission'">미션게시판</a>
+                            </div>
+                        </div>
+                        </li>
+                    </td>    
+                    </tr>
+                  </table>
+
+                <button class="navbar-toggler navbar-toggler-right" id="buttoncar" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+               
+               
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" onclick="location.href='login'">로그인</a></li>
+                        <li class="nav-item"><a class="nav-link" onclick="location.href='join'">회원가입</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+</head>
+<body>
+    <section>
+        <div id="tablebodylol" style="margin-top: 100px; display: flex; justify-content: center; align-items: center; flex-direction: row; margin-left:10;">
+			 
+        </div>
+        
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script th:inline="javascript">
+		var products = []
+		axios
+		.post("/like.rank")
+		.then(function (response) {
+			products = response.data
+			console.log(products)
+			var productsHtml = "";
+			for (var i = 0; i < products.length; i++){
+				productsHtml += '<div class="card" style="width: 18rem;">';
+				productsHtml += '  <img src="' + products[i].imageUrl + '" class="card-img-top" alt="' + products[i].name + '">';
+				productsHtml += ' <div class="card-body">';
+				productsHtml += '  <h5 class="card-title">제품 이름:' + products[i].name + ' </h5>';
+				productsHtml += '    <p class="card-text" >좋아요 수 : ' + products[i].recommend + '</p>';
+				productsHtml += '   <input src="/img/like/like.png" type="image" class="recommend-btn" id="recommend-btn-'+ products[i].productNum +'" alt="recommend-img" width="30px">';
+				productsHtml += " </div> </div>";
+			}
+            document.getElementById('tablebodylol').innerHTML = productsHtml;
+		})
+		.catch(function () {
+		  console.log("실패");
+		  alert("실패")
+		});
+	
+	</script>
+	<script th:inline="javascript">
+		window.onload = function(){
+	    	var check_did_recommend = function(productNum){
+	    		if ([[${sess_id}]] == null) return false;
+	    		axios
+				.get('/like.rank/like?productNum=' + productNum)
+				.then(function (response) {
+					// 통신결과 : 누른 적이 있다.
+					// 좋아요 수 - 1
+					var res = response.data
+					console.log(res)
+					var goodBtn = document.querySelector("#recommend-btn-" + productNum);
+					if(res === "LIKE"){
+						console.log("좋아요 함");
+						// 좋아요 이미지로 변경
+						goodBtn.setAttribute("src", "/img/like/like.png");
+					}else if(res === "UNLIKE"){
+						console.log("좋아요 취소 함");
+						// 좋아요 안함 이미지로 변경
+						goodBtn.setAttribute("src", "/img/like/unlike.png");
+					}
+				})
+				.catch(function () {
+					alert("실패");
+				}); 
+	    	}
+	    	
+	    	var btns = document.getElementsByClassName("recommend-btn");
+	    	console.log(btns);
+	    	for (var i = 0 ; i< btns.length; i++){
+	    		console.log(btns[i])
+		    	btns[i].onclick = function(){
+		    	// 통신 : 현재 boardNum, 현재 로그인한 아이디(세션 아이디) -> 좋아요를 눌렀는지를 판단한다.
+		    	// 통신 url 요청 지정
+		    		var productNum = this["id"];
+		    		console.log(this);
+		    		console.log("id: " + id);
+		    		check_did_recommend( productNum);
+		    	}
+	    	}
+		}
+    </script>
+</body>
+</html>

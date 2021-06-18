@@ -130,8 +130,9 @@
             <div class="row">
                     <h1>게시글 작성</h1>
             </div>
-            <form name="createBoard" action="/board/new" method="post" >
+            <form name="createBoard" action="/board/update" method="post" >
                 <div class="row input-container">
+                	<input type="hidden" name="postNum" th:value="${update.postNum}">
                     <div class="col-md-6 col-sm-12">
                         <div class="styled-input">
                             <select id="category" name="category">

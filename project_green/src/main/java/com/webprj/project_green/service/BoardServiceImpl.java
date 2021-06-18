@@ -50,17 +50,17 @@ public class BoardServiceImpl implements BoardService {
 		String dbPass=boardDao.logins(id);
 		if(dbPass==null) {
 			System.out.println("password null");
-			return "redirect:/login/sign";
+			return "NOTEXIST";
 		}
 		else {
 			if(dbPass.equals(password)) {
 				System.out.println("login success");
 				session.setAttribute("id", id);
-				return "redirect:/index";
+				return "SUCCESS";
 			}
 			else {
 				System.out.println("password Æ²¸²");
-				return "redirect:/login/jons";
+				return "INCORRECT_PW";
 			}
 		}
 		
