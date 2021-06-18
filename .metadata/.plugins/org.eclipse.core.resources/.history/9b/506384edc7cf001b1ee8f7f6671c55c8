@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8" />
-    <title>Insert title here</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
@@ -15,6 +14,7 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/css/styles.css" rel="stylesheet" />
+        
     </head>
     <body>
         <!-- Navigation-->
@@ -27,7 +27,7 @@
                             <a class="navbar-brand"  onclick="location.href='../index'">메인메뉴</a>
                         </td>
                         <td width = "120">
-                            <a class="navbar-brand" onclick="location.href='../intro'">소개</a>
+                            <a class="navbar-brand"onclick="location.href='../intro'">소개</a>  
                       </td>  
                       <td width = "150">
                           <a class="navbar-brand" onclick="location.href='../rank'">친환경 제품 소개</a>
@@ -42,7 +42,7 @@
                             </div>
                         </div>
                         </li>
-                    </td>    
+                    </td>   
                     </tr>
                   </table>
 
@@ -61,70 +61,27 @@
                 </div>
             </div>
         </nav>
-
-
-<body>
-
-<section>
-        <div style="margin-top: 100px;">
-            
-            <h3>자유게시판</h3>
-            <table class="table" style="text-align: center; font-family: sans-serif;">
-                <thead>
-                    <td>번호</td>
-                    <td>제목</td>
-                    <td>내용</td>
-                    <td>게시일</td>
-                    <td>좋아요</td>
-                    <td>카테고리</td>
-                    <td>사용자</td>
-                </thead>
-                <tbody id="tablebodylol">
-
-                </tbody>
-           
-            </table>
-
-            <a href="/board/new?redirectUrl=/b_prove" style="float: right; margin-right: 40px;">
-                <img src="/assets/write.png" style="width: 60px;">
-            </a>
-            
-        </div>
-        
-    </section>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script th:inline="javascript">
-	window.onload = function(){
-		var boards = []
-		axios
-		.post("/board/b_prove")
-		.then(function (response) {
-			boards = response.data
-			console.log(boards)
-			var boardsHtml = "";
-            var tableNum_row = 0;
-			for (var i = 0; i < boards.length; i++){
-				//boarsHtml += "<a href=/board/detail/" + boards[i].postNum + ">";
-				boardsHtml += "<tr>";
-				boardsHtml +=  "<td>" + boards[i].postNum + "</td>";
-				boardsHtml +=  "<td>" + "<a href=/board/detail/" + boards[i].postNum + ">" + boards[i].title + "</a></td>";
-				boardsHtml +=  "<td>" + boards[i].content + "</td>";
-				boardsHtml +=  "<td>" + boards[i].uploadDate + "</td>";
-				boardsHtml +=  "<td>" + boards[i].recommend + "</td>";
-				boardsHtml +=  "<td>" + boards[i].category + "</td>";
-				boardsHtml +=  "<td>" + boards[i].userId+ "</td>";
-				boardsHtml +=  "</tr>";
-					
-			}
-			
-            document.getElementById('tablebodylol').innerHTML = boardsHtml;
-		})
-		.catch(function () {
-		  console.log("실패");
-		  alert("실패")
-		});
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aa9f837b39bdaa1c4362ef1cfe4c4f2f"></script>
+    <div id="map" style="width:500px;height:400px; "></div>
+    <script>
+	    var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+	    var options = { //지도를 생성할 때 필요한 기본 옵션
+	    	center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+	    	level: 3 //지도의 레벨(확대, 축소 정도)
+	    };
 	
-	}
-</script>
+	    var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+	    
+	 // 마커가 표시될 위치입니다 
+	    var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
+
+	    // 마커를 생성합니다
+	    var marker = new kakao.maps.Marker({
+	        position: markerPosition
+	    });
+
+	    // 마커가 지도 위에 표시되도록 설정합니다
+	    marker.setMap(map);
+    </script>
 </body>
 </html>

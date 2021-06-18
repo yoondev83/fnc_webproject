@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
-    <meta charset="utf-8" />
+	<meta charset="utf-8" />
     <title>Insert title here</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -15,9 +15,11 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/css/styles.css" rel="stylesheet" />
+        <link href="/css/write.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     </head>
     <body>
-        <!-- Navigation-->
+
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="border-bottom-style: solid; border-bottom-width: thin; border-color: bisque;">
             <div class="container px-4 px-lg-5">
                 <table width = "800">
@@ -27,22 +29,21 @@
                             <a class="navbar-brand"  onclick="location.href='../index'">메인메뉴</a>
                         </td>
                         <td width = "120">
-                            <a class="navbar-brand" onclick="location.href='../intro'">소개</a>
-                      </td>  
+                            <a class="navbar-brand"  onclick="location.href='../intro'">소개</a>                        </td>  
                       <td width = "150">
                           <a class="navbar-brand" onclick="location.href='../rank'">친환경 제품 소개</a>
                       </td>  
                       <td width = "150">
                         <div class="dropdown">
                             <a class="dropbtn" onclick="location.href='/b_freetalk'">커뮤니티</a>
-                            <div class="dropdown-content">  
+                            <div class="dropdown-content"> 
                                 <a class="navbar-brand" onclick="location.href='/b_freetalk'">자유게시판</a>
                                 <a id="testtt2" class="navbar-brand" onclick="location.href='/b_prove'">인증게시판</a>
                                 <a class="navbar-brand" onclick="location.href='/b_mission'">미션게시판</a>
                             </div>
                         </div>
                         </li>
-                    </td>    
+                    </td>   
                     </tr>
                   </table>
 
@@ -62,69 +63,48 @@
             </div>
         </nav>
 
-
-<body>
-
-<section>
-        <div style="margin-top: 100px;">
-            
-            <h3>자유게시판</h3>
-            <table class="table" style="text-align: center; font-family: sans-serif;">
-                <thead>
-                    <td>번호</td>
-                    <td>제목</td>
-                    <td>내용</td>
-                    <td>게시일</td>
-                    <td>좋아요</td>
-                    <td>카테고리</td>
-                    <td>사용자</td>
-                </thead>
-                <tbody id="tablebodylol">
-
-                </tbody>
-           
-            </table>
-
-            <a href="/board/new?redirectUrl=/b_prove" style="float: right; margin-right: 40px;">
-                <img src="/assets/write.png" style="width: 60px;">
-            </a>
-            
-        </div>
-        
-    </section>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script th:inline="javascript">
-	window.onload = function(){
-		var boards = []
-		axios
-		.post("/board/b_prove")
-		.then(function (response) {
-			boards = response.data
-			console.log(boards)
-			var boardsHtml = "";
-            var tableNum_row = 0;
-			for (var i = 0; i < boards.length; i++){
-				//boarsHtml += "<a href=/board/detail/" + boards[i].postNum + ">";
-				boardsHtml += "<tr>";
-				boardsHtml +=  "<td>" + boards[i].postNum + "</td>";
-				boardsHtml +=  "<td>" + "<a href=/board/detail/" + boards[i].postNum + ">" + boards[i].title + "</a></td>";
-				boardsHtml +=  "<td>" + boards[i].content + "</td>";
-				boardsHtml +=  "<td>" + boards[i].uploadDate + "</td>";
-				boardsHtml +=  "<td>" + boards[i].recommend + "</td>";
-				boardsHtml +=  "<td>" + boards[i].category + "</td>";
-				boardsHtml +=  "<td>" + boards[i].userId+ "</td>";
-				boardsHtml +=  "</tr>";
-					
-			}
-			
-            document.getElementById('tablebodylol').innerHTML = boardsHtml;
-		})
-		.catch(function () {
-		  console.log("실패");
-		  alert("실패")
-		});
-	
-	}
-</script>
+        <div class="container">
+            <div class="row">
+                    <h1>게시글 작성</h1>
+            </div>
+            <form name="createBoard" action="/board/new" method="post" >
+                <div class="row input-container">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="styled-input">
+                            <select id="category" name="category">
+                                <option value="free-board">자유게시판</option>
+                                <option value="show-board">인증게시판</option>
+                                <option value="mission-board">미션게시판</option>
+                            </select>
+                        </div>
+                    <div class="col-xs-12">
+                        <div class="styled-input wide">
+                            <input type="text" id="title" name="title" required style="width: 800px;"/>
+                            <label>제목</label> 
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="styled-input wide">
+                            <textarea id="content" rows="20" cols="100" name="content" required style="width: 800px; height: 500px;"></textarea>
+                            <label>Message</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <input type="file" id="uploadFiles" name="uploadFiles" style="width: 800px;">
+                        <input type="hidden" id="imageUrl" name="imageUrl">
+                         <br /><br />
+                    
+                    </div>
+                    <div class="col-xs-12" style="margin-left: 183px;">
+                        <!-- <div class="btn-lrg submit-btn">Send Message</div> -->
+                        <button type="button" class="uploadBtn btn-lrg submit-btn">제출하기</button>
+                    </div>
+                   
+                </div>
+            </div>
+        </form>
+	</div>
+	<script src="/js/uploadImg.js"></script>
 </body>
 </html>

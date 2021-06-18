@@ -85,7 +85,7 @@
            
             </table>
 
-            <a href="/board/new?redirectUrl=/b_prove" style="float: right; margin-right: 40px;">
+            <a th:href="${'/board/new?redirectUrl=' + '/b_prove'}" style="float: right; margin-right: 40px;">
                 <img src="/assets/write.png" style="width: 60px;">
             </a>
             

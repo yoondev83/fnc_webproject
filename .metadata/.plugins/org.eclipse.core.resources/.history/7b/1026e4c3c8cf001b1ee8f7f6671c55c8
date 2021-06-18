@@ -131,17 +131,16 @@ public class GreenController {
 
     
     @GetMapping("/board/new")
-    public void new_board(@RequestParam String redirectUrl, Model model) {
+    public void new_board() {
     	System.out.println("Create board Page");
-    	model.addAttribute("redirectUrl", redirectUrl);
     }
     
     @PostMapping("/board/new")
-	public String createBoard(@RequestParam String redirectUrl, @ModelAttribute BoardDto boardDto, HttpSession session) {
+	public String createBoard(@ModelAttribute BoardDto boardDto, HttpSession session) {
 		System.out.println(boardDto);
 		boardDto.setUserId((String) session.getAttribute("id"));
 		boardService.createBoard(boardDto);
-		return "redirect:" + redirectUrl;
+		return "redirect:/b_freetalk";
 	}
 //    @GetMapping("/login")
 //    public void login(Model model, HttpSession session) {

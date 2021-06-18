@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8" />
+	<meta charset="utf-8" />
     <title>Insert title here</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -15,6 +15,7 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/css/styles.css" rel="stylesheet" />
+        
     </head>
     <body>
         <!-- Navigation-->
@@ -42,7 +43,7 @@
                             </div>
                         </div>
                         </li>
-                    </td>    
+                    </td>  
                     </tr>
                   </table>
 
@@ -61,43 +62,13 @@
                 </div>
             </div>
         </nav>
-
-
-<body>
-
-<section>
-        <div style="margin-top: 100px;">
-            
-            <h3>자유게시판</h3>
-            <table class="table" style="text-align: center; font-family: sans-serif;">
-                <thead>
-                    <td>번호</td>
-                    <td>제목</td>
-                    <td>내용</td>
-                    <td>게시일</td>
-                    <td>좋아요</td>
-                    <td>카테고리</td>
-                    <td>사용자</td>
-                </thead>
-                <tbody id="tablebodylol">
-
-                </tbody>
-           
-            </table>
-
-            <a href="/board/new?redirectUrl=/b_prove" style="float: right; margin-right: 40px;">
-                <img src="/assets/write.png" style="width: 60px;">
-            </a>
-            
-        </div>
-        
-    </section>
+		
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script th:inline="javascript">
 	window.onload = function(){
 		var boards = []
 		axios
-		.post("/board/b_prove")
+		.post("/board/b_freetalk")
 		.then(function (response) {
 			boards = response.data
 			console.log(boards)
@@ -126,5 +97,35 @@
 	
 	}
 </script>
+<body>
+    
+    <section>
+        <div style="margin-top: 100px;">
+            
+            <h3>자유게시판</h3>
+            <table class="table" style="text-align: center; font-family: sans-serif;">
+                <thead>
+                    <td>번호</td>
+                    <td>제목</td>
+                    <td>내용</td>
+                    <td>게시일</td>
+                    <td>좋아요</td>
+                    <td>카테고리</td>
+                    <td>사용자</td>
+                </thead>
+                <tbody id="tablebodylol">
+
+                </tbody>
+           
+            </table>
+
+            <a href="/board/new" style="float: right; margin-right: 40px;">
+                <img src="/assets/write.png" style="width: 60px;">
+            </a>
+            
+        </div>
+        
+    </section>
+
 </body>
 </html>

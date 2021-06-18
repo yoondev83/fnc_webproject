@@ -137,7 +137,7 @@ public class GreenController {
     }
     
     @PostMapping("/board/new")
-	public String createBoard(@RequestParam String redirectUrl, @ModelAttribute BoardDto boardDto, HttpSession session) {
+	public String createBoard(@ModelAttribute BoardDto boardDto, HttpSession session) {
 		System.out.println(boardDto);
 		boardDto.setUserId((String) session.getAttribute("id"));
 		boardService.createBoard(boardDto);
