@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+	<center>
+		<h1 class="con">게시글 상세</h1>
+		<section class="article-detail table-common con row">
+			<div class="article-writer cell">
+				<div th:if="${board.imageUrl != null}">
+				<img th:src="${'/board/display?fileName=' + board.imageUrl}"alt="이미지">
+			</div>
+			</div>
+			<table class="cell" border="1">
+				<colgroup>
+					<col width="100px">
+				</colgroup>
+				<tbody>
+					<tr class="article-title">
+						<th>제목</th>
+						<td colspan="3">
+							<div th:text="${board.title}"></div>
+						</td>
+					</tr>
+					<tr class="article-title">
+						<th>작성자아이디</th>
+						<td colspan="3">
+							<div th:text="${board.userId }"></div>
+						</td>
+					</tr>
+					<tr class="article-info">
+						<th>작성일자</th>
+						<td>
+							<div th:text="${board.uploadDate}"></div>
+						</td>
+						<th>좋아요 수</th>
+						<td><div th:text="${board.recommend}"></div></td>
+					</tr>
+					<tr class="article-body">
+						<td colspan="4">
+							<div th:text="${board.content}"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+		<th:block th:if="${sess_id != null}">
+			<input type="image" id="recommend-btn" alt="recommend-img"
+				width="30px">
+		</th:block>
+		<div th:if="${#strings.equals(board.userId, sess_id)}">
+			<a th:href="@{/updateView(postNum=${board.postNum})}"><button>수정</button></a>
+			<a th:href="|/board/delete/${board.postNum}|"><button>삭제</button></a>
+		</div>
+
+		<a href="/b_freetalk"><button>목록으로</button></a>
+
+
+		</div>
+	</center>
+	<script th:inline="javascript">
+    	var check_did_recommend = function(update){
+    		if ([[${sess_id}]] == null) return false;
+    		axios
+			.get('/board/list/like?boardnum=' + [[${board.postNum}]] + '&update=' + update)
+			.then(function (response) {
+				// 통신결과 : 누른 적이 있다.
+				// 좋아요 수 - 1
+				var res = response.data
+				var goodBtn = document.querySelector("#recommend-btn");
+				console.log(res.state);
+				if(res.state === "doLike"){
+					console.log("좋아요 함");
+					// 좋아요 이미지로 변경
+					goodBtn.setAttribute("src", "/img/like/like.png");
+				}else if(res.state === "doUnlike"){
+					console.log("좋아요 취소 함");
+					// 좋아요 안함 이미지로 변경
+					goodBtn.setAttribute("src", "/img/like/unlike.png");
+				}else if(res.state === "justCheck"){
+					console.log("값만 가져옴");
+					// 좋아요 했는지 판단해서 값 변경
+					if (res.didLike==0){
+						goodBtn.setAttribute("src", "/img/like/unlike.png");
+					}else{
+						goodBtn.setAttribute("src", "/img/like/like.png");
+					}	
+				}
+			})
+			.catch(function () {
+				alert("실패");
+			}); 
+    	}
+    	window.onload = function(){
+    		check_did_recommend(false);
+    	}
+    	document.querySelector("#recommend-btn").onclick = function(e){
+    	// 통신 : 현재 boardNum, 현재 로그인한 아이디(세션 아이디) -> 좋아요를 눌렀는지를 판단한다.
+    	// 통신 url 요청 지정
+    		check_did_recommend(true);
+    		location.reload();
+    		location.reload();
+    	}	
+    </script>
+
+</body>
+</html>

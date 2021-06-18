@@ -9,6 +9,7 @@
         <!--SELECT * FROM PRODUCT-->
         SELECT postnum as postNum, title, content, uploaddate as uploadDate, recommend, imageurl as imageUrl, category, userid as userId FROM BOARD
         WHERE CATEGORY=#{category}
+        ORDER BY POSTNUM DESC
         <!-- aLIAS 를 사용하여, DTO 와 이름을 꼭 맞출 수 있도록 하자. -->
     </select>
     <select id="getBoardData"  parameterType="Integer" resultType="com.webprj.project_green.dto.BoardDto" >

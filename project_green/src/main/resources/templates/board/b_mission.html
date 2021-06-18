@@ -67,7 +67,8 @@
                         </div>
                     </div>
                     <div class="box">
-                        <a href="#">좋아요!</a>
+                        <a href="/like.rank">좋아요!</a>
+                        <a href="/rank_map">구매처!</a>
                     </div>
                 </div>
             </div>
@@ -147,8 +148,7 @@
                     <td>내용</td>
                     <td>게시일</td>
                     <td>좋아요</td>
-                    <td>카테고리</td>
-                    <td>사용자</td>
+                    <td>ID</td>
                 </thead>
                 <tbody id="tablebodylol">
 
@@ -176,14 +176,12 @@
 			var boardsHtml = "";
             var tableNum_row = 0;
 			for (var i = 0; i < boards.length; i++){
-				//boarsHtml += "<a href=/board/detail/" + boards[i].postNum + ">";
-				boardsHtml += "<tr>";
+				boardsHtml +=  '<tr  onClick="location.href=\'/board/detail/'+ boards[i].postNum + '\'" style="cursor:pointer;">';
 				boardsHtml +=  "<td>" + boards[i].postNum + "</td>";
 				boardsHtml +=  "<td>" + "<a href=/board/detail/" + boards[i].postNum + ">" + boards[i].title + "</a></td>";
 				boardsHtml +=  "<td>" + boards[i].content + "</td>";
 				boardsHtml +=  "<td>" + boards[i].uploadDate + "</td>";
 				boardsHtml +=  "<td>" + boards[i].recommend + "</td>";
-				boardsHtml +=  "<td>" + boards[i].category + "</td>";
 				boardsHtml +=  "<td>" + boards[i].userId+ "</td>";
 				boardsHtml +=  "</tr>";
 					

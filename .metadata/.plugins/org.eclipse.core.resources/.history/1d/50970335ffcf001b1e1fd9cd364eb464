@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" />
+    <title>프로젝트 그린</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Landing Page - Start Bootstrap Theme</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/css/styles.css" rel="stylesheet" />
+        <link href="/css/menu.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav id="menu" style="position: relative;">
+            <div class="menu-item">
+                <div class="menu-text">
+                    <a href="index">메인</a>
+                </div>
+                <div class="sub-menu double">
+                    <div class="icon-box gb a" style="margin-left: 130px;">
+                        <div class="icon"><i class="far fa-question-circle"></i></div>
+                        <div class="text" >
+                            <div class="title"><a class="navbar-brand"  onclick="location.href='../index'">메인</a> <i class="far fa-arrow-right"></i></div>
+                            <div class="sub-text">저희는 환경보호를 위한 친환경 제품 사용을 장려하기 위해 만들었습니다!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item highlight">
+                <div class="menu-text">
+                    <a class="navbar-brand"  onclick="location.href='../intro'">소개</a>
+                </div>
+                <div class="sub-menu double">
+                  
+                    <div class="icon-box gb c">
+                        <div class="icon"><i class="far fa-school"></i></div>
+                        <div class="text">
+                            <div class="title">소개 <i class="far fa-arrow-right"></i></div>
+                            <div class="sub-text">왜 만들었을까요?</div>
+                        </div>
+                    </div>
+                    <div class="sub-menu-holder"></div>
+                </div>
+            </div>
+            <div class="menu-item highlight">
+                <div class="menu-text">
+                    <a class="navbar-brand" onclick="location.href='../rank'">랭킹</a>
+                </div>
+                <div class="sub-menu triple">
+                    <div class="top-container gb c icon-box">
+                        <div class="icon big"><i class="far fa-book"></i></div>
+                        <div class="text">
+                            <div class="title"><a class="navbar-brand" onclick="location.href='../rank'">제품 소개</a></div>
+                            <div class="sub-text">투표를 통해 가장 많이 사랑받은 제품을 소개해드리겠습니다!</div>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <a href="/like.rank">좋아요!</a>
+                        <a href="/rank_map">구매처!</a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-text">
+                    <a class="dropbtn" onclick="location.href='/b_freetalk'">게시판</a>
+                </div>
+                <div class="sub-menu">
+                    <div class="icon-box">
+                        <div class="icon"><i class="far fa-satellite"></i></div>
+                        <div class="text">
+                            <div class="title"><a class="navbar-brand" onclick="location.href='/b_freetalk'">자유게시판</a> <i class="far fa-arrow-right"></i></div>
+                            <div class="sub-text">아무 주제나 환영합니다!</div>
+                        </div>
+                    </div>
+                    <div class="icon-box">
+                        <div class="icon"><i class="fab fa-twitter-square"></i></div>
+                        <div class="text">
+                            <div class="title"><a id="testtt2" class="navbar-brand" onclick="location.href='/b_prove'">인증게시판</a> <i class="far fa-arrow-right"></i></div>
+                            <div class="sub-text">여러분이 사용하시는 친환경 제품을 보여주세요.</div>
+                        </div>
+                    </div>
+                    <div class="icon-box">
+                        <div class="icon"><i class="fab fa-twitch"></i></div>
+                        <div class="text">
+                            <div class="title"><a class="navbar-brand" onclick="location.href='/b_mission'">미션게시판</a> <i class="far fa-arrow-right"></i></div>
+                            <div class="sub-text">여러분께 미션을 드리죠.</div>
+                        </div>
+                    </div>
+                    <div class="sub-menu-holder"></div>
+                </div>
+            </div>
+            
+            <div id="sub-menu-container">
+                <div id="sub-menu-holder">
+                    <div id="sub-menu-bottom">
+                        
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+            <div id="info-box">
+                <div th:if="${sess_id == null}">
+                    <ul>
+                        <li><a class="nav-link" onclick="location.href='login'">로그인</a></li>
+                        <li><a class="nav-link" onclick="location.href='join'">회원가입</a></li>
+                    </ul>
+                </div>
+                <div th:unless="${sess_id == null}">
+                    <ul>
+                        <li id="message1" th:text="${'환영합니다! ' + sess_id + '님'}" style="float: right; font-size: 1em; font-family: 'Roboto', sans-serif; font-weight: 900;"></li><br/>
+                        <a href="/logout" style="float: right;">로그아웃</a>
+                    </ul>
+                </div>
+               
+            </div>
+		
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script th:inline="javascript">
+	window.onload = function(){
+		var boards = []
+		axios
+		.post("/board/b_freetalk")
+		.then(function (response) {
+			boards = response.data
+			console.log(boards)
+			var boardsHtml = "";
+            var tableNum_row = 0;
+			for (var i = 0; i < boards.length; i++){
+				//boarsHtml += "<a href=/board/detail/" + boards[i].postNum + ">";
+				boardsHtml += '<tr  onClick="location.href=\'/board/detail/'+ boards[i].postNum + '\'" style="cursor:pointer;">';
+				boardsHtml +=  "<td>" + boards[i].postNum + "</td>";
+				boardsHtml +=  "<td>" + boards[i].title + "</td>";
+				boardsHtml +=  "<td>" + boards[i].content + "</td>";
+				boardsHtml +=  "<td>" + boards[i].uploadDate + "</td>";
+				boardsHtml +=  "<td>" + boards[i].recommend + "</td>";
+				boardsHtml +=  "<td>" + boards[i].userId+ "</td>";
+				boardsHtml +=  "</tr>";
+					
+			}
+			
+            document.getElementById('tablebodylol').innerHTML = boardsHtml;
+		})
+		.catch(function () {
+		  console.log("실패");
+		  alert("실패")
+		});
+	
+	}
+</script>
+<body>
+    
+    <section>
+        <div style="margin-top: 100px;">
+            
+            <h3>자유게시판</h3>
+            <table class="table" style="text-align: center; font-family: sans-serif;">
+                <thead>
+                    <td>번호</td>
+                    <td>제목</td>
+                    <td>내용</td>
+                    <td>게시일</td>
+                    <td>좋아요</td>
+                    <td>ID</td>
+                </thead>
+                <tbody id="tablebodylol">
+
+                </tbody>
+           
+            </table>
+
+            <a href="/board/new?redirectUrl=/b_freetalk"  style="float: right; margin-right: 40px;">
+                <img src="/assets/write.png" style="width: 60px;">
+            </a>
+            
+        </div>
+        
+    </section>
+
+</body>
+</html>

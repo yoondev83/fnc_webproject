@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>프로젝트 그린</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/css/styles.css" rel="stylesheet" />
+        <link href="/css/menu.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav id="menu" style="position: relative;">
+            <div class="menu-item">
+                <div class="menu-text">
+                    <a href="index">메인</a>
+                </div>
+                <div class="sub-menu double">
+                    <div class="icon-box gb a" style="margin-left: 130px;">
+                        <div class="icon"><i class="far fa-question-circle"></i></div>
+                        <div class="text" >
+                            <div class="title"><a class="navbar-brand"  onclick="location.href='../index'">메인</a> <i class="far fa-arrow-right"></i></div>
+                            <div class="sub-text">저희는 환경보호를 위한 친환경 제품 사용을 장려하기 위해 만들었습니다!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item highlight">
+                <div class="menu-text">
+                    <a class="navbar-brand"  onclick="location.href='../intro'">소개</a>
+                </div>
+                <div class="sub-menu double">
+                  
+                    <div class="icon-box gb c">
+                        <div class="icon"><i class="far fa-school"></i></div>
+                        <div class="text">
+                            <div class="title">소개 <i class="far fa-arrow-right"></i></div>
+                            <div class="sub-text">왜 만들었을까요?</div>
+                        </div>
+                    </div>
+                    <div class="sub-menu-holder"></div>
+                </div>
+            </div>
+            <div class="menu-item highlight">
+                <div class="menu-text">
+                    <a class="navbar-brand" onclick="location.href='../rank'">랭킹</a>
+                </div>
+                <div class="sub-menu triple">
+                    <div class="top-container gb c icon-box">
+                        <div class="icon big"><i class="far fa-book"></i></div>
+                        <div class="text">
+                            <div class="title"><a class="navbar-brand" onclick="location.href='../rank'">제품 소개</a></div>
+                            <div class="sub-text">투표를 통해 가장 많이 사랑받은 제품을 소개해드리겠습니다!</div>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <a href="/like.rank">좋아요!</a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-text">
+                    <a class="dropbtn" onclick="location.href='/b_freetalk'">게시판</a>
+                </div>
+                <div class="sub-menu">
+                    <div class="icon-box">
+                        <div class="icon"><i class="far fa-satellite"></i></div>
+                        <div class="text">
+                            <div class="title"><a class="navbar-brand" onclick="location.href='/b_freetalk'">자유게시판</a> <i class="far fa-arrow-right"></i></div>
+                            <div class="sub-text">아무 주제나 환영합니다!</div>
+                        </div>
+                    </div>
+                    <div class="icon-box">
+                        <div class="icon"><i class="fab fa-twitter-square"></i></div>
+                        <div class="text">
+                            <div class="title"><a id="testtt2" class="navbar-brand" onclick="location.href='/b_prove'">인증게시판</a> <i class="far fa-arrow-right"></i></div>
+                            <div class="sub-text">여러분이 사용하시는 친환경 제품을 보여주세요.</div>
+                        </div>
+                    </div>
+                    <div class="icon-box">
+                        <div class="icon"><i class="fab fa-twitch"></i></div>
+                        <div class="text">
+                            <div class="title"><a class="navbar-brand" onclick="location.href='/b_mission'">미션게시판</a> <i class="far fa-arrow-right"></i></div>
+                            <div class="sub-text">여러분께 미션을 드리죠.</div>
+                        </div>
+                    </div>
+                    <div class="sub-menu-holder"></div>
+                </div>
+            </div>
+            
+            <div id="sub-menu-container">
+                <div id="sub-menu-holder">
+                    <div id="sub-menu-bottom">
+                        
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+            <div id="info-box">
+                <div th:if="${sess_id == null}">
+                    <ul>
+                        <li><a class="nav-link" onclick="location.href='login'">로그인</a></li>
+                        <li><a class="nav-link" onclick="location.href='join'">회원가입</a></li>
+                    </ul>
+                </div>
+                <div th:unless="${sess_id == null}">
+                    <ul>
+                        <li id="message1" th:text="${'환영합니다! ' + sess_id + '님'}" style="float: right; font-size: 1em; font-family: 'Roboto', sans-serif; font-weight: 900;"></li><br/>
+                        <a href="/logout" style="float: right;">로그아웃</a>
+                    </ul>
+                </div>
+               
+            </div>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aa9f837b39bdaa1c4362ef1cfe4c4f2f"></script>   
+   	<div style="display: flex; justify-content: center; align-items: center; flex-direction: row;">
+	   	<div id="map" style="width:500px;height:400px;"></div>
+	   	<div id="tablebodylol" style="margin-top: 100px; display: flex; justify-content: center; align-items: center; flex-direction: row; margin-left:10;"></div>
+   	</div>
+   	
+    <script>
+	    var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+	    var options = { //지도를 생성할 때 필요한 기본 옵션
+	    	center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+	    	level: 3 //지도의 레벨(확대, 축소 정도)
+	    };
+	
+	    var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+	    
+	 // 마커가 표시될 위치입니다 
+	    var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
+
+	    // 마커를 생성합니다
+	    var marker = new kakao.maps.Marker({
+	        position: markerPosition
+	    });
+
+	    // 마커가 지도 위에 표시되도록 설정합니다
+	    marker.setMap(map);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script th:inline="javascript">
+		var products = []
+		axios
+		.post("/like.rank/order")
+		.then(function (response) {
+			products = response.data
+			console.log(products)
+			var productsHtml = "";
+			for (var i = 0; i < products.length; i++){
+				productsHtml += '<div class="card" style="width: 18rem; margin:10px;">';
+				productsHtml += '  <img src="' + products[i].imageUrl + '" class="card-img-top" alt="' + products[i].name + '" width="30px" height="300px">';
+				productsHtml += ' <div class="card-body">';
+				productsHtml += '  <h5 class="card-title">제품 이름:' + products[i].name + ' </h5>';
+				productsHtml += '    <p class="card-text" id="likenum-"'+ products[i].productNum +'>좋아요 수 : ' + products[i].recommend + '</p>';
+				productsHtml += '<h3 style="display:inline;">' + (i+1) + '위</h3>'
+				productsHtml += '<button class="btn btn-primary" style="margin-left: 90px; height="12rem"" >위치 확인</button>'
+				productsHtml += " </div> </div>";
+			}
+            document.getElementById('tablebodylol').innerHTML = productsHtml;
+		})
+		.catch(function () {
+		  console.log("실패");
+		  alert("실패")
+		});
+	
+	</script>
+</body>
+</html>
