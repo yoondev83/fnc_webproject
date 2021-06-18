@@ -80,6 +80,7 @@ public class GreenController {
     }
     
     // 濡쒓렇�씤 �븯湲�
+    @ResponseBody
     @PostMapping("/login/login")
 	public String login(@RequestParam("id") String id, @RequestParam("password") String password, HttpSession session) {
 		return boardService.logins(id, password, session);

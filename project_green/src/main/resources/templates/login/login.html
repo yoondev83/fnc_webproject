@@ -76,10 +76,10 @@
           </div>
       
           <!-- Login Form -->
-          <form action="/login/login" method="post"> 
+          <form name="loginForm" > 
             <input type="text" id="id" class="fadeIn second" name="id" placeholder="ID">
             <input type="password" id="pass" class="fadeIn third" name="password" placeholder="PASSWORD">
-            <input type="submit" class="fadeIn fourth" value="Log In">
+            <input type="submit" id="login-submit" class="fadeIn fourth" value="Log In">
           </form>
       
           <!-- Remind Passowrd -->
@@ -101,6 +101,49 @@
             <input type="button" value="회원가입" onclick="goLoginForm()" >
         </form>
     </table> -->
-    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+    	window.onload = function(){
+	    	document.querySelector("#login-submit").onclick = function(){
+	    		var formData = new FormData();
+	    		formData.append("id", document.loginForm.id.value);
+	    		formData.append("password", document.loginForm.password.value);
+	    		axios({
+	    		      method: "post",
+	    		      contentType: false,
+	    		      url: "/login/login",
+	    		      data: formData,
+	   		    })
+	    		.then(function(response){
+	    			var result = response.data;
+	    			console.log(result);
+	    			if(result === "NOTEXIST"){
+	    				var isOK = confirm("아이디가 존재하지 않습니다. 회원가입 하시겠습니까?");
+	    				if(isOK){
+	    					document.location="/join";
+	    		    		return false;
+	    				}else{
+	    					document.location="/login";
+	    					return false;
+	    				}
+	    				
+	    			}else if(result === "SUCCESS"){
+	    				alert("로그인 성공!")
+	    				document.location="/index";
+			    		return false;
+	    			}else if(result === "INCORRECT_PW"){
+	    				alert("비밀번호 오류") 
+	    				document.location="/login";
+	    				return false;
+	    			}
+	    			document.location="/login";
+	    			return false;
+	    		})
+	    		.catch(function(){
+	    			alert("실패");
+	    		})
+	    	}
+    	}
+    </script>
 </body>
 </html>
