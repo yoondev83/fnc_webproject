@@ -138,7 +138,7 @@
                     <td>내용</td>
                     <td>게시일</td>
                     <td>좋아요</td>
-                    <td>ID</td>
+                    <td>사용자</td>
                 </thead>
                 <tbody id="tablebodylol">
 

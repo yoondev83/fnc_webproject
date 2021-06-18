@@ -138,7 +138,7 @@
                     <td>내용</td>
                     <td>게시일</td>
                     <td>좋아요</td>
-                    <td>ID</td>
+                    <td>사용자</td>
                 </thead>
                 <tbody id="tablebodylol">
 
@@ -172,6 +172,7 @@
 				boardsHtml +=  "<td>" + boards[i].content + "</td>";
 				boardsHtml +=  "<td>" + boards[i].uploadDate + "</td>";
 				boardsHtml +=  "<td>" + boards[i].recommend + "</td>";
+				boardsHtml +=  "<td>" + boards[i].category + "</td>";
 				boardsHtml +=  "<td>" + boards[i].userId+ "</td>";
 				boardsHtml +=  "</tr>";
 					

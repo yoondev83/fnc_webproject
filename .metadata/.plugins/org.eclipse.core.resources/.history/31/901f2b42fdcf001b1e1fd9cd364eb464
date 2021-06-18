@@ -89,6 +89,8 @@
 						goodBtn.setAttribute("src", "/img/like/like.png");
 					}	
 				}
+				location.reload();
+				return false;
 			})
 			.catch(function () {
 				alert("실패");
@@ -97,7 +99,7 @@
     	window.onload = function(){
     		check_did_recommend(false);
     	}
-    	document.querySelector("#recommend-btn").onclick = function(e){
+    	document.querySelector("#recommend-btn").onclick = function(){
     	// 통신 : 현재 boardNum, 현재 로그인한 아이디(세션 아이디) -> 좋아요를 눌렀는지를 판단한다.
     	// 통신 url 요청 지정
     		check_did_recommend(true);

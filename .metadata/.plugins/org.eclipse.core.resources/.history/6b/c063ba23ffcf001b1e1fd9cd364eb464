@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8" />
-    <title>프로젝트 그린</title>
+    <title>Insert title here</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
@@ -16,10 +16,6 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/css/styles.css" rel="stylesheet" />
         <link href="/css/menu.css" rel="stylesheet" />
-        <script src="https://kit.fontawesome.com/628c8d2499.js" crossorigin="anonymous"></script>
-    
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     </head>
     <body>
         <!-- Navigation-->
@@ -127,7 +123,10 @@
                
             </div>
 
-	<section>
+
+<body>
+
+<section>
         <div style="margin-top: 100px;">
             
             <h3>자유게시판</h3>
@@ -138,7 +137,8 @@
                     <td>내용</td>
                     <td>게시일</td>
                     <td>좋아요</td>
-                    <td>ID</td>
+                    <td>카테고리</td>
+                    <td>사용자</td>
                 </thead>
                 <tbody id="tablebodylol">
 
@@ -146,32 +146,33 @@
            
             </table>
 
-            <a href="/board/new?redirectUrl=/b_mission"  style="float: right; margin-right: 40px;">
+            <a href="/board/new?redirectUrl=/b_prove" style="float: right; margin-right: 40px;">
                 <img src="/assets/write.png" style="width: 60px;">
             </a>
             
         </div>
         
     </section>
-    
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script th:inline="javascript">
 	window.onload = function(){
 		var boards = []
 		axios
-		.post("/board/b_mission")
+		.post("/board/b_prove")
 		.then(function (response) {
 			boards = response.data
 			console.log(boards)
 			var boardsHtml = "";
             var tableNum_row = 0;
 			for (var i = 0; i < boards.length; i++){
-				boardsHtml +=  '<tr  onClick="location.href=\'/board/detail/'+ boards[i].postNum + '\'" style="cursor:pointer;">';
+				//boarsHtml += "<a href=/board/detail/" + boards[i].postNum + ">";
+				boardsHtml += "<tr>";
 				boardsHtml +=  "<td>" + boards[i].postNum + "</td>";
 				boardsHtml +=  "<td>" + "<a href=/board/detail/" + boards[i].postNum + ">" + boards[i].title + "</a></td>";
 				boardsHtml +=  "<td>" + boards[i].content + "</td>";
 				boardsHtml +=  "<td>" + boards[i].uploadDate + "</td>";
 				boardsHtml +=  "<td>" + boards[i].recommend + "</td>";
+				boardsHtml +=  "<td>" + boards[i].category + "</td>";
 				boardsHtml +=  "<td>" + boards[i].userId+ "</td>";
 				boardsHtml +=  "</tr>";
 					
@@ -186,7 +187,5 @@
 	
 	}
 </script>
-<body>
-    
 </body>
 </html>
