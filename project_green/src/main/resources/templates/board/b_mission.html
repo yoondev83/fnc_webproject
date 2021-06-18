@@ -109,23 +109,68 @@
             </div>
         </nav>
 
+	<section>
+        <div style="margin-top: 100px;">
+            
+            <h3>자유게시판</h3>
+            <table class="table" style="text-align: center; font-family: sans-serif;">
+                <thead>
+                    <td>번호</td>
+                    <td>제목</td>
+                    <td>내용</td>
+                    <td>게시일</td>
+                    <td>좋아요</td>
+                    <td>카테고리</td>
+                    <td>사용자</td>
+                </thead>
+                <tbody id="tablebodylol">
 
+                </tbody>
+           
+            </table>
 
+            <a href="/board/new?redirectUrl=/b_mission"  style="float: right; margin-right: 40px;">
+                <img src="/assets/write.png" style="width: 60px;">
+            </a>
+            
+        </div>
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-</head>
+    </section>
+    
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script th:inline="javascript">
+	window.onload = function(){
+		var boards = []
+		axios
+		.post("/board/b_mission")
+		.then(function (response) {
+			boards = response.data
+			console.log(boards)
+			var boardsHtml = "";
+            var tableNum_row = 0;
+			for (var i = 0; i < boards.length; i++){
+				//boarsHtml += "<a href=/board/detail/" + boards[i].postNum + ">";
+				boardsHtml += "<tr>";
+				boardsHtml +=  "<td>" + boards[i].postNum + "</td>";
+				boardsHtml +=  "<td>" + "<a href=/board/detail/" + boards[i].postNum + ">" + boards[i].title + "</a></td>";
+				boardsHtml +=  "<td>" + boards[i].content + "</td>";
+				boardsHtml +=  "<td>" + boards[i].uploadDate + "</td>";
+				boardsHtml +=  "<td>" + boards[i].recommend + "</td>";
+				boardsHtml +=  "<td>" + boards[i].category + "</td>";
+				boardsHtml +=  "<td>" + boards[i].userId+ "</td>";
+				boardsHtml +=  "</tr>";
+					
+			}
+			
+            document.getElementById('tablebodylol').innerHTML = boardsHtml;
+		})
+		.catch(function () {
+		  console.log("실패");
+		  alert("실패")
+		});
+	
+	}
+</script>
 <body>
     
 </body>

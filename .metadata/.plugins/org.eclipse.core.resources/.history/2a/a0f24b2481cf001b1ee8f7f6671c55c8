@@ -1,0 +1,8 @@
+package com.webprj.project_green.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class UploadController {
+	
+}

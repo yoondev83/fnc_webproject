@@ -1,0 +1,10 @@
+package com.webprj.project_green.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
+
+@Controller
+public class UploadController {
+	
+}

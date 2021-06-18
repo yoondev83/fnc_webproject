@@ -55,7 +55,11 @@ public class GreenController {
         
         return "rank/rank";
     }
-
+    @GetMapping("/rank_map")
+    public String goToRankMap(){
+        
+    	return "rank/rank_map";
+    }
     //濡쒓렇�씤 �솕硫�
 	@PostMapping("/login/join")
 	public String login(@ModelAttribute CustomDto customDto) {
@@ -127,16 +131,17 @@ public class GreenController {
 
     
     @GetMapping("/board/new")
-    public void new_board() {
+    public void new_board(@RequestParam String redirectUrl, Model model) {
     	System.out.println("Create board Page");
+    	model.addAttribute("redirectUrl", redirectUrl);
     }
     
     @PostMapping("/board/new")
-	public String createBoard(@ModelAttribute BoardDto boardDto, HttpSession session) {
+	public String createBoard(@RequestParam String redirectUrl, @ModelAttribute BoardDto boardDto, HttpSession session) {
 		System.out.println(boardDto);
 		boardDto.setUserId((String) session.getAttribute("id"));
 		boardService.createBoard(boardDto);
-		return "redirect:/b_freetalk";
+		return "redirect:" + redirectUrl;
 	}
 //    @GetMapping("/login")
 //    public void login(Model model, HttpSession session) {

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<input name="uploadFiles" type="file" multiple>
+	<button class="uploadBtn">Upload</button>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script>
+		document.querySelector(".uploadBtn").onclick = function(){
+			var formData = new FormData();
+			var inputFile = document.uploadFiles;
+			console.log(inputFile);
+			var files = inputFile[0].files;
+			
+			for(var i = 0; i<files.length; i++){
+				console.log(files[i]);
+				formData.append("uploadFiles", files[i]);
+			}
+		};
+	</script>
+</body>
+</html>

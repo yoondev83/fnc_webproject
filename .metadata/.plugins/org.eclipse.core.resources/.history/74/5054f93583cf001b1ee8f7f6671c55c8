@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<input id="uploadFiles" name="uploadFiles" type="file" multiple>
+	<button class="uploadBtn">Upload</button>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script>
+		document.querySelector(".uploadBtn").onclick = function(){
+			var formData = new FormData();
+			var files = document.querySelector("#uploadFiles").files;
+			console.log(files);
+			for(var i = 0; i<files.length; i++){
+				console.log(files[i]);
+				formData.append("uploadFiles", files[i]);
+			}
+			
+			//실제 업로드 부분
+			axios
+			.post("/uploadAxios")
+			.then(function(response){
+				console.log(response)
+			})
+			.catch(function(){
+				alert("실패");
+			})
+		};
+	</script>
+</body>
+</html>

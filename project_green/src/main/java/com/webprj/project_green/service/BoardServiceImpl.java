@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.webprj.project_green.dao.BoardDao;
 import com.webprj.project_green.dto.BoardDto;
 import com.webprj.project_green.dto.CustomDto;
+import com.webprj.project_green.dto.UploadResultDto;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -17,9 +18,9 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	private BoardDao boardDao;
 	@Override
-	public List<BoardDto> getBoardsData() {
+	public List<BoardDto> getBoardsData(String category) {
 		// TODO Auto-generated method stub
-		return boardDao.getBoardsData();
+		return boardDao.getBoardsData(category);
 	}
 	@Override
 	public void createBoard(BoardDto boardDto) {
@@ -37,13 +38,6 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		boardDao.delete(postNum);
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 	public BoardDto getBoardData(int boardnum) {
 		// TODO Auto-generated method stub
@@ -78,24 +72,9 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		
 	}
-//	@Override
-//	public int idCheck(int idVheck) {
-//		if(confirm("회원가입을 하시겠습니까?")){
-//	        if(idckeck==0){
-//	            alert("아이디 중복체크를 해주세요");
-//	            return false;
-//	        }else{
-//	        alert("회원가입을 축하합니다");
-//	        $("#frm").submit();
-//	        }
-//	    }
-//		
-//		// TODO Auto-generated method stub
-//		return 0;
-//	}
-//	private boolean confirm(String string) {
-//		return false;
-//	}
 //	
-//	
+	@Override
+	public void saveImageUrl(UploadResultDto uploadResultDto) {
+		boardDao.saveImageUrl(uploadResultDto);
+	}
 }
