@@ -65,7 +65,6 @@ public class GreenController {
 	
     @GetMapping("/login")
     public String sign() {
-    	
     	return "login/login";
     }
     
@@ -105,26 +104,25 @@ public class GreenController {
 
     //자유게시판 이동
 	@GetMapping("/b_freetalk")
-	public String letsGoFreeTalk(Model model, HttpSession session){
-		model.addAttribute("sess_id", (String) session.getAttribute("id"));
+	public String letsGoFreeTalk(){
+		
 		return "/board/b_freetalk";
 	}
 	@GetMapping("/b_prove")
-	public String letsGoProve(Model model, HttpSession session){
-		model.addAttribute("sess_id", (String) session.getAttribute("id"));
+	public String letsGoProve(){
+		
 		return "/board/b_prove";
 	}
 	@GetMapping("/b_mission")
-	public String letsGoMission(Model model, HttpSession session){
-		model.addAttribute("sess_id", (String) session.getAttribute("id"));
+	public String letsGoMission(){
+		
 		return "/board/b_mission";
 	}
 
     
     @GetMapping("/board/new")
-    public void new_board(@RequestParam String redirectUrl, Model model, HttpSession session) {
+    public void new_board(@RequestParam String redirectUrl, Model model) {
     	System.out.println("Create board Page");
-    	model.addAttribute("sess_id", (String) session.getAttribute("id"));
     	model.addAttribute("redirectUrl", redirectUrl);
     }
     
