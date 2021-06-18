@@ -62,7 +62,8 @@
                         </div>
                     </div>
                     <div class="box">
-                        <a href="#">좋아요!</a>
+                        <a href="/like.rank">좋아요!</a>
+                        <a href="/rank_map">구매처!</a>
                     </div>
                 </div>
             </div>
@@ -121,7 +122,11 @@
                
             </div>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aa9f837b39bdaa1c4362ef1cfe4c4f2f"></script>   
-   	<div id="map" style="width:500px;height:400px;"></div>
+   	<div style="display: flex; justify-content: center; align-items: center; flex-direction: row;">
+	   	<div id="map" style="width:500px;height:400px;"></div>
+	   	<div id="tablebodylol" style="margin-top: 100px; display: flex; justify-content: center; align-items: center; flex-direction: row; margin-left:10;"></div>
+   	</div>
+   	
     <script>
 	    var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 	    var options = { //지도를 생성할 때 필요한 기본 옵션
@@ -141,6 +146,58 @@
 
 	    // 마커가 지도 위에 표시되도록 설정합니다
 	    marker.setMap(map);
+		    window.onload = function(){
+		    var btns = document.getElementsByClassName("locate");
+		    for(var i = 0 ; i < btns.length; i++){
+		    	btns[i].onclick=function(){
+		    		var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+		    	    var options = { //지도를 생성할 때 필요한 기본 옵션
+		    	    	center: new kakao.maps.LatLng(37.480815, 126.881916), //지도의 중심좌표.
+		    	    	level: 3 //지도의 레벨(확대, 축소 정도)
+		    	    };
+		    	
+		    	    var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+		    	    
+		    	 // 마커가 표시될 위치입니다 
+		    	    var markerPosition  = new kakao.maps.LatLng(37.480815, 126.881916); 
+	
+		    	    // 마커를 생성합니다
+		    	    var marker = new kakao.maps.Marker({
+		    	        position: markerPosition
+		    	    });
+	
+		    	    // 마커가 지도 위에 표시되도록 설정합니다
+		    	    marker.setMap(map);
+		    	}
+		    }
+	    }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script th:inline="javascript">
+		var products = []
+		axios
+		.post("/like.rank/order")
+		.then(function (response) {
+			products = response.data
+			console.log(products)
+			var productsHtml = "";
+			for (var i = 0; i < products.length; i++){
+				productsHtml += '<div class="card" style="width: 18rem; margin:10px;">';
+				productsHtml += '  <img src="' + products[i].imageUrl + '" class="card-img-top" alt="' + products[i].name + '" width="30px" height="300px">';
+				productsHtml += ' <div class="card-body">';
+				productsHtml += '  <h5 class="card-title">제품 이름:' + products[i].name + ' </h5>';
+				productsHtml += '    <p class="card-text" id="likenum-"'+ products[i].productNum +'>좋아요 수 : ' + products[i].recommend + '</p>';
+				productsHtml += '<h3 style="display:inline; text-align: center;">' + (i+1) + '위</h3>'
+				productsHtml += '<button class="locate btn btn-primary" style="margin-left: 90px;" >위치 확인</button>'
+				productsHtml += " </div> </div>";
+			}
+            document.getElementById('tablebodylol').innerHTML = productsHtml;
+		})
+		.catch(function () {
+		  console.log("실패");
+		  alert("실패")
+		});
+	
+	</script>
 </body>
 </html>
