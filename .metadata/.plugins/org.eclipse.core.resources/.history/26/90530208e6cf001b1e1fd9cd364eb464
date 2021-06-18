@@ -1,0 +1,14 @@
+package com.webprj.project_green.dao;
+
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.webprj.project_green.dto.ProductDto;
+
+@Repository
+public interface RankDao {
+
+	List<ProductDto> getProducts();
+
+}

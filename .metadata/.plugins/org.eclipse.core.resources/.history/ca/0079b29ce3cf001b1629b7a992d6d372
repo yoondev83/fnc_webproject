@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.webprj.project_green.dao.RankDao" >
+
+
+    <select id="getProducts" parameterType="String" resultType="com.webprj.project_green.dto.BoardDto" >
+        <!--SELECT * FROM PRODUCT-->
+        SELECT postnum as postNum, title, content, uploaddate as uploadDate, recommend, imageurl as imageUrl, category, userid as userId FROM BOARD
+        WHERE CATEGORY=#{category}
+        <!-- aLIAS 를 사용하여, DTO 와 이름을 꼭 맞출 수 있도록 하자. -->
+    </select>
+   
+</mapper>
