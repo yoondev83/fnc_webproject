@@ -1,0 +1,11 @@
+package com.webprj.project_green.dao;
+
+import java.util.List;
+
+import com.webprj.project_green.dto.ProductDto;
+
+public interface RankDao {
+
+	List<ProductDto> getProducts();
+
+}

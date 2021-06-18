@@ -1,0 +1,54 @@
+package com.webprj.project_green.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.webprj.project_green.dto.ProductDto;
+
+@Controller
+public class RankController {
+	
+	@Autowired
+	private RankService rankService;
+	
+	// rank page
+    @GetMapping("/rank")
+    public String goToRank(){
+        
+        return "rank/rank";
+    }
+    
+    // rank map page
+    @GetMapping("/rank_map")
+    public String goToRankMap(){
+        
+    	return "rank/rank_map";
+    }
+    
+    // like page
+    @GetMapping("/like.rank")
+    public String goToRankLike(){
+        
+    	return "rank/like";
+    }
+    
+    @ResponseBody
+    @PostMapping("/like.rank")
+    public List<ProductDto> getProducts() {
+    	
+    	return 
+    }
+    @GetMapping("/like.rank/like")
+    public String likeProduct(@RequestParam String productNum) {
+    	System.out.println(productNum);
+    	
+    	
+    	return "";
+    }
+}

@@ -49,17 +49,6 @@ public class GreenController {
         return "redirect:/index#introduction";
     }
     
-    //占쎌삻占쎄때野껊슣�뻻占쎈솇
-    @GetMapping("/rank")
-    public String goToRank(){
-        
-        return "rank/rank";
-    }
-    @GetMapping("/rank_map")
-    public String goToRankMap(){
-        
-    	return "rank/rank_map";
-    }
     //濡쒓렇�씤 �솕硫�
 	@PostMapping("/login/join")
 	public String login(@ModelAttribute CustomDto customDto) {
@@ -80,6 +69,7 @@ public class GreenController {
     }
     
     // 濡쒓렇�씤 �븯湲�
+    @ResponseBody
     @PostMapping("/login/login")
 	public String login(@RequestParam("id") String id, @RequestParam("password") String password, HttpSession session) {
 		return boardService.logins(id, password, session);
