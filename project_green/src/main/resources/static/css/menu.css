@@ -359,3 +359,34 @@ nav .menu-item.highlight:hover ~ #sub-menu-container #sub-menu-holder #sub-menu-
 #info-box a:hover {
     color: rgba(255,255,255,0.5);
 }
+
+/* --------------------- */
+
+
+.btn {
+    text-transform: uppercase;
+    border-radius: .15rem;
+    width: 200px;
+    padding: .150rem .75rem;
+    margin: 0;
+    font-family: 'PT Sans', sans-serif;
+    letter-spacing: 2px;
+  }
+  
+  .btn-primary {
+    border-color: rgba( 255, 255, 255, 0);
+    background: #f1da36; /* Old browsers */
+  background: -moz-linear-gradient(left, #f1da36 0%, #fca86c 99%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #f1da36 0%,#fca86c 99%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #f1da36 0%,#fca86c 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1da36', endColorstr='#fca86c',GradientType=1 ); /* IE6-9 */
+ 
+  }
+  
+  .btn-primary:hover {
+    border-color: rgba( 255, 255, 255, 0);
+  }
+  
+  #main .btn-primary {
+    width: 100%;
+  }

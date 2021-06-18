@@ -106,21 +106,31 @@
             </div>
         </nav>
         
-            <div id="info-box">
-                <div th:if="${sess_id == null}">
-                    <ul>
-                        <li><a class="nav-link" onclick="location.href='login'">로그인</a></li>
-                        <li><a class="nav-link" onclick="location.href='join'">회원가입</a></li>
-                    </ul>
-                </div>
-                <div th:unless="${sess_id == null}">
-                    <ul>
-                        <li id="message1" th:text="${'환영합니다! ' + sess_id + '님'}" style="float: right; font-size: 1em; font-family: 'Roboto', sans-serif; font-weight: 900;"></li><br/>
-                        <a href="/logout" style="float: right;">로그아웃</a>
-                    </ul>
-                </div>
-               
+        <div id="info-box">
+            <div th:if="${sess_id == null}">
+                <ul>
+                    <!-- <li><a class="nav-link" onclick="location.href='login'">로그인</a></li> -->
+                    <li><a class="nav-link" onclick="location.href='login'">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        로그인
+                      </button></a>
+                    </li>
+                    <li><a class="nav-link" onclick="location.href='join'" style="margin-top: 5px;">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        회원가입
+                      </button></a>
+                    </li>
+                    <!-- <li><a class="nav-link" onclick="location.href='join'">회원가입</a></li> -->
+                </ul>
             </div>
+            <div th:unless="${sess_id == null}">
+                <ul>
+                    <li id="message1" th:text="${'환영합니다! ' + sess_id + '님'}" style="float: right; font-size: 1em; font-family: 'Roboto', sans-serif; font-weight: 900;"></li><br/>
+                    <a href="/logout" style="float: right;">로그아웃</a>
+                </ul>
+            </div>
+           
+        </div>
 </head>
 <body>
     <section>
