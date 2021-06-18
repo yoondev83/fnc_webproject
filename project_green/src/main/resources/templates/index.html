@@ -20,11 +20,11 @@
         <link href="/css/menu.css" rel="stylesheet" />
     </head>
     <body>
-
-        <nav id="menu" style="position: ;">
+        
+        <nav id="menu" style="position: relative;">
             <div class="menu-item">
                 <div class="menu-text">
-                    <a href="#">메인</a>
+                    <a href="index">메인</a>
                 </div>
                 <div class="sub-menu double">
                     <div class="icon-box gb a" style="margin-left: 130px;">
@@ -98,26 +98,43 @@
                     <div class="sub-menu-holder"></div>
                 </div>
             </div>
+            
             <div id="sub-menu-container">
                 <div id="sub-menu-holder">
                     <div id="sub-menu-bottom">
-
+                        
                     </div>
                 </div>
             </div>
         </nav>
-
-
-
-
+        
+            <div id="info-box">
+                <div th:if="${sess_id == null}">
+                    <ul>
+                        <li><a class="nav-link" onclick="location.href='login'">로그인</a></li>
+                        <li><a class="nav-link" onclick="location.href='join'">회원가입</a></li>
+                    </ul>
+                </div>
+                <div th:unless="${sess_id == null}">
+                    <ul>
+                        <li id="message1" th:text="${'환영합니다! ' + sess_id + '님'}" style="float: right; font-size: 1em; font-family: 'Roboto', sans-serif; font-weight: 900;"></li><br/>
+                        <a href="/logout" style="float: right;">로그아웃</a>
+                    </ul>
+                </div>
+               
+            </div>
+        
+        
         <!-- Masthead-->
         <header class="masthead">
+            
+            
             <div class="container position-relative">
                 <div class="row justify-content-center">
                     <div class="col-xl-6">
                         <div class="text-center text-white">
                             <!-- Page heading-->
-                            <h1 class="mb-5">지구를 보호하는 친환경 제품!</h1>
+                            <h1 class="mb-5">지구를 보호하는 <br/>친환경 제품!</h1>
                         </div>
                     </div>
                 </div>
