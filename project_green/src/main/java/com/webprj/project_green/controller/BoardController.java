@@ -41,7 +41,6 @@ public class BoardController {
 
 	@PostMapping("/b_freetalk")
 	public List<BoardDto> getFreeBoardsData() {
-		
 		return boardService.getBoardsData("free-board");
 	}
 	@PostMapping("/b_prove")

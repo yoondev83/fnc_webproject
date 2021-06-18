@@ -7,7 +7,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(45deg, #71e9cf, #f19cd5);
+    /* background: linear-gradient(45deg, #D4F4EC, #FFD8C5); */
     font-family: 'Roboto', sans-serif;
     height: 100vh;
     overflow: auto;
@@ -35,7 +35,7 @@ nav .menu-item {
     display: flex;
     flex-basis: var(--item-width);
     box-sizing: border-box;
-    padding: 1em 1.5em;
+    /* padding: 1em 1.5em; */
     justify-content: center;
     perspective: 200px;
     letter-spacing: 0.5px;
@@ -43,23 +43,23 @@ nav .menu-item {
 }
 
 nav .menu-text, nav .menu-text a {
-    font-size: 1em;
-    color: white;
+    font-size: 1.3em;
+    color: black;
     text-decoration: none;
     text-shadow: 0 1px 5px rgba(0,0,0,0.1);
     transition: color 0.1s ease-out;
     text-align: center;
 }
 
-/* nav .menu-text a:hover {
+nav .menu-text a:hover {
     color: rgba(255,255,255,0.5);
-} */
+}
 
 #sub-menu-holder {
     pointer-events: none;
     color: rgba(0,0,0,0.5);
     font-weight: normal;
-    padding: 0.1em;
+    padding: 1em;
     position: absolute;
     transition: opacity 2 ease-out;
     transform: rotateX(-25deg) scale(1);
@@ -330,16 +330,20 @@ nav .menu-item:nth-of-type(3).highlight:hover ~ #sub-menu-container #sub-menu-ho
 nav .menu-item.highlight:hover ~ #sub-menu-container #sub-menu-holder #sub-menu-bottom { opacity: 1; }
 
 #info-box {
-    position: absolute;
+    position: relative;
     bottom: 2em;
     right: 2em;
+    padding-bottom: 0%;
+    padding-top: 0%;
 }
 
 #info-box ul {
     list-style: none;
+    padding-bottom: 0%;
+    padding-top: 0%;
 }
 #info-box a {
-    color: white;
+    color: black;
     text-decoration: none;
     text-align: right;
     padding: 0.5em 0;
@@ -349,6 +353,8 @@ nav .menu-item.highlight:hover ~ #sub-menu-container #sub-menu-holder #sub-menu-
     font-size: 1.25em;
     font-weight: 900;
     letter-spacing: 1px;
+    padding-bottom: 0%;
+    padding-top: 0%;
 }
 #info-box a:hover {
     color: rgba(255,255,255,0.5);
