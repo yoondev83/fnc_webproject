@@ -26,15 +26,15 @@ public class RankController {
 	private static Map<Integer, Integer> didGood = new HashMap<Integer, Integer>();
 	// rank page
     @GetMapping("/rank")
-    public String goToRank(Model model, HttpSession session){
-    	model.addAttribute("sess_id", (String) session.getAttribute("id"));
+    public String goToRank(){
+        
         return "rank/rank";
     }
     
     // rank map page
     @GetMapping("/rank_map")
-    public String goToRankMap(Model model, HttpSession session){
-    	model.addAttribute("sess_id", (String) session.getAttribute("id"));
+    public String goToRankMap(){
+        
     	return "rank/rank_map";
     }
     
