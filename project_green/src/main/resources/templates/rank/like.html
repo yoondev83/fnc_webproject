@@ -4,9 +4,6 @@
     <meta charset="utf-8" />
     <title>프로젝트 그린</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Landing Page - Start Bootstrap Theme</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -132,14 +129,37 @@
             </div>
            
         </div>
-</head>
-<body>
+        <!-------------------------------------the end of menu ----------------------------------->
     <section>
         <div id="tablebodylol" style="margin-top: 100px; display: flex; justify-content: center; align-items: center; flex-direction: row; margin-left:10;">
 			 
         </div>
         
     </section>
+    <section>
+        <div style="margin-top: 100px;">
+            
+            <h3>좋아요 게시판</h3>
+            <table class="table" style="text-align: center; font-family: sans-serif;">
+                <thead>
+                    <td>번호</td>
+                    <td>제품</td>
+                    <td>특징</td>
+                    <td>게시일</td>
+                    <td>좋아요</td>
+                    <td>ID</td>
+                </thead>
+                <tbody id="tablebodylol">
+
+                </tbody>
+           
+            </table>
+            
+        </div>
+        
+    </section>
+
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script th:inline="javascript">
 		var products = []
