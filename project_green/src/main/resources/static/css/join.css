@@ -40,8 +40,8 @@ html{
 .testbox {
   margin: 20px auto;
   margin-top: 100px;
-  width: 343px; 
-  height: 464px; 
+  width: 400px; 
+  height: 490px; 
   -webkit-border-radius: 8px/7px; 
   -moz-border-radius: 8px/7px; 
   border-radius: 8px/7px; 
@@ -110,7 +110,7 @@ hr{
 }
 
 input[type=text],input[type=password]{
-  width: 200px; 
+  width: 290px; 
   height: 39px; 
   -webkit-border-radius: 0px 4px 4px 0px/5px 5px 4px 4px; 
   -moz-border-radius: 0px 4px 4px 0px/0px 0px 4px 4px; 
@@ -185,4 +185,11 @@ a.button:hover {
   -moz-box-shadow: none; 
   box-shadow: none;
   
+}
+
+#id-check{
+  border: 1px solid rgba(135, 207, 235, 0.781);
+  background-color: rgba(0,0,0,0);
+  color: skyblue;
+  padding: 5px;
 }

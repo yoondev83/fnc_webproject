@@ -139,7 +139,7 @@
         
         
 
-            <div class="testbox" style="width:400px;height:490px;" >
+            <div class="testbox" >
                 <h1>회원 가입</h1>
                 <form action="/login/join" name = "join_form" id="join" method="post" style="margin-bottom:1px; margin-top:1px;" >
                     <hr>
@@ -147,24 +147,27 @@
                     <input type="radio" value="None" id="radioOne" name="account" checked/>
                     <label for="radioOne" class="radio" style="margin-bottom: 1px;">일반 이용자</label>
                   </div>
-                <hr>
-                <label id="icon" for="name"><i class="icon-user" style="margin-top: 5px; margin-bottom:5px"></i></label>
-                <input type="text" name="id" id="id" placeholder="id" required/>
-                &nbsp;<button id="id-check" type="button" >중복확인</button>
-                <label id="icon" for="name"><i class="icon-shield"></i></label>
-                <input type="password" name="password" id="password" placeholder="password" required style="margin-top: 5px; margin-bottom: 5px; "/></br>
-                <label id="icon" for="name"><i class="icon-shield"></i></label>
-                <input type="password" name="pw_check" id="pw_check" placeholder="Password check" required style="margin-top: 5px; margin-bottom: 5px; "/></br>
-                <label id="icon" for="name"><i class="icon-user"></i></label>
-                <input type="text" name="name" id="name" placeholder="name" required style="margin-top: 5px; margin-bottom: 5px;"/></br>
-                <label id="icon" for="name"><i class="icon-envelope"></i></label>
-                <input type="text" name="email" id="email" placeholder="email" required style="margin-top: 5px; margin-bottom: 5px;"/></br>
-                <label id="icon" for="name"><i class="icon-shield"></i></label>
-                <input type="text" name="phone" id="phone" placeholder="phone" required style="margin-top: 5px; margin-bottom: 10px;"/>
-                <a class="button" id="join-button" style="padding-right:70px; margin-right:90px; margin-top:1px; width: 30px;">Register</a>
-                <a class="button" id="join-button" style="margin-right:58px; margin-left:20px; width:80px; margin-bottom:20px; margin-top:2px;" onclick= "history.back()">Cancel</a>
+                <hr style="user-select: auto;margin-bottom: 10px;">
+                <div>
 
-                 <!-- <input type="button" id="join-button" value="회원가입" > -->
+                    <label id="icon" for="name"><i class="icon-user" style="margin-top: 5px; margin-bottom:5px"></i></label>
+                    <input type="text" name="id" id="id" placeholder="id" required style="width: 205px;"/>
+                    &nbsp;<button id="id-check" type="button" >중복확인</button>
+                    <label id="icon" for="name"><i class="icon-shield"></i></label>
+                    <input type="password" name="password" id="password" placeholder="password" required style="margin-top: 5px; margin-bottom: 5px; "/></br>
+                    <label id="icon" for="name"><i class="icon-shield"></i></label>
+                    <input type="password" name="pw_check" id="pw_check" placeholder="Password check" required style="margin-top: 5px; margin-bottom: 5px; "/></br>
+                    <label id="icon" for="name"><i class="icon-user"></i></label>
+                    <input type="text" name="name" id="name" placeholder="name" required style="margin-top: 5px; margin-bottom: 5px;"/></br>
+                    <label id="icon" for="name"><i class="icon-envelope"></i></label>
+                    <input type="text" name="email" id="email" placeholder="email" required style="margin-top: 5px; margin-bottom: 5px;"/></br>
+                    <label id="icon" for="name"><i class="icon-shield"></i></label>
+                    <input type="text" name="phone" id="phone" placeholder="phone" required style="margin-top: 5px; margin-bottom: 10px;"/>
+                    <a class="button" id="join-button" style="width: 325px; margin-top: 0px;margin-right: 0px; text-align: center;">Register</a>
+                    <!-- <a class="button" id="join-button" style="margin-right:58px; margin-left:20px; width:80px; margin-bottom:20px; margin-top:2px;" onclick= "history.back()">Cancel</a> -->
+    
+                     <!-- <input type="button" id="join-button" value="회원가입" > -->
+                </div>
                 </form>
               </div>
 
